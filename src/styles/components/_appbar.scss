@@ -1,0 +1,137 @@
+.MaterialAppbar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  background-color: var(--color-surface);
+  color: var(--color-on-surface);
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  overflow: hidden;
+  transition-property: background-color, box-shadow, height;
+  transition-duration: var(--ease-emphasized-duration);
+  transition-timing-function: var(--ease-emphasized);
+
+  &.scrolled {
+    box-shadow: var(--elevation-2);
+
+    &:not([class*='color-']) {
+      background-color: var(--color-surface-variant);
+    }
+  }
+
+  &.color {
+    &-primary {
+      background-color: var(--color-primary);
+      color: var(--color-on-primary);
+    }
+
+    &-primary-container {
+      background-color: var(--color-primary-container);
+      color: var(--color-on-primary-container);
+    }
+
+    &-secondary {
+      background-color: var(--color-secondary);
+      color: var(--color-on-secondary);
+    }
+
+    &-secondary-container {
+      background-color: var(--color-secondary-container);
+      color: var(--color-on-secondary-container);
+    }
+
+    &-tertiary {
+      background-color: var(--color-tertiary);
+      color: var(--color-on-tertiary);
+    }
+
+    &-tertiary-container {
+      background-color: var(--color-tertiary-container);
+      color: var(--color-on-tertiary-container);
+    }
+
+    &-inverse-surface {
+      background-color: var(--color-inverse-surface);
+      color: var(--color-on-inverse-surface);
+    }
+  }
+
+  &.variant {
+    &-center-aligned {
+      height: 64px;
+    }
+
+    &-small {
+      height: 64px;
+    }
+
+    &-medium {
+      height: 112px;
+
+      &.scrolled {
+        height: 64px;
+      }
+
+      > h1 {
+        padding: 24px 16px;
+      }
+    }
+
+    &-large {
+      height: 152px;
+
+      &.scrolled {
+        height: 64px;
+      }
+
+      > h1 {
+        padding: 28px 16px;
+      }
+    }
+  }
+
+  > [role='toolbar'] {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 64px;
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+    padding-inline: var(--spacing-sm);
+    flex-shrink: 0;
+
+    > .MaterialFont {
+      flex: auto;
+      padding-inline: var(--spacing-sm);
+    }
+
+    > .start-node,
+    > .end-node {
+      display: flex;
+      align-items: center;
+    }
+
+    > .start-node {
+      justify-content: flex-start;
+    }
+
+    > .end-node {
+      justify-content: flex-end;
+    }
+  }
+
+  > h1 {
+    width: 100%;
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+  }
+
+  h1.hide,
+  span.hide {
+    transition: opacity var(--ease-emphasized-duration) var(--ease-emphasized);
+    opacity: 0;
+  }
+}

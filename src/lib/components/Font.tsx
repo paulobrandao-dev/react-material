@@ -1,9 +1,10 @@
 'use client';
 
 import { clsx } from 'clsx';
+import { ComponentPropsWithoutRef, ElementType, HTMLAttributes } from 'react';
 
-export interface FontProps<T extends React.ElementType>
-  extends React.HTMLAttributes<HTMLSpanElement> {
+export interface FontProps<T extends ElementType>
+  extends HTMLAttributes<HTMLSpanElement> {
   as?: T;
   variant?: 'display' | 'headline' | 'title' | 'body' | 'label';
   scale?: 'large' | 'medium' | 'small';
@@ -29,7 +30,7 @@ export interface FontProps<T extends React.ElementType>
   textAlign?: 'inherit' | 'left' | 'right' | 'center' | 'justify';
 }
 
-export function Font<T extends React.ElementType>({
+export function Font<T extends ElementType>({
   as,
   variant = 'body',
   scale = 'large',
@@ -37,7 +38,7 @@ export function Font<T extends React.ElementType>({
   textAlign = 'inherit',
   className,
   ...props
-}: FontProps<T> & Omit<React.ComponentPropsWithoutRef<T>, keyof FontProps<T>>) {
+}: FontProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof FontProps<T>>) {
   const ComponentElement = as || 'span';
   return (
     <ComponentElement

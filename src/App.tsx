@@ -1,10 +1,21 @@
-import { Button, Font } from './lib/main';
+import { Appbar, Button, Font } from './lib/main';
 
 import './App.css';
 
 function App() {
   return (
     <>
+      <Appbar
+        variant="small"
+        headline="React Material"
+        startNode={
+          <img
+            src="/react-material.png"
+            alt="Logo React Material"
+            id="logo_appbar"
+          />
+        }
+      />
       <section id="typography">
         <hgroup>
           <Font as="h2" variant="display" scale="large">

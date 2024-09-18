@@ -1,24 +1,29 @@
 'use client';
 
 import { clsx } from 'clsx';
+import {
+  ButtonHTMLAttributes,
+  ComponentPropsWithoutRef,
+  ElementType,
+  ReactNode,
+} from 'react';
 import { Font } from './Font';
 
-export interface ButtonProps<T extends React.ElementType>
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps<T extends ElementType>
+  extends ButtonHTMLAttributes<HTMLButtonElement> {
   as?: T;
-  icon?: React.ReactNode;
+  icon?: ReactNode;
   variant?: 'text' | 'outlined' | 'tonal' | 'filled' | 'elevated';
 }
 
-export function Button<T extends React.ElementType>({
+export function Button<T extends ElementType>({
   as,
   icon,
   variant = 'text',
   children,
   className,
   ...props
-}: ButtonProps<T> &
-  Omit<React.ComponentPropsWithoutRef<T>, keyof ButtonProps<T>>) {
+}: ButtonProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof ButtonProps<T>>) {
   const ComponentElement = as || 'button';
   return (
     <ComponentElement
