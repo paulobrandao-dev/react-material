@@ -1,6 +1,7 @@
 'use client';
 
 import { clsx } from 'clsx';
+import { Font } from './Font';
 
 export interface ButtonProps<T extends React.ElementType>
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -25,7 +26,9 @@ export function Button<T extends React.ElementType>({
       {...props}
     >
       {icon && <span className="icon">{icon}</span>}
-      <span className="label">{children}</span>
+      <Font variant="label" scale="large">
+        {children}
+      </Font>
     </ComponentElement>
   );
 }

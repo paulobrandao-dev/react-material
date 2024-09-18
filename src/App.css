@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--spacing-sm);
 }
 
 section {
@@ -12,31 +11,24 @@ section {
   display: flex;
   flex-direction: column;
   padding-inline: var(--spacing-xl);
-  padding-block: var(--spacing-sm);
-  gap: var(--spacing-md);
+  padding-block: var(--spacing-xl);
+  gap: var(--spacing-lg);
 }
 
 section > hgroup {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: var(--spacing-sm);
 }
 
-section > hgroup > h2 {
-  font: var(--text-headline-large);
-  color: var(--color-secondary);
-}
-
-section > hgroup > p {
-  font: var(--text-body-large);
-}
-
-section > .preview {
+section > .showcase {
   display: flex;
   gap: var(--spacing-sm);
   align-items: center;
 }
 
-section > .preview.column {
+section > .showcase.column {
   flex-direction: column;
+  align-items: flex-start;
 }

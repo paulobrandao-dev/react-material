@@ -1,0 +1,159 @@
+.MaterialFont {
+  font: var(--text-body-large);
+
+  &.display {
+    &-large {
+      font: var(--text-display-large);
+    }
+    &-medium {
+      font: var(--text-display-medium);
+    }
+    &-small {
+      font: var(--text-display-small);
+    }
+  }
+
+  &.headline {
+    &-large {
+      font: var(--text-headline-large);
+    }
+    &-medium {
+      font: var(--text-headline-medium);
+    }
+    &-small {
+      font: var(--text-headline-small);
+    }
+  }
+
+  &.title {
+    &-large {
+      font: var(--text-title-large);
+    }
+    &-medium {
+      font: var(--text-title-medium);
+    }
+    &-small {
+      font: var(--text-title-small);
+    }
+  }
+
+  &.body {
+    &-large {
+      font: var(--text-body-large);
+    }
+    &-medium {
+      font: var(--text-body-medium);
+    }
+    &-small {
+      font: var(--text-body-small);
+    }
+  }
+
+  &.label {
+    &-large {
+      font: var(--text-label-large);
+    }
+    &-medium {
+      font: var(--text-label-medium);
+    }
+    &-small {
+      font: var(--text-label-small);
+    }
+  }
+
+  &.color {
+    &-inherit {
+      color: inherit;
+    }
+
+    &-primary {
+      color: var(--color-primary);
+    }
+
+    &-on-primary {
+      color: var(--color-on-primary);
+    }
+
+    &-on-primary-container {
+      color: var(--color-on-primary-container);
+    }
+
+    &-secondary {
+      color: var(--color-secondary);
+    }
+
+    &-on-secondary {
+      color: var(--color-on-secondary);
+    }
+
+    &-on-secondary-container {
+      color: var(--color-on-secondary-container);
+    }
+
+    &-tertiary {
+      color: var(--color-tertiary);
+    }
+
+    &-on-tertiary {
+      color: var(--color-on-tertiary);
+    }
+
+    &-on-tertiary-container {
+      color: var(--color-on-tertiary-container);
+    }
+
+    &-error {
+      color: var(--color-error);
+    }
+
+    &-on-error {
+      color: var(--color-on-error);
+    }
+
+    &-on-error-container {
+      color: var(--color-on-error-container);
+    }
+
+    &-on-background {
+      color: var(--color-on-background);
+    }
+
+    &-on-surface {
+      color: var(--color-on-surface);
+    }
+
+    &-on-surface-variant {
+      color: var(--color-on-surface-variant);
+    }
+
+    &-inverse-primary {
+      color: var(--color-inverse-primary);
+    }
+
+    &-on-inverse-surface {
+      color: var(--color-on-inverse-surface);
+    }
+  }
+
+  &.text-align {
+    &-inherit {
+      text-align: inherit;
+    }
+
+    &-left {
+      text-align: left;
+    }
+
+    &-right {
+      text-align: right;
+    }
+
+    &-center {
+      text-align: center;
+    }
+
+    &-justify {
+      text-align: justify;
+    }
+  }
+}
