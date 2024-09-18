@@ -1,0 +1,43 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  transition-property: background-color, color;
+  transition-duration: var(--ease-emphasized-duration);
+  transition-timing-function: var(--ease-emphasized);
+  background-color: var(--color-background);
+  color: var(--color-on-background);
+}
+
+a {
+  color: inherit;
+
+  &:not([class]) {
+    color: var(--color-primary);
+  }
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+pre,
+code {
+  font: var(--font-code);
+}
+
+input::-ms-reveal,
+input::-ms-clear {
+  display: none;
+}

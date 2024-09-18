@@ -1,0 +1,57 @@
+{
+  "name": "react-material",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/react-material.main.umd.cjs",
+  "module": "./dist/react-material.main.js",
+  "exports": {
+    ".": {
+      "import": "./dist/react-material.main.js",
+      "require": "./dist/react-material.main.umd.cjs"
+    },
+    "./utils": {
+      "import": "./dist/react-material.utils.js",
+      "require": "./dist/react-material.utils.umd.cjs"
+    },
+    "./dist/react-material.css": {
+      "import": "./dist/react-material.css",
+      "require": "./dist/react-material.css"
+    }
+  },
+  "scripts": {
+    "style": "sass src/styles/index.scss dist/react-material.css",
+    "dev": "vite",
+    "build": "tsc -b && vite build && npm run style",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "prettier": "prettier --write src/**/*.{ts,tsx,scss,css} --config .prettierrc.json"
+  },
+  "dependencies": {
+    "@material/material-color-utilities": "^0.3.0",
+    "clsx": "^2.1.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.9.0",
+    "@types/node": "^22.5.5",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "eslint": "^9.9.0",
+    "eslint-plugin-react-hooks": "^5.1.0-rc.0",
+    "eslint-plugin-react-refresh": "^0.4.9",
+    "globals": "^15.9.0",
+    "prettier": "^3.3.3",
+    "rollup-preserve-directives": "^1.1.1",
+    "sass": "^1.78.0",
+    "typescript": "^5.5.3",
+    "typescript-eslint": "^8.0.1",
+    "vite": "^5.4.1",
+    "vite-plugin-dts-bundle-generator": "^2.0.4"
+  }
+}

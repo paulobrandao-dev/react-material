@@ -1,0 +1,97 @@
+@use 'sass:selector';
+
+@mixin unify-parent($child) {
+  @at-root #{selector.unify(&, $child)} {
+    @content;
+  }
+}
+
+@mixin state-layer {
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    z-index: 0;
+    background-color: currentColor;
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: var(--ease-standard-duration);
+    transition-timing-function: var(--ease-standard);
+    pointer-events: none;
+  }
+}
+
+@mixin state-layer-hover {
+  &::before {
+    opacity: var(--opacity-hover);
+  }
+}
+
+@mixin state-layer-focus {
+  &::before {
+    opacity: var(--opacity-focus);
+  }
+}
+
+@mixin skeleton {
+  overflow: hidden;
+  border-color: transparent;
+  background-image: linear-gradient(
+    90deg,
+    var(--color-surface-container) 25%,
+    var(--color-surface-container-low) 45%,
+    var(--color-surface-container-lowest) 50%,
+    var(--color-surface-container-low) 55%,
+    var(--color-surface-container) 75%
+  );
+  background-size: 500% 500%;
+  animation: skeletonWave 2s linear infinite;
+}
+
+@mixin tooltip($origin: 0) {
+  $transformOrigin: center bottom;
+  $propertyY: bottom;
+  @if $origin == 1 {
+    $transformOrigin: center top;
+    $propertyY: top;
+  }
+
+  &::after {
+    content: attr(aria-label);
+    position: absolute;
+    #{$propertyY}: calc(100% + 4px);
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    transform-origin: $transformOrigin;
+    opacity: 0;
+    display: inline-block;
+    flex-shrink: 0;
+    // white-space: nowrap;
+    max-width: calc(35ch + 1rem);
+    min-height: 1.5rem;
+    font: var(--text-body-small);
+    line-height: 1.2em;
+    text-align: center;
+    padding-block: var(--spacing-xs);
+    padding-inline: var(--spacing-sm);
+    background-color: var(--color-inverse-surface);
+    color: var(--color-on-inverse-surface);
+    border-radius: var(--shape-xs);
+    transition-property: opacity, transform;
+    transition-duration: var(--ease-accelerate-duration);
+    transition-timing-function: var(--ease-accelerate);
+    pointer-events: none;
+    z-index: 3;
+  }
+
+  &:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+    transition-timing-function: var(--ease-decelerated);
+    transition-duration: var(--ease-standard-decelerate-duration);
+  }
+}

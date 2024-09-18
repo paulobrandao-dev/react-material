@@ -1,0 +1,99 @@
+@use '../mixin';
+
+.MaterialButton {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-sm);
+  height: 40px;
+  border-radius: var(--shape-xl);
+  padding-inline: var(--spacing-xl);
+  transition-property: box-shadow;
+  transition-duration: var(--ease-emphasized-duration);
+  transition-timing-function: var(--ease-emphasized);
+  position: relative;
+  @include mixin.state-layer;
+
+  > * {
+    pointer-events: none;
+  }
+
+  > span.label {
+    font: var(--text-label-large);
+  }
+
+  > span.icon {
+    width: 24px;
+    height: 24px;
+    font-size: 24px;
+    object-fit: contain;
+  }
+
+  &:hover {
+    @include mixin.state-layer-hover;
+  }
+
+  &:focus {
+    @include mixin.state-layer-focus;
+  }
+
+  &:disabled {
+    background-color: rgba(22, 22, 22, 0.12);
+    color: var(--color-on-surface);
+    box-shadow: none;
+    pointer-events: none;
+
+    > span {
+      opacity: 0.38;
+    }
+  }
+
+  &.variant {
+    &-elevated {
+      box-shadow: var(--elevation-1);
+      background-color: var(--color-surface-variant);
+      color: var(--color-primary);
+
+      &:hover {
+        box-shadow: var(--elevation-2);
+      }
+    }
+
+    &-filled {
+      background-color: var(--color-primary);
+      color: var(--color-on-primary);
+
+      &:hover {
+        box-shadow: var(--elevation-1);
+      }
+    }
+
+    &-tonal {
+      background-color: var(--color-secondary-container);
+      color: var(--color-on-secondary-container);
+
+      &:hover {
+        box-shadow: var(--elevation-1);
+      }
+    }
+
+    &-outlined {
+      border: 1px solid var(--color-outline);
+      color: var(--color-primary);
+
+      &:disabled {
+        background-color: transparent;
+        border-color: rgba(22, 22, 22, 0.12);
+      }
+    }
+
+    &-text {
+      color: var(--color-primary);
+      padding-inline: var(--spacing-lg);
+
+      &:disabled {
+        background-color: transparent;
+      }
+    }
+  }
+}
