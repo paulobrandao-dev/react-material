@@ -1,4 +1,4 @@
-import { Appbar, Button, Font } from './lib/main';
+import { Appbar, Button, Font, MaterialSymbols } from './lib/main';
 
 import './App.css';
 
@@ -82,6 +82,76 @@ function App() {
           <Font variant="label" scale="small" color="secondary">
             Label small
           </Font>
+        </div>
+      </section>
+      <section id="icon">
+        <hgroup>
+          <Font as="h2" variant="display" scale="large">
+            Icon
+          </Font>
+          <Font as="p" variant="headline" scale="small">
+            Icons are small symbols for actions or other items
+          </Font>
+          <Font
+            as="a"
+            href="https://m3.material.io/styles/icons/designing-icons"
+            target="_blank"
+            rel="nofollow"
+            variant="label"
+            scale="small"
+            color="primary"
+          >
+            Reference
+          </Font>
+        </hgroup>
+        <Font as="h3" variant="title" scale="large" color="secondary">
+          Outlined
+        </Font>
+        <div className="showcase">
+          <MaterialSymbols icon="search" variant="outlined" size={20} />
+          <MaterialSymbols icon="search" variant="outlined" size={20} filled />
+          <MaterialSymbols icon="home" variant="outlined" size={24} />
+          <MaterialSymbols icon="home" variant="outlined" size={24} filled />
+          <MaterialSymbols icon="settings" variant="outlined" size={40} />
+          <MaterialSymbols
+            icon="settings"
+            variant="outlined"
+            size={40}
+            filled
+          />
+          <MaterialSymbols icon="favorite" variant="outlined" size={48} />
+          <MaterialSymbols
+            icon="favorite"
+            variant="outlined"
+            size={48}
+            filled
+          />
+        </div>
+        <Font as="h3" variant="title" scale="large" color="secondary">
+          Rounded
+        </Font>
+        <div className="showcase">
+          <MaterialSymbols icon="search" variant="rounded" size={20} />
+          <MaterialSymbols icon="search" variant="rounded" size={20} filled />
+          <MaterialSymbols icon="home" variant="rounded" size={24} />
+          <MaterialSymbols icon="home" variant="rounded" size={24} filled />
+          <MaterialSymbols icon="settings" variant="rounded" size={40} />
+          <MaterialSymbols icon="settings" variant="rounded" size={40} filled />
+          <MaterialSymbols icon="favorite" variant="rounded" size={48} />
+          <MaterialSymbols icon="favorite" variant="rounded" size={48} filled />
+        </div>
+        <Font as="h3" variant="title" scale="large" color="secondary">
+          Sharp
+        </Font>
+        <div className="showcase">
+          <MaterialSymbols icon="search" variant="sharp" size={20} />
+          <MaterialSymbols icon="search" variant="sharp" size={20} filled />
+          <MaterialSymbols icon="home" variant="sharp" size={24} />
+          <MaterialSymbols icon="home" variant="sharp" size={24} filled />
+          <MaterialSymbols icon="settings" variant="sharp" size={40} />
+          <MaterialSymbols icon="settings" variant="sharp" size={40} filled />
+          <MaterialSymbols icon="favorite" variant="sharp" size={48} />
+          <MaterialSymbols icon="favorite" variant="sharp" size={48} filled />
         </div>
       </section>
       <section id="button">
