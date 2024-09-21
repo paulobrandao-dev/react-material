@@ -1,12 +1,11 @@
 'use client';
 
 import { clsx } from 'clsx';
-import { HTMLAttributes, useMemo } from 'react';
+import { HTMLAttributes, useEffect, useMemo, useState } from 'react';
 
 export interface MaterialSymbolsProps
   extends Omit<HTMLAttributes<HTMLSpanElement>, 'children'> {
   icon: string;
-  variant?: 'outlined' | 'rounded' | 'sharp';
   weight?: 100 | 200 | 300 | 400 | 500 | 600 | 700;
   size?: number;
   filled?: boolean;
@@ -15,7 +14,6 @@ export interface MaterialSymbolsProps
 
 export function MaterialSymbols({
   icon,
-  variant = 'outlined',
   weight = 400,
   size = 24,
   filled,
@@ -24,6 +22,8 @@ export function MaterialSymbols({
   style,
   ...props
 }: MaterialSymbolsProps) {
+  const [variant, setVariant] = useState<string | null>(null);
+
   const opsz = useMemo(() => {
     if (size <= 23) {
       return 20;
@@ -35,6 +35,21 @@ export function MaterialSymbols({
       return 48;
     }
   }, [size]);
+
+  useEffect(() => {
+    const setting = getComputedStyle(document.documentElement).getPropertyValue(
+      '--material-symbols',
+    );
+    if (!setting.trim()) {
+      console.error(
+        'MaterialSymbols: To use this component, it is necessary to import one of the Material Symbols styles',
+      );
+      setVariant(null);
+    }
+    setVariant(setting.trim());
+  }, []);
+
+  if (!variant) return null;
 
   return (
     <span

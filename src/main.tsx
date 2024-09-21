@@ -4,6 +4,7 @@ import App from './App.tsx';
 import { applyTheme } from './lib/utils';
 
 import './styles/index.scss';
+import './styles/icons-rounded.scss';
 
 applyTheme({
   seedColor: '#4285F4',

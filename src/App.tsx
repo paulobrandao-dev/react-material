@@ -105,53 +105,22 @@ function App() {
           </Font>
         </hgroup>
         <Font as="h3" variant="title" scale="large" color="secondary">
-          Outlined
+          Default
         </Font>
         <div className="showcase">
-          <MaterialSymbols icon="search" variant="outlined" size={20} />
-          <MaterialSymbols icon="search" variant="outlined" size={20} filled />
-          <MaterialSymbols icon="home" variant="outlined" size={24} />
-          <MaterialSymbols icon="home" variant="outlined" size={24} filled />
-          <MaterialSymbols icon="settings" variant="outlined" size={40} />
-          <MaterialSymbols
-            icon="settings"
-            variant="outlined"
-            size={40}
-            filled
-          />
-          <MaterialSymbols icon="favorite" variant="outlined" size={48} />
-          <MaterialSymbols
-            icon="favorite"
-            variant="outlined"
-            size={48}
-            filled
-          />
+          <MaterialSymbols icon="search" size={20} />
+          <MaterialSymbols icon="home" size={24} />
+          <MaterialSymbols icon="settings" size={40} />
+          <MaterialSymbols icon="favorite" size={48} />
         </div>
         <Font as="h3" variant="title" scale="large" color="secondary">
-          Rounded
+          Filled
         </Font>
         <div className="showcase">
-          <MaterialSymbols icon="search" variant="rounded" size={20} />
-          <MaterialSymbols icon="search" variant="rounded" size={20} filled />
-          <MaterialSymbols icon="home" variant="rounded" size={24} />
-          <MaterialSymbols icon="home" variant="rounded" size={24} filled />
-          <MaterialSymbols icon="settings" variant="rounded" size={40} />
-          <MaterialSymbols icon="settings" variant="rounded" size={40} filled />
-          <MaterialSymbols icon="favorite" variant="rounded" size={48} />
-          <MaterialSymbols icon="favorite" variant="rounded" size={48} filled />
-        </div>
-        <Font as="h3" variant="title" scale="large" color="secondary">
-          Sharp
-        </Font>
-        <div className="showcase">
-          <MaterialSymbols icon="search" variant="sharp" size={20} />
-          <MaterialSymbols icon="search" variant="sharp" size={20} filled />
-          <MaterialSymbols icon="home" variant="sharp" size={24} />
-          <MaterialSymbols icon="home" variant="sharp" size={24} filled />
-          <MaterialSymbols icon="settings" variant="sharp" size={40} />
-          <MaterialSymbols icon="settings" variant="sharp" size={40} filled />
-          <MaterialSymbols icon="favorite" variant="sharp" size={48} />
-          <MaterialSymbols icon="favorite" variant="sharp" size={48} filled />
+          <MaterialSymbols icon="search" size={20} filled />
+          <MaterialSymbols icon="home" size={24} filled />
+          <MaterialSymbols icon="settings" size={40} filled />
+          <MaterialSymbols icon="favorite" size={48} filled />
         </div>
       </section>
       <section id="button">

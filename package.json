@@ -20,10 +20,24 @@
     "./dist/react-material.css": {
       "import": "./dist/react-material.css",
       "require": "./dist/react-material.css"
+    },
+    "./dist/react-material-symbols-outlined.css": {
+      "import": "./dist/react-material-symbols-outlined.css",
+      "require": "./dist/react-material-symbols-outlined.css"
+    },
+    "./dist/react-material-symbols-rounded.css": {
+      "import": "./dist/react-material-symbols-rounded.css",
+      "require": "./dist/react-material-symbols-rounded.css"
+    },
+    "./dist/react-material-symbols-sharp.css": {
+      "import": "./dist/react-material-symbols-sharp.css",
+      "require": "./dist/react-material-symbols-sharp.css"
     }
   },
   "scripts": {
-    "style": "sass src/styles/index.scss dist/react-material.css",
+    "style:icons": "sass --no-source-map src/styles/icons-outlined.scss:dist/react-material-symbols-outlined.css src/styles/icons-rounded.scss:dist/react-material-symbols-rounded.css src/styles/icons-sharp.scss:dist/react-material-symbols-sharp.css",
+    "style:main": "sass --no-source-map src/styles/index.scss dist/react-material.css",
+    "style": "npm run style:icons && npm run style:main",
     "dev": "vite",
     "build": "tsc -b && vite build && npm run style",
     "lint": "eslint .",
