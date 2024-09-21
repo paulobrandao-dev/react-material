@@ -5,22 +5,25 @@
   width: 100%;
   background-color: var(--color-surface);
   color: var(--color-on-surface);
-  position: sticky;
-  top: 0;
-  left: 0;
-  z-index: 3;
   overflow: hidden;
   transition-property: background-color, box-shadow, height;
   transition-duration: var(--ease-emphasized-duration);
   transition-timing-function: var(--ease-emphasized);
 
-  &.scrolled {
-    box-shadow: var(--elevation-2);
+  &.sticky {
+    position: sticky;
+    top: 0;
+    z-index: 3;
 
-    &:not([class*='color-']) {
-      background-color: var(--color-surface-variant);
+    &.scrolled {
+      box-shadow: var(--elevation-2);
+
+      &:not([class*='color-']) {
+        background-color: var(--color-surface-variant);
+      }
     }
   }
+
 
   &.color {
     &-primary {

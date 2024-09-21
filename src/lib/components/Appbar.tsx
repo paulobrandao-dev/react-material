@@ -15,6 +15,7 @@ import { Font } from './Font';
 export interface AppbarProps<T extends ElementType>
   extends Omit<HTMLAttributes<HTMLElement>, 'children'> {
   as?: T;
+  sticky?: boolean;
   variant?: 'center-aligned' | 'small' | 'medium' | 'large';
   color?:
     | 'primary'
@@ -31,6 +32,7 @@ export interface AppbarProps<T extends ElementType>
 
 export function Appbar<T extends ElementType>({
   as,
+  sticky,
   variant = 'small',
   startNode,
   headline,
@@ -47,6 +49,7 @@ export function Appbar<T extends ElementType>({
   }, [variant]);
 
   useEffect(() => {
+    if (!sticky) return;
     const checkScroll = () => {
       setScrolled(window.scrollY > 0);
     };
@@ -55,7 +58,7 @@ export function Appbar<T extends ElementType>({
     return () => {
       window.removeEventListener('scroll', checkScroll);
     };
-  }, [color]);
+  }, [sticky]);
 
   return (
     <ComponentElement
@@ -64,6 +67,7 @@ export function Appbar<T extends ElementType>({
         `variant-${variant}`,
         {
           [`color-${color}`]: color !== undefined,
+          sticky,
           scrolled,
         },
         className,

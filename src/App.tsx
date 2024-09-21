@@ -8,6 +8,7 @@ function App() {
       <Appbar
         variant="small"
         headline="React Material"
+        sticky
         startNode={
           <img
             src="/react-material.png"
