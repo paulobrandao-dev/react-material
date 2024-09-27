@@ -1,10 +1,24 @@
 'use client';
 
-import { clsx } from 'clsx';
 import { ComponentPropsWithoutRef, ElementType, HTMLAttributes } from 'react';
 import { AttributeQueries, SpacingSizes } from './types';
+import { clsx } from 'clsx';
 
-export interface GridProps<T extends ElementType> extends HTMLAttributes<HTMLElement> {
+type FlexDirections = 'row' | 'row-reverse' | 'column' | 'column-reverse';
+type FlexAlignItems =
+  | 'baseline'
+  | 'center'
+  | 'flex-start'
+  | 'flex-end'
+  | 'stretch';
+type FlexJustifyContent =
+  | FlexAlignItems
+  | 'space-around'
+  | 'space-between'
+  | 'space-evenly';
+
+export interface FlexboxProps<T extends ElementType>
+  extends HTMLAttributes<HTMLElement> {
   as?: T;
   gap?: SpacingSizes | AttributeQueries<SpacingSizes>;
   gapColumn?: SpacingSizes | AttributeQueries<SpacingSizes>;
@@ -12,10 +26,12 @@ export interface GridProps<T extends ElementType> extends HTMLAttributes<HTMLEle
   padding?: SpacingSizes | AttributeQueries<SpacingSizes>;
   paddingInline?: SpacingSizes | AttributeQueries<SpacingSizes>;
   paddingBlock?: SpacingSizes | AttributeQueries<SpacingSizes>;
-  fluid?: boolean;
+  flexDirection?: FlexDirections | AttributeQueries<FlexDirections>;
+  alignItems?: FlexAlignItems | AttributeQueries<FlexAlignItems>;
+  justifyContent?: FlexJustifyContent | AttributeQueries<FlexJustifyContent>;
 }
 
-export function Grid<T extends ElementType>({
+export function Flexbox<T extends ElementType>({
   as,
   gap,
   gapColumn,
@@ -23,16 +39,67 @@ export function Grid<T extends ElementType>({
   padding,
   paddingBlock,
   paddingInline,
+  flexDirection,
+  alignItems,
+  justifyContent,
   className,
-  fluid,
   ...props
-}: GridProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof GridProps<T>>) {
+}: FlexboxProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof FlexboxProps<T>>) {
   const ComponentElement = as || 'div';
-
   return (
     <ComponentElement
-      className={clsx('material-grid', className)}
-      data-fluid={fluid ? '' : undefined}
+      className={clsx('material-flexbox', className)}
+      data-direction-compact={
+        typeof flexDirection === 'string'
+          ? flexDirection
+          : flexDirection?.compact
+      }
+      data-direction-medium={
+        typeof flexDirection !== 'string' ? flexDirection?.medium : undefined
+      }
+      data-direction-expanded={
+        typeof flexDirection !== 'string' ? flexDirection?.expanded : undefined
+      }
+      data-direction-large={
+        typeof flexDirection !== 'string' ? flexDirection?.large : undefined
+      }
+      data-direction-xlarge={
+        typeof flexDirection !== 'string' ? flexDirection?.xlarge : undefined
+      }
+      data-align-items-compact={
+        typeof alignItems === 'string' ? alignItems : alignItems?.compact
+      }
+      data-align-items-medium={
+        typeof alignItems !== 'string' ? alignItems?.medium : undefined
+      }
+      data-align-items-expanded={
+        typeof alignItems !== 'string' ? alignItems?.expanded : undefined
+      }
+      data-align-items-large={
+        typeof alignItems !== 'string' ? alignItems?.large : undefined
+      }
+      data-align-items-xlarge={
+        typeof alignItems !== 'string' ? alignItems?.xlarge : undefined
+      }
+      data-justify-content-compact={
+        typeof justifyContent === 'string'
+          ? justifyContent
+          : justifyContent?.compact
+      }
+      data-justify-content-medium={
+        typeof justifyContent !== 'string' ? justifyContent?.medium : undefined
+      }
+      data-justify-content-expanded={
+        typeof justifyContent !== 'string'
+          ? justifyContent?.expanded
+          : undefined
+      }
+      data-justify-content-large={
+        typeof justifyContent !== 'string' ? justifyContent?.large : undefined
+      }
+      data-justify-content-xlarge={
+        typeof justifyContent !== 'string' ? justifyContent?.xlarge : undefined
+      }
       data-gap-compact={typeof gap === 'string' ? gap : gap?.compact}
       data-gap-medium={typeof gap !== 'string' ? gap?.medium : undefined}
       data-gap-expanded={typeof gap !== 'string' ? gap?.expanded : undefined}

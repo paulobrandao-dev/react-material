@@ -9,29 +9,3 @@
   width: 56px;
   height: 56px;
 }
-
-section:not(.material-grid) {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: var(--spacing-lg);
-}
-
-section > hgroup {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--spacing-sm);
-}
-
-section > .showcase {
-  display: flex;
-  gap: var(--spacing-sm);
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-section > .showcase.column {
-  flex-direction: column;
-  align-items: flex-start;
-}

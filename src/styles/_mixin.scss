@@ -95,3 +95,21 @@
     transition-duration: var(--ease-standard-decelerate-duration);
   }
 }
+
+@mixin spacing-rules($breakpoint, $property) {
+  &[data-#{$property}-#{$breakpoint}="xs"] {
+    #{$property}: var(--spacing-xs);
+  }
+  [data-#{$property}-#{$breakpoint}="sm"] {
+    #{$property}: var(--spacing-sm);
+  }
+  &[data-#{$property}-#{$breakpoint}="md"] {
+    #{$property}: var(--spacing-md);
+  }
+  &[data-#{$property}-#{$breakpoint}="lg"] {
+    #{$property}: var(--spacing-lg);
+  }
+  &[data-#{$property}-#{$breakpoint}="xl"] {
+    #{$property}: var(--spacing-xl);
+  }
+}

@@ -1,4 +1,11 @@
-import { Appbar, Button, Font, Grid, MaterialSymbols } from './lib/main';
+import {
+  Appbar,
+  Button,
+  Flexbox,
+  Font,
+  Grid,
+  MaterialSymbols,
+} from './lib/main';
 import { gridColumnProps } from './lib/utils';
 
 import './App.css';
@@ -25,7 +32,13 @@ function App() {
         paddingBlock="xl"
         id="typography"
       >
-        <hgroup {...gridColumnProps({ compact: 4, medium: 8, expanded: 6 })}>
+        <Flexbox
+          as="hgroup"
+          flexDirection="column"
+          alignItems="flex-start"
+          gap="sm"
+          {...gridColumnProps({ compact: 4, medium: 8, expanded: 6 })}
+        >
           <Font as="h2" variant="display" scale="large">
             Font
           </Font>
@@ -43,9 +56,11 @@ function App() {
           >
             Reference
           </Font>
-        </hgroup>
-        <div
-          className="showcase column"
+        </Flexbox>
+        <Flexbox
+          flexDirection="column"
+          alignItems="flex-start"
+          gap="sm"
           {...gridColumnProps({ compact: 4, medium: 8, expanded: 6 })}
         >
           <Font variant="display" scale="large" color="secondary">
@@ -93,7 +108,7 @@ function App() {
           <Font variant="label" scale="small" color="secondary">
             Label small
           </Font>
-        </div>
+        </Flexbox>
       </Grid>
       <Grid
         as="section"
@@ -102,7 +117,13 @@ function App() {
         paddingBlock="xl"
         id="icon"
       >
-        <hgroup {...gridColumnProps({ compact: 4, medium: 8, expanded: 6 })}>
+        <Flexbox
+          as="hgroup"
+          flexDirection="column"
+          alignItems="flex-start"
+          gap="sm"
+          {...gridColumnProps({ compact: 4, medium: 8, expanded: 6 })}
+        >
           <Font as="h2" variant="display" scale="large">
             Icon
           </Font>
@@ -120,27 +141,33 @@ function App() {
           >
             Reference
           </Font>
-        </hgroup>
-        <section {...gridColumnProps({ compact: 4, medium: 8, expanded: 6 })}>
+        </Flexbox>
+        <Flexbox
+          as="section"
+          flexDirection="column"
+          gap="lg"
+          alignItems="flex-start"
+          {...gridColumnProps({ compact: 4, medium: 8, expanded: 6 })}
+        >
           <Font as="h3" variant="title" scale="large" color="secondary">
             Default
           </Font>
-          <div className="showcase">
+          <Flexbox gap="sm" alignItems="center">
             <MaterialSymbols icon="search" size={20} />
             <MaterialSymbols icon="home" size={24} />
             <MaterialSymbols icon="settings" size={40} />
             <MaterialSymbols icon="favorite" size={48} />
-          </div>
+          </Flexbox>
           <Font as="h3" variant="title" scale="large" color="secondary">
             Filled
           </Font>
-          <div className="showcase">
+          <Flexbox gap="sm" alignItems="center">
             <MaterialSymbols icon="search" size={20} filled />
             <MaterialSymbols icon="home" size={24} filled />
             <MaterialSymbols icon="settings" size={40} filled />
             <MaterialSymbols icon="favorite" size={48} filled />
-          </div>
-        </section>
+          </Flexbox>
+        </Flexbox>
       </Grid>
       <Grid
         as="section"
@@ -149,7 +176,13 @@ function App() {
         paddingBlock="xl"
         id="button"
       >
-        <hgroup {...gridColumnProps({ compact: 4, medium: 8, expanded: 6 })}>
+        <Flexbox
+          as="hgroup"
+          flexDirection="column"
+          alignItems="flex-start"
+          gap="sm"
+          {...gridColumnProps({ compact: 4, medium: 8, expanded: 6 })}
+        >
           <Font as="h2" variant="display" scale="large">
             Button
           </Font>
@@ -167,22 +200,36 @@ function App() {
           >
             Reference
           </Font>
-        </hgroup>
-        <section {...gridColumnProps({ compact: 4, medium: 8, expanded: 6 })}>
+        </Flexbox>
+        <Flexbox
+          as="section"
+          flexDirection="column"
+          gap="lg"
+          alignItems="stretch"
+          {...gridColumnProps({ compact: 4, medium: 8, expanded: 6 })}
+        >
           <Font as="h3" variant="title" scale="large" color="secondary">
             Enabled
           </Font>
-          <div className="showcase">
+          <Flexbox
+            flexDirection={{ compact: 'column', medium: 'row' }}
+            alignItems={{ compact: 'stretch', medium: 'center' }}
+            gap="sm"
+          >
             <Button variant="elevated">Elevated</Button>
             <Button variant="filled">Filled</Button>
             <Button variant="tonal">Tonal</Button>
             <Button variant="outlined">Outlined</Button>
             <Button variant="text">Text</Button>
-          </div>
+          </Flexbox>
           <Font as="h3" variant="title" scale="large" color="secondary">
             Disabled
           </Font>
-          <div className="showcase">
+          <Flexbox
+            flexDirection={{ compact: 'column', medium: 'row' }}
+            alignItems={{ compact: 'stretch', medium: 'center' }}
+            gap="sm"
+          >
             <Button variant="elevated" disabled>
               Elevated
             </Button>
@@ -198,8 +245,8 @@ function App() {
             <Button variant="text" disabled>
               Text
             </Button>
-          </div>
-        </section>
+          </Flexbox>
+        </Flexbox>
       </Grid>
     </>
   );

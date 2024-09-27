@@ -1,0 +1,117 @@
+@use '../mixin';
+
+@mixin flex-direction-rules($breakpoint) {
+  &[data-direction-#{$breakpoint}="row"] {
+    flex-direction: row;
+  }
+  [data-direction-#{$breakpoint}="row-reverse"] {
+    flex-direction: row-reverse;
+  }
+  &[data-direction-#{$breakpoint}="column"] {
+    flex-direction: column;
+  }
+  &[data-direction-#{$breakpoint}="column-reverse"] {
+    flex-direction: column-reverse;
+  }
+}
+
+@mixin flex-align-rules($breakpoint) {
+  &[data-align-items-#{$breakpoint}="baseline"] {
+    align-items: baseline;
+  }
+  &[data-align-items-#{$breakpoint}="center"] {
+    align-items: center;
+  }
+  &[data-align-items-#{$breakpoint}="flex-start"] {
+    align-items: flex-start;
+  }
+  &[data-align-items-#{$breakpoint}="flex-end"] {
+    align-items: flex-end;
+  }
+  &[data-align-items-#{$breakpoint}="stretch"] {
+    align-items: stretch;
+  }
+  &[data-justify-content-#{$breakpoint}="baseline"] {
+    justify-content: baseline;
+  }
+  &[data-justify-content-#{$breakpoint}="center"] {
+    justify-content: center;
+  }
+  &[data-justify-content-#{$breakpoint}="flex-start"] {
+    justify-content: flex-start;
+  }
+  &[data-justify-content-#{$breakpoint}="flex-end"] {
+    justify-content: flex-end;
+  }
+  &[data-justify-content-#{$breakpoint}="space-around"] {
+    justify-content: space-around;
+  }
+  &[data-justify-content-#{$breakpoint}="space-between"] {
+    justify-content: space-between;
+  }
+  &[data-justify-content-#{$breakpoint}="space-evenly"] {
+    justify-content: space-evenly;
+  }
+  &[data-justify-content-#{$breakpoint}="stretch"] {
+    justify-content: stretch;
+  }
+}
+
+.material-flexbox {
+  display: flex;
+
+  @media screen and (min-width: 0) {
+    @include flex-direction-rules('compact');
+    @include flex-align-rules('compact');
+    @include mixin.spacing-rules('compact', 'gap');
+    @include mixin.spacing-rules('compact', 'column-gap');
+    @include mixin.spacing-rules('compact', 'row-gap');
+    @include mixin.spacing-rules('compact', 'padding');
+    @include mixin.spacing-rules('compact', 'padding-block');
+    @include mixin.spacing-rules('compact', 'padding-inline');
+  }
+
+  @media screen and (min-width: 600px) {
+    @include flex-direction-rules('medium');
+    @include flex-align-rules('medium');
+    @include mixin.spacing-rules('medium', 'gap');
+    @include mixin.spacing-rules('medium', 'column-gap');
+    @include mixin.spacing-rules('medium', 'row-gap');
+    @include mixin.spacing-rules('medium', 'padding');
+    @include mixin.spacing-rules('medium', 'padding-block');
+    @include mixin.spacing-rules('medium', 'padding-inline');
+  }
+
+  @media screen and (min-width: 840px) {
+    @include flex-direction-rules('expanded');
+    @include flex-align-rules('expanded');
+    @include mixin.spacing-rules('expanded', 'gap');
+    @include mixin.spacing-rules('expanded', 'column-gap');
+    @include mixin.spacing-rules('expanded', 'row-gap');
+    @include mixin.spacing-rules('expanded', 'padding');
+    @include mixin.spacing-rules('expanded', 'padding-block');
+    @include mixin.spacing-rules('expanded', 'padding-inline');
+  }
+
+  @media screen and (min-width: 1200px) {
+    @include flex-direction-rules('large');
+    @include flex-align-rules('large');
+    @include mixin.spacing-rules('large', 'gap');
+    @include mixin.spacing-rules('large', 'column-gap');
+    @include mixin.spacing-rules('large', 'row-gap');
+    @include mixin.spacing-rules('large', 'padding');
+    @include mixin.spacing-rules('large', 'padding-block');
+    @include mixin.spacing-rules('large', 'padding-inline');
+  }
+
+  @media screen and (min-width: 1400px) {
+    @include flex-direction-rules('xlarge');
+    @include flex-align-rules('xlarge');
+    @include mixin.spacing-rules('xlarge', 'gap');
+    @include mixin.spacing-rules('xlarge', 'column-gap');
+    @include mixin.spacing-rules('xlarge', 'row-gap');
+    @include mixin.spacing-rules('xlarge', 'padding');
+    @include mixin.spacing-rules('xlarge', 'padding-block');
+    @include mixin.spacing-rules('xlarge', 'padding-inline');
+  }
+}
