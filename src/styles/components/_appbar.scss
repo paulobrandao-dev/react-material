@@ -1,4 +1,4 @@
-.MaterialAppbar {
+%appbar-style {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -10,90 +10,53 @@
   transition-duration: var(--ease-emphasized-duration);
   transition-timing-function: var(--ease-emphasized);
 
-  &.sticky {
+  &[data-sticky] {
     position: sticky;
     top: 0;
     z-index: 3;
 
-    &.scrolled {
+    &[data-scrolled] {
       box-shadow: var(--elevation-2);
 
-      &:not([class*='color-']) {
+      &:not([data-color]) {
         background-color: var(--color-surface-variant);
       }
     }
   }
 
-
-  &.color {
-    &-primary {
-      background-color: var(--color-primary);
-      color: var(--color-on-primary);
-    }
-
-    &-primary-container {
-      background-color: var(--color-primary-container);
-      color: var(--color-on-primary-container);
-    }
-
-    &-secondary {
-      background-color: var(--color-secondary);
-      color: var(--color-on-secondary);
-    }
-
-    &-secondary-container {
-      background-color: var(--color-secondary-container);
-      color: var(--color-on-secondary-container);
-    }
-
-    &-tertiary {
-      background-color: var(--color-tertiary);
-      color: var(--color-on-tertiary);
-    }
-
-    &-tertiary-container {
-      background-color: var(--color-tertiary-container);
-      color: var(--color-on-tertiary-container);
-    }
-
-    &-inverse-surface {
-      background-color: var(--color-inverse-surface);
-      color: var(--color-on-inverse-surface);
-    }
+  &[data-color='primary'] {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
   }
 
-  &.variant {
-    &-center-aligned {
-      height: 64px;
-    }
+  &[data-color='primary-container'] {
+    background-color: var(--color-primary-container);
+    color: var(--color-on-primary-container);
+  }
 
-    &-small {
-      height: 64px;
-    }
+  &[data-color='secondary'] {
+    background-color: var(--color-secondary);
+    color: var(--color-on-secondary);
+  }
 
-    &-medium {
-      height: 112px;
+  &[data-color='secondary-container'] {
+    background-color: var(--color-secondary-container);
+    color: var(--color-on-secondary-container);
+  }
 
-      &.scrolled {
-        height: 64px;
-      }
+  &[data-color='tertiary'] {
+    background-color: var(--color-tertiary);
+    color: var(--color-on-tertiary);
+  }
 
-      > h1 {
-        padding: 24px 16px;
-      }
-    }
+  &[data-color='tertiary-container'] {
+    background-color: var(--color-tertiary-container);
+    color: var(--color-on-tertiary-container);
+  }
 
-    &-large {
-      height: 152px;
-
-      &.scrolled {
-        height: 64px;
-      }
-
-      > h1 {
-        padding: 28px 16px;
-      }
-    }
+  &[data-color='inverse-surface'] {
+    background-color: var(--color-inverse-surface);
+    color: var(--color-on-inverse-surface);
   }
 
   > [role='toolbar'] {
@@ -106,7 +69,7 @@
     padding-inline: var(--spacing-sm);
     flex-shrink: 0;
 
-    > .MaterialFont {
+    > .headline {
       flex: auto;
       padding-inline: var(--spacing-sm);
     }
@@ -136,5 +99,43 @@
   span.hide {
     transition: opacity var(--ease-emphasized-duration) var(--ease-emphasized);
     opacity: 0;
+  }
+}
+
+.material-appbar {
+  &-center-aligned {
+    @extend %appbar-style;
+    height: 64px;
+  }
+
+  &-small {
+    @extend %appbar-style;
+    height: 64px;
+  }
+
+  &-medium {
+    @extend %appbar-style;
+    height: 112px;
+
+    &[data-scrolled] {
+      height: 64px;
+    }
+
+    > h1 {
+      padding: 24px 16px;
+    }
+  }
+
+  &-large {
+    @extend %appbar-style;
+    height: 152px;
+
+    &[data-scrolled] {
+      height: 64px;
+    }
+
+    > h1 {
+      padding: 28px 16px;
+    }
   }
 }

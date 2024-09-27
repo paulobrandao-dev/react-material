@@ -1,159 +1,164 @@
-.MaterialFont {
+%typography-style {
+  &[data-color='primary'] {
+    color: var(--color-primary);
+  }
+
+  &[data-color='on-primary'] {
+    color: var(--color-on-primary);
+  }
+
+  &[data-color='on-primary-container'] {
+    color: var(--color-on-primary-container);
+  }
+
+  &[data-color='secondary'] {
+    color: var(--color-secondary);
+  }
+
+  &[data-color='on-secondary'] {
+    color: var(--color-on-secondary);
+  }
+
+  &[data-color='on-secondary-container'] {
+    color: var(--color-on-secondary-container);
+  }
+
+  &[data-color='tertiary'] {
+    color: var(--color-tertiary);
+  }
+
+  &[data-color='on-tertiary'] {
+    color: var(--color-on-tertiary);
+  }
+
+  &[data-color='on-tertiary-container'] {
+    color: var(--color-on-tertiary-container);
+  }
+
+  &[data-color='error'] {
+    color: var(--color-error);
+  }
+
+  &[data-color='on-error'] {
+    color: var(--color-on-error);
+  }
+
+  &[data-color='on-error-container'] {
+    color: var(--color-on-error-container);
+  }
+
+  &[data-color='on-background'] {
+    color: var(--color-on-background);
+  }
+
+  &[data-color='on-surface'] {
+    color: var(--color-on-surface);
+  }
+
+  &[data-color='on-surface-variant'] {
+    color: var(--color-on-surface-variant);
+  }
+
+  &[data-color='inverse-primary'] {
+    color: var(--color-inverse-primary);
+  }
+
+  &[data-color='on-inverse-surface'] {
+    color: var(--color-on-inverse-surface);
+  }
+
+  &[data-align='left'] {
+    text-align: left;
+  }
+
+  &[data-align='right'] {
+    text-align: right;
+  }
+
+  &[data-align='center'] {
+    text-align: center;
+  }
+
+  &[data-align='justify'] {
+    text-align: justify;
+  }
+}
+
+.material-typography {
   font: var(--text-body-large);
 
-  &.display {
+  &-display {
     &-large {
       font: var(--text-display-large);
+      @extend %typography-style;
     }
     &-medium {
       font: var(--text-display-medium);
+      @extend %typography-style;
     }
     &-small {
       font: var(--text-display-small);
+      @extend %typography-style;
     }
   }
 
-  &.headline {
+  &-headline {
     &-large {
       font: var(--text-headline-large);
+      @extend %typography-style;
     }
     &-medium {
       font: var(--text-headline-medium);
+      @extend %typography-style;
     }
     &-small {
       font: var(--text-headline-small);
+      @extend %typography-style;
     }
   }
 
-  &.title {
+  &-title {
     &-large {
       font: var(--text-title-large);
+      @extend %typography-style;
     }
     &-medium {
       font: var(--text-title-medium);
+      @extend %typography-style;
     }
     &-small {
       font: var(--text-title-small);
+      @extend %typography-style;
     }
   }
 
-  &.body {
+  &-body {
     &-large {
       font: var(--text-body-large);
+      @extend %typography-style;
     }
     &-medium {
       font: var(--text-body-medium);
+      @extend %typography-style;
     }
     &-small {
       font: var(--text-body-small);
+      @extend %typography-style;
     }
   }
 
-  &.label {
+  &-label {
     &-large {
       font: var(--text-label-large);
+      @extend %typography-style;
     }
     &-medium {
       font: var(--text-label-medium);
+      @extend %typography-style;
     }
     &-small {
       font: var(--text-label-small);
-    }
-  }
-
-  &.color {
-    &-inherit {
-      color: inherit;
-    }
-
-    &-primary {
-      color: var(--color-primary);
-    }
-
-    &-on-primary {
-      color: var(--color-on-primary);
-    }
-
-    &-on-primary-container {
-      color: var(--color-on-primary-container);
-    }
-
-    &-secondary {
-      color: var(--color-secondary);
-    }
-
-    &-on-secondary {
-      color: var(--color-on-secondary);
-    }
-
-    &-on-secondary-container {
-      color: var(--color-on-secondary-container);
-    }
-
-    &-tertiary {
-      color: var(--color-tertiary);
-    }
-
-    &-on-tertiary {
-      color: var(--color-on-tertiary);
-    }
-
-    &-on-tertiary-container {
-      color: var(--color-on-tertiary-container);
-    }
-
-    &-error {
-      color: var(--color-error);
-    }
-
-    &-on-error {
-      color: var(--color-on-error);
-    }
-
-    &-on-error-container {
-      color: var(--color-on-error-container);
-    }
-
-    &-on-background {
-      color: var(--color-on-background);
-    }
-
-    &-on-surface {
-      color: var(--color-on-surface);
-    }
-
-    &-on-surface-variant {
-      color: var(--color-on-surface-variant);
-    }
-
-    &-inverse-primary {
-      color: var(--color-inverse-primary);
-    }
-
-    &-on-inverse-surface {
-      color: var(--color-on-inverse-surface);
-    }
-  }
-
-  &.text-align {
-    &-inherit {
-      text-align: inherit;
-    }
-
-    &-left {
-      text-align: left;
-    }
-
-    &-right {
-      text-align: right;
-    }
-
-    &-center {
-      text-align: center;
-    }
-
-    &-justify {
-      text-align: justify;
+      @extend %typography-style;
     }
   }
 }

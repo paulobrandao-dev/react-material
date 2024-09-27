@@ -1,4 +1,5 @@
-import { Appbar, Button, Font, MaterialSymbols } from './lib/main';
+import { Appbar, Button, Font, Grid, MaterialSymbols } from './lib/main';
+import { gridColumnProps } from './lib/utils';
 
 import './App.css';
 
@@ -17,8 +18,14 @@ function App() {
           />
         }
       />
-      <section id="typography">
-        <hgroup>
+      <Grid
+        as="section"
+        gap={{ compact: 'md', medium: 'xl' }}
+        paddingInline={{ compact: 'lg', medium: 'xl' }}
+        paddingBlock="xl"
+        id="typography"
+      >
+        <hgroup {...gridColumnProps({ compact: 4, medium: 8, expanded: 6 })}>
           <Font as="h2" variant="display" scale="large">
             Font
           </Font>
@@ -37,7 +44,10 @@ function App() {
             Reference
           </Font>
         </hgroup>
-        <div className="showcase column">
+        <div
+          className="showcase column"
+          {...gridColumnProps({ compact: 4, medium: 8, expanded: 6 })}
+        >
           <Font variant="display" scale="large" color="secondary">
             Display large
           </Font>
@@ -84,9 +94,15 @@ function App() {
             Label small
           </Font>
         </div>
-      </section>
-      <section id="icon">
-        <hgroup>
+      </Grid>
+      <Grid
+        as="section"
+        gap={{ compact: 'md', medium: 'xl' }}
+        paddingInline={{ compact: 'lg', medium: 'xl' }}
+        paddingBlock="xl"
+        id="icon"
+      >
+        <hgroup {...gridColumnProps({ compact: 4, medium: 8, expanded: 6 })}>
           <Font as="h2" variant="display" scale="large">
             Icon
           </Font>
@@ -105,27 +121,35 @@ function App() {
             Reference
           </Font>
         </hgroup>
-        <Font as="h3" variant="title" scale="large" color="secondary">
-          Default
-        </Font>
-        <div className="showcase">
-          <MaterialSymbols icon="search" size={20} />
-          <MaterialSymbols icon="home" size={24} />
-          <MaterialSymbols icon="settings" size={40} />
-          <MaterialSymbols icon="favorite" size={48} />
-        </div>
-        <Font as="h3" variant="title" scale="large" color="secondary">
-          Filled
-        </Font>
-        <div className="showcase">
-          <MaterialSymbols icon="search" size={20} filled />
-          <MaterialSymbols icon="home" size={24} filled />
-          <MaterialSymbols icon="settings" size={40} filled />
-          <MaterialSymbols icon="favorite" size={48} filled />
-        </div>
-      </section>
-      <section id="button">
-        <hgroup>
+        <section {...gridColumnProps({ compact: 4, medium: 8, expanded: 6 })}>
+          <Font as="h3" variant="title" scale="large" color="secondary">
+            Default
+          </Font>
+          <div className="showcase">
+            <MaterialSymbols icon="search" size={20} />
+            <MaterialSymbols icon="home" size={24} />
+            <MaterialSymbols icon="settings" size={40} />
+            <MaterialSymbols icon="favorite" size={48} />
+          </div>
+          <Font as="h3" variant="title" scale="large" color="secondary">
+            Filled
+          </Font>
+          <div className="showcase">
+            <MaterialSymbols icon="search" size={20} filled />
+            <MaterialSymbols icon="home" size={24} filled />
+            <MaterialSymbols icon="settings" size={40} filled />
+            <MaterialSymbols icon="favorite" size={48} filled />
+          </div>
+        </section>
+      </Grid>
+      <Grid
+        as="section"
+        gap={{ compact: 'md', medium: 'xl' }}
+        paddingInline={{ compact: 'lg', medium: 'xl' }}
+        paddingBlock="xl"
+        id="button"
+      >
+        <hgroup {...gridColumnProps({ compact: 4, medium: 8, expanded: 6 })}>
           <Font as="h2" variant="display" scale="large">
             Button
           </Font>
@@ -144,37 +168,39 @@ function App() {
             Reference
           </Font>
         </hgroup>
-        <Font as="h3" variant="title" scale="large" color="secondary">
-          Enabled
-        </Font>
-        <div className="showcase">
-          <Button variant="elevated">Elevated</Button>
-          <Button variant="filled">Filled</Button>
-          <Button variant="tonal">Tonal</Button>
-          <Button variant="outlined">Outlined</Button>
-          <Button variant="text">Text</Button>
-        </div>
-        <Font as="h3" variant="title" scale="large" color="secondary">
-          Disabled
-        </Font>
-        <div className="showcase">
-          <Button variant="elevated" disabled>
-            Elevated
-          </Button>
-          <Button variant="filled" disabled>
-            Filled
-          </Button>
-          <Button variant="tonal" disabled>
-            Tonal
-          </Button>
-          <Button variant="outlined" disabled>
-            Outlined
-          </Button>
-          <Button variant="text" disabled>
-            Text
-          </Button>
-        </div>
-      </section>
+        <section {...gridColumnProps({ compact: 4, medium: 8, expanded: 6 })}>
+          <Font as="h3" variant="title" scale="large" color="secondary">
+            Enabled
+          </Font>
+          <div className="showcase">
+            <Button variant="elevated">Elevated</Button>
+            <Button variant="filled">Filled</Button>
+            <Button variant="tonal">Tonal</Button>
+            <Button variant="outlined">Outlined</Button>
+            <Button variant="text">Text</Button>
+          </div>
+          <Font as="h3" variant="title" scale="large" color="secondary">
+            Disabled
+          </Font>
+          <div className="showcase">
+            <Button variant="elevated" disabled>
+              Elevated
+            </Button>
+            <Button variant="filled" disabled>
+              Filled
+            </Button>
+            <Button variant="tonal" disabled>
+              Tonal
+            </Button>
+            <Button variant="outlined" disabled>
+              Outlined
+            </Button>
+            <Button variant="text" disabled>
+              Text
+            </Button>
+          </div>
+        </section>
+      </Grid>
     </>
   );
 }

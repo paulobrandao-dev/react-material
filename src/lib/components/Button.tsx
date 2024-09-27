@@ -27,7 +27,7 @@ export function Button<T extends ElementType>({
   const ComponentElement = as || 'button';
   return (
     <ComponentElement
-      className={clsx('MaterialButton', `variant-${variant}`, className)}
+      className={clsx(`material-button-${variant}`, className)}
       {...props}
     >
       {icon && <span className="icon">{icon}</span>}

@@ -1,0 +1,92 @@
+@mixin grid-item-rules($cols, $sizeName) {
+  @for $i from 1 to $cols {
+    > [data-grid-#{$sizeName}='#{$i}'] {
+      grid-column: auto / span #{$i};
+    }
+  }
+}
+
+@mixin grid-spacing-rules($breakpoint, $property) {
+  &[data-#{$property}-#{$breakpoint}="xs"] {
+    #{$property}: var(--spacing-xs);
+  }
+  [data-#{$property}-#{$breakpoint}="sm"] {
+    #{$property}: var(--spacing-sm);
+  }
+  &[data-#{$property}-#{$breakpoint}="md"] {
+    #{$property}: var(--spacing-md);
+  }
+  &[data-#{$property}-#{$breakpoint}="lg"] {
+    #{$property}: var(--spacing-lg);
+  }
+  &[data-#{$property}-#{$breakpoint}="xl"] {
+    #{$property}: var(--spacing-xl);
+  }
+}
+
+.material-grid {
+  display: grid;
+  width: 100%;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+
+  &[data-fluid] {
+    max-width: unset;
+  }
+
+  @media screen and (min-width: 0) {
+    grid-template-columns: repeat(4, 1fr);
+
+    @include grid-spacing-rules('compact', 'gap');
+    @include grid-spacing-rules('compact', 'column-gap');
+    @include grid-spacing-rules('compact', 'row-gap');
+    @include grid-spacing-rules('compact', 'padding');
+    @include grid-spacing-rules('compact', 'padding-block');
+    @include grid-spacing-rules('compact', 'padding-inline');
+    @include grid-item-rules(5, 'compact');
+  }
+
+  @media screen and (min-width: 600px) {
+    grid-template-columns: repeat(8, 1fr);
+
+    @include grid-spacing-rules('medium', 'gap');
+    @include grid-spacing-rules('medium', 'column-gap');
+    @include grid-spacing-rules('medium', 'row-gap');
+    @include grid-spacing-rules('medium', 'padding');
+    @include grid-spacing-rules('medium', 'padding-block');
+    @include grid-spacing-rules('medium', 'padding-inline');
+    @include grid-item-rules(9, 'medium');
+  }
+
+  @media screen and (min-width: 840px) {
+    grid-template-columns: repeat(12, 1fr);
+
+    @include grid-spacing-rules('expanded', 'gap');
+    @include grid-spacing-rules('expanded', 'column-gap');
+    @include grid-spacing-rules('expanded', 'row-gap');
+    @include grid-spacing-rules('expanded', 'padding');
+    @include grid-spacing-rules('expanded', 'padding-block');
+    @include grid-spacing-rules('expanded', 'padding-inline');
+    @include grid-item-rules(13, 'expanded');
+  }
+
+  @media screen and (min-width: 1200px) {
+    @include grid-spacing-rules('large', 'gap');
+    @include grid-spacing-rules('large', 'column-gap');
+    @include grid-spacing-rules('large', 'row-gap');
+    @include grid-spacing-rules('large', 'padding');
+    @include grid-spacing-rules('large', 'padding-block');
+    @include grid-spacing-rules('large', 'padding-inline');
+    @include grid-item-rules(13, 'large');
+  }
+
+  @media screen and (min-width: 1400px) {
+    @include grid-spacing-rules('xlarge', 'gap');
+    @include grid-spacing-rules('xlarge', 'column-gap');
+    @include grid-spacing-rules('xlarge', 'row-gap');
+    @include grid-spacing-rules('xlarge', 'padding');
+    @include grid-spacing-rules('xlarge', 'padding-block');
+    @include grid-spacing-rules('xlarge', 'padding-inline');
+    @include grid-item-rules(13, 'xlarge');
+  }
+}

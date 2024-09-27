@@ -9,7 +9,6 @@ export interface FontProps<T extends ElementType>
   variant?: 'display' | 'headline' | 'title' | 'body' | 'label';
   scale?: 'large' | 'medium' | 'small';
   color?:
-    | 'inherit'
     | 'primary'
     | 'on-primary'
     | 'on-primary-container'
@@ -27,28 +26,24 @@ export interface FontProps<T extends ElementType>
     | 'on-surface-variant'
     | 'inverse-primary'
     | 'on-inverse-surface';
-  textAlign?: 'inherit' | 'left' | 'right' | 'center' | 'justify';
+  textAlign?: 'left' | 'right' | 'center' | 'justify';
 }
 
 export function Font<T extends ElementType>({
   as,
   variant = 'body',
   scale = 'large',
-  color = 'inherit',
-  textAlign = 'inherit',
+  color,
+  textAlign,
   className,
   ...props
 }: FontProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof FontProps<T>>) {
   const ComponentElement = as || 'span';
   return (
     <ComponentElement
-      className={clsx(
-        'MaterialFont',
-        `${variant}-${scale}`,
-        `color-${color}`,
-        `text-align-${textAlign}`,
-        className,
-      )}
+      className={clsx(`material-typography-${variant}-${scale}`, className)}
+      data-color={color ?? undefined}
+      data-align={textAlign ?? undefined}
       {...props}
     />
   );

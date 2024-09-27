@@ -62,16 +62,10 @@ export function Appbar<T extends ElementType>({
 
   return (
     <ComponentElement
-      className={clsx(
-        'MaterialAppbar',
-        `variant-${variant}`,
-        {
-          [`color-${color}`]: color !== undefined,
-          sticky,
-          scrolled,
-        },
-        className,
-      )}
+      className={clsx(`material-appbar-${variant}`, className)}
+      data-sticky={sticky ? '' : undefined}
+      data-scrolled={scrolled ? '' : undefined}
+      data-color={color ?? undefined}
       {...props}
     >
       <div role="toolbar">
@@ -82,7 +76,7 @@ export function Appbar<T extends ElementType>({
             variant="title"
             scale="large"
             textAlign={variant === 'center-aligned' ? 'center' : 'left'}
-            className={clsx({ hide: titleBelow && !scrolled })}
+            className={clsx('headline', { hide: titleBelow && !scrolled })}
             aria-hidden={titleBelow ? 'true' : undefined}
           >
             {headline}
