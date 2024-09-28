@@ -5,7 +5,7 @@ import {
   Font,
   Grid,
   MaterialSymbols,
-} from './lib/main';
+} from './lib';
 import { gridColumnProps } from './lib/utils';
 
 import './App.css';

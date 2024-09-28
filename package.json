@@ -8,14 +8,21 @@
   ],
   "main": "./dist/react-material.main.umd.cjs",
   "module": "./dist/react-material.main.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/react-material.main.js",
-      "require": "./dist/react-material.main.umd.cjs"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/react-material.js",
+      "require": "./dist/react-material.cjs"
     },
     "./utils": {
+      "types": "./dist/utils.d.ts",
       "import": "./dist/react-material.utils.js",
-      "require": "./dist/react-material.utils.umd.cjs"
+      "require": "./dist/react-material.utils.cjs"
+    },
+    "./dist/react-material.png": {
+      "import": "./dist/react-material.png",
+      "require": "./dist/react-material.png"
     },
     "./dist/react-material.css": {
       "import": "./dist/react-material.css",
@@ -66,6 +73,6 @@
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.1",
     "vite": "^5.4.1",
-    "vite-plugin-dts-bundle-generator": "^2.0.4"
+    "vite-plugin-dts": "^4.2.2"
   }
 }

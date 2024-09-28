@@ -2,29 +2,27 @@ import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import preserveDirectives from 'rollup-preserve-directives';
 import { defineConfig } from 'vite';
-// import dts from 'vite-plugin-dts-bundle-generator';
+import dts from 'vite-plugin-dts';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
-    // dts({
-    //   libraries: {
-    //     allowedTypesLibraries: [resolve(__dirname, 'src/lib/global.d.ts')],
-    //   },
-    //   fileName: 'react-material.d.ts',
-    // }),
     preserveDirectives(),
+    dts({
+      rollupTypes: true,
+      tsconfigPath: resolve(__dirname, 'tsconfig.app.json'),
+    }),
   ],
   build: {
     lib: {
       entry: {
-        main: resolve(__dirname, 'src/lib/main.ts'),
+        index: resolve(__dirname, 'src/lib/index.ts'),
         utils: resolve(__dirname, 'src/lib/utils/index.ts'),
       },
       name: 'ReactMaterial',
       fileName: (format, entryName) =>
-        `react-material.${entryName}.${format === 'cjs' ? 'cjs' : 'js'}`,
+        `react-material${entryName === 'utils' ? '.utils' : ''}.${format === 'cjs' ? 'cjs' : 'js'}`,
     },
     rollupOptions: {
       external: ['react', 'react-dom'],
