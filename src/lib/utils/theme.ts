@@ -101,3 +101,37 @@ export function applyTheme(props: ThemeProps) {
     document.documentElement.style.setProperty(prop, properties[prop]);
   });
 }
+
+export function toggleThemeColorScheme(
+  onToggle?: (colorScheme: string) => void,
+) {
+  const scheme = getComputedStyle(document.documentElement).getPropertyValue(
+    '--color-scheme',
+  );
+  const seedColor = getComputedStyle(document.documentElement).getPropertyValue(
+    '--color-seed',
+  );
+  const colorScheme = scheme === 'light' ? 'dark' : 'light';
+  applyTheme({ seedColor, colorScheme });
+  if (onToggle !== undefined) onToggle(colorScheme);
+}
+
+export function applyThemeDarkColorScheme(
+  onApply?: (colorScheme: string) => void,
+) {
+  const seedColor = getComputedStyle(document.documentElement).getPropertyValue(
+    '--color-seed',
+  );
+  applyTheme({ seedColor, colorScheme: 'dark' });
+  if (onApply !== undefined) onApply('dark');
+}
+
+export function applyThemeLightColorScheme(
+  onApply?: (colorScheme: string) => void,
+) {
+  const seedColor = getComputedStyle(document.documentElement).getPropertyValue(
+    '--color-seed',
+  );
+  applyTheme({ seedColor, colorScheme: 'light' });
+  if (onApply !== undefined) onApply('light');
+}

@@ -1,6 +1,14 @@
 import { AnchorHTMLAttributes, useEffect, useState } from 'react';
 import SectionActions from './Actions';
-import { Appbar, Flexbox, MaterialSymbols, Navlink, Navrail } from './lib';
+import {
+  Appbar,
+  Flexbox,
+  IconButton,
+  MaterialSymbols,
+  Navlink,
+  Navrail,
+} from './lib';
+import { toggleThemeColorScheme } from './lib/utils';
 import SectionStyles from './Styles';
 
 import './App.css';
@@ -14,7 +22,9 @@ const HashLink = ({
 
 function App() {
   const [hash, setHash] = useState<string>('#home');
-  const [theme, setTheme] = useState<string>();
+  const [theme, setTheme] = useState<string>(
+    sessionStorage.getItem('theme') || '',
+  );
 
   useEffect(() => {
     const handleHashchange = () => {
@@ -27,10 +37,11 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const initialTheme = window.matchMedia('(prefers-color-scheme: dark)')
+    const themeByPrefers = window.matchMedia('(prefers-color-scheme: dark)')
       .matches
       ? 'dark'
       : 'light';
+    const initialTheme = sessionStorage.getItem('theme') ?? themeByPrefers;
     sessionStorage.setItem('theme', initialTheme);
     setTheme(initialTheme);
   }, []);
@@ -38,11 +49,26 @@ function App() {
   return (
     <>
       <Navrail
-        startNode={<MaterialSymbols icon="menu" />}
+        startNode={
+          <IconButton aria-label="Open menu">
+            <MaterialSymbols icon="menu" />
+          </IconButton>
+        }
         endNode={
-          <MaterialSymbols
-            icon={theme === 'dark' ? 'dark_mode' : 'light_mode'}
-          />
+          <IconButton
+            variant="outlined"
+            onClick={() => {
+              toggleThemeColorScheme(newTheme => {
+                setTheme(newTheme);
+                sessionStorage.setItem('theme', newTheme);
+              });
+            }}
+            aria-label="Color scheme"
+          >
+            <MaterialSymbols
+              icon={theme === 'dark' ? 'dark_mode' : 'light_mode'}
+            />
+          </IconButton>
         }
       >
         <Navlink

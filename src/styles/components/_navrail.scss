@@ -13,6 +13,9 @@
   padding-block: var(--spacing-xl);
   padding-inline: var(--spacing-xs);
   gap: var(--spacing-md);
+  transition-property: background-color, color;
+  transition-duration: var(--ease-emphasized-duration);
+  transition-timing-function: var(--ease-emphasized);
 
   @media screen and (max-width: 599px) {
     display: none;

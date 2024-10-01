@@ -1,0 +1,100 @@
+@use '../mixin';
+
+%iconbutton-style {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  border-radius: var(--shape-circle);
+  @include mixin.state-layer();
+
+  &:hover {
+    @include mixin.state-layer-hover();
+  }
+
+  &:focus {
+    @include mixin.state-layer-focus();
+  }
+
+  &:disabled {
+    color: var(--color-on-surface);
+    pointer-events: none;
+
+    > span {
+      opacity: 0.38;
+    }
+  }
+
+  &[aria-label] {
+    &.tooltip-on-top {
+      @include mixin.tooltip(0);
+    }
+
+    &.tooltip-on-bottom {
+      @include mixin.tooltip(1);
+    }
+  }
+}
+
+.material-iconbutton {
+  &-standard {
+    @extend %iconbutton-style;
+    color: var(--color-on-surface-variant);
+
+    &[aria-pressed='true'] {
+      color: var(--color-primary);
+    }
+  }
+
+  &-outlined {
+    @extend %iconbutton-style;
+    color: var(--color-on-surface-variant);
+    border: 1px solid var(--color-outline);
+
+    &:disabled {
+      border-color: var(--color-outline-disabled);
+    }
+
+    &[aria-pressed='true'] {
+      background-color: var(--color-inverse-surface);
+      color: var(--color-on-inverse-surface);
+      border: none;
+
+      &:disabled {
+        background-color: var(--color-outline-disabled);
+      }
+    }
+  }
+
+  &-filled {
+    @extend %iconbutton-style;
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+
+    &:disabled {
+      background-color: var(--color-outline-disabled);
+    }
+
+    &[aria-pressed='false'] {
+      background-color: var(--color-surface-container-highest);
+      color: var(--color-primary);
+    }
+  }
+
+  &-tonal {
+    @extend %iconbutton-style;
+    background-color: var(--color-secondary-container);
+    color: var(--color-on-secondary-container);
+
+    &:disabled {
+      background-color: var(--color-outline-disabled);
+    }
+
+    &[aria-pressed='false'] {
+      background-color: var(--color-surface-container-highest);
+      color: var(--color-on-surface-variant);
+    }
+  }
+}
