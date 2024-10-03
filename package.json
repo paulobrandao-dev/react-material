@@ -49,7 +49,10 @@
     "build": "tsc -b && vite build && npm run style",
     "lint": "eslint .",
     "preview": "vite preview",
-    "prettier": "prettier --write src/**/*.{ts,tsx,scss,css} --config .prettierrc.json"
+    "prettier": "prettier --write src/**/*.{ts,tsx,scss,css} --config .prettierrc.json",
+    "test": "vitest",
+    "test:ui": "vitest --coverage.enabled=true --ui",
+    "coverage": "vitest run --coverage"
   },
   "dependencies": {
     "@material/material-color-utilities": "^0.3.0",
@@ -59,20 +62,26 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/react": "^16.0.1",
     "@types/node": "^22.5.5",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
+    "@vitest/coverage-istanbul": "^2.1.2",
+    "@vitest/ui": "^2.1.2",
     "eslint": "^9.9.0",
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.9",
     "globals": "^15.9.0",
+    "happy-dom": "^15.7.4",
     "prettier": "^3.3.3",
     "rollup-preserve-directives": "^1.1.1",
     "sass": "^1.78.0",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.1",
     "vite": "^5.4.1",
-    "vite-plugin-dts": "^4.2.2"
+    "vite-plugin-dts": "^4.2.2",
+    "vitest": "^2.1.2"
   }
 }
