@@ -46,3 +46,6 @@ React Material is an impressive and user-friendly library of components that fol
   * Search (__coming soon__)
   * SelectField (__coming soon__)
   * TextField (__coming soon__)
+* Layout
+  * __Grid__
+  * __Flexbox__
