@@ -41,6 +41,7 @@ export default defineConfig({
     coverage: {
       provider: 'istanbul',
       include: ['src/lib/**'],
+      reporter: ['text', 'html', 'clover', 'json', 'json-summary'],
     },
   },
 });
