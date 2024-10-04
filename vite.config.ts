@@ -40,6 +40,7 @@ export default defineConfig({
     environment: 'happy-dom',
     coverage: {
       provider: 'istanbul',
-    }
+      include: ['src/lib/**'],
+    },
   },
 });
