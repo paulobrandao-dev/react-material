@@ -5,8 +5,10 @@ import {
   Flexbox,
   IconButton,
   MaterialSymbols,
+  Navbar,
   Navlink,
   Navrail,
+  useMediaQuery,
 } from './lib';
 import { toggleThemeColorScheme } from './lib/utils';
 import SectionStyles from './Styles';
@@ -25,6 +27,7 @@ function App() {
   const [theme, setTheme] = useState<string>(
     sessionStorage.getItem('theme') || '',
   );
+  const media = useMediaQuery();
 
   useEffect(() => {
     const handleHashchange = () => {
@@ -70,6 +73,7 @@ function App() {
             />
           </IconButton>
         }
+        // hideOnLarge
       >
         <Navlink
           as={HashLink}
@@ -103,7 +107,7 @@ function App() {
       <Flexbox as="main" flexDirection="column" alignItems="stretch">
         <Appbar
           variant="small"
-          headline="React Material"
+          headline={media.isGreaterThanCompact ? 'React Material' : undefined}
           startNode={
             <img
               src="/react-material.png"
@@ -111,10 +115,60 @@ function App() {
               id="logo_appbar"
             />
           }
+          sticky={media.isCompact}
+          endNode={
+            media.isCompact ? (
+              <IconButton
+                variant="standard"
+                onClick={() => {
+                  toggleThemeColorScheme(newTheme => {
+                    setTheme(newTheme);
+                    sessionStorage.setItem('theme', newTheme);
+                  });
+                }}
+                aria-label="Color scheme"
+              >
+                <MaterialSymbols
+                  icon={theme === 'dark' ? 'dark_mode' : 'light_mode'}
+                />
+              </IconButton>
+            ) : undefined
+          }
         />
+        <article hidden={hash !== '#home'} />
         <SectionStyles hash={hash} />
         <SectionActions hash={hash} />
       </Flexbox>
+      <Navbar>
+        <Navlink
+          as={HashLink}
+          hash="home"
+          label="Home"
+          icon={<MaterialSymbols icon="home" />}
+          active={hash === '#home'}
+        />
+        <Navlink
+          as={HashLink}
+          hash="styles"
+          label="Styles"
+          icon={<MaterialSymbols icon="palette" />}
+          active={hash === '#styles'}
+        />
+        <Navlink
+          as={HashLink}
+          hash="actions"
+          label="Actions"
+          icon={<MaterialSymbols icon="left_click" />}
+          active={hash === '#actions'}
+        />
+        <Navlink
+          as={HashLink}
+          hash="feedback"
+          label="Feedback"
+          icon={<MaterialSymbols icon="feedback" />}
+          active={hash === '#feedback'}
+        />
+      </Navbar>
     </>
   );
 }
