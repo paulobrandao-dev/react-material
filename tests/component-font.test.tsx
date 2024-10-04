@@ -1,9 +1,11 @@
-import { render } from '@testing-library/react';
+import { cleanup, render } from '@testing-library/react';
 import React from 'react';
-import { describe, expect, test } from 'vitest';
+import { afterEach, describe, expect, test } from 'vitest';
 import { Font } from '../src/lib';
 
 describe('Font component', () => {
+  afterEach(cleanup);
+
   test('render', () => {
     const result = render(<Font data-testid="font_render">Test</Font>);
     const element = result.getByTestId('font_render');

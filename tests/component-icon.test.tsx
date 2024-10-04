@@ -1,9 +1,11 @@
-import { render } from '@testing-library/react';
+import { cleanup, render } from '@testing-library/react';
 import React from 'react';
-import { describe, expect, test, vi } from 'vitest';
+import { afterEach, describe, expect, test, vi } from 'vitest';
 import { MaterialSymbols } from '../src/lib';
 
 describe('MaterialSymbols component', () => {
+  afterEach(cleanup);
+
   test('handle no settings', () => {
     const consoleError = vi.spyOn(console, 'error');
     render(<MaterialSymbols icon="home" />);

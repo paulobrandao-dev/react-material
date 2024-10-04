@@ -50,7 +50,7 @@ vi.mock('@material/material-color-utilities', () => {
   };
 });
 
-describe('Utils', () => {
+describe('Theme utils', () => {
   describe('applyThemeOnHtmlStyleTag', () => {
     test('default', () => {
       const result = applyThemeOnHtmlStyleTag({
