@@ -28,11 +28,11 @@
   }
 
   &[aria-label] {
-    &.tooltip-on-top {
+    &[data-tooltip-top] {
       @include mixin.tooltip(0);
     }
 
-    &.tooltip-on-bottom {
+    &[data-tooltip-bottom] {
       @include mixin.tooltip(1);
     }
   }

@@ -48,14 +48,9 @@ export const IconButton = <T extends ElementType>({
   return (
     <ComponentElement
       ref={ref}
-      className={clsx(
-        `material-iconbutton-${variant}`,
-        {
-          'tooltip-on-top': tooltipPosition < 1,
-          'tooltip-on-bottom': tooltipPosition === 1,
-        },
-        className,
-      )}
+      className={clsx(`material-iconbutton-${variant}`, className)}
+      data-tooltip-top={tooltipPosition < 1 ? '' : undefined}
+      data-tooltip-bottom={tooltipPosition === 1 ? '' : undefined}
       {...props}
     >
       {children}
