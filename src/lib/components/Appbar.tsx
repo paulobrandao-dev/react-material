@@ -28,6 +28,7 @@ export interface AppbarProps<T extends ElementType>
   startNode?: ReactNode;
   headline?: string;
   endNode?: ReactNode;
+  fluid?: boolean;
 }
 
 export function Appbar<T extends ElementType>({
@@ -38,6 +39,7 @@ export function Appbar<T extends ElementType>({
   headline,
   endNode,
   color,
+  fluid,
   className,
   ...props
 }: AppbarProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof AppbarProps<T>>) {
@@ -66,25 +68,24 @@ export function Appbar<T extends ElementType>({
       data-sticky={sticky ? '' : undefined}
       data-scrolled={scrolled ? '' : undefined}
       data-color={color ?? undefined}
+      data-fluid={fluid ? '' : undefined}
       {...props}
     >
       <div role="toolbar">
         {startNode && <div className="start-node">{startNode}</div>}
-        {headline && (
-          <Font
-            as={titleBelow ? 'span' : 'h1'}
-            variant="title"
-            scale="large"
-            textAlign={variant === 'center-aligned' ? 'center' : 'left'}
-            className={clsx('headline', { hide: titleBelow && !scrolled })}
-            aria-hidden={titleBelow ? 'true' : undefined}
-          >
-            {headline}
-          </Font>
-        )}
+        <Font
+          as={titleBelow ? 'span' : 'h1'}
+          variant="title"
+          scale="large"
+          textAlign={variant === 'center-aligned' ? 'center' : 'left'}
+          className={clsx('headline', { hide: titleBelow && !scrolled })}
+          aria-hidden={titleBelow ? 'true' : undefined}
+        >
+          {headline}
+        </Font>
         {endNode && <div className="end-node">{endNode}</div>}
       </div>
-      {titleBelow && headline && (
+      {titleBelow && (
         <Font
           as="h1"
           variant="headline"

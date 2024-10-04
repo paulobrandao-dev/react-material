@@ -11,3 +11,4 @@ export * from './components/Flexbox';
 export * from './components/Navrail';
 export * from './components/Navlink';
 export * from './components/IconButton';
+export * from './components/Navbar';

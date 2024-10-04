@@ -5,7 +5,6 @@
   width: 100%;
   background-color: var(--color-surface);
   color: var(--color-on-surface);
-  overflow: hidden;
   transition-property: background-color, box-shadow, height;
   transition-duration: var(--ease-emphasized-duration);
   transition-timing-function: var(--ease-emphasized);
@@ -86,6 +85,12 @@
 
     > .end-node {
       justify-content: flex-end;
+    }
+  }
+
+  &[data-fluid] {
+    > [role='toolbar'] {
+      max-width: unset;
     }
   }
 

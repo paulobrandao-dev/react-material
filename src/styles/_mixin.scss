@@ -85,7 +85,7 @@
     transition-duration: var(--ease-accelerate-duration);
     transition-timing-function: var(--ease-accelerate);
     pointer-events: none;
-    z-index: 3;
+    z-index: 12;
   }
 
   &:hover::after {
