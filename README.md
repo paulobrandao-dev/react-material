@@ -4,7 +4,7 @@
 
 ![Coverage](./badges.svg)
 
-React Material is an impressive and user-friendly library of components that follows the Material 3 design system.
+React Material is a component library that is built based on the principles of the Material 3 design system.
 
 ## Components
 
