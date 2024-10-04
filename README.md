@@ -1,9 +1,48 @@
-![Logo](./public/react-material.png)
-
 # React Material
+
+![Logo](./public/react-material.png)
 
 ![Coverage](./badges.svg)
 
-## Start from the beginning
+React Material is an impressive and user-friendly library of components that follows the Material 3 design system.
 
-React Material is an impressive and user-friendly library of components that follows the Material 3 design system. It features a vast collection of pre-built UI components, such as buttons, cards, menus, and more, that are thoughtfully crafted to make your web app development process a breeze. What's more, these components are designed to be responsive, accessible, and customizable, ensuring that your web app looks great across all devices and platforms. With React Material, you can create web apps that are not only visually stunning but also consistent and intuitive. So, if you're looking for a powerful and modern library of UI components, React Material is worth checking out.
+## Components
+
+* Actions
+  * __Button__
+  * __IconButton__
+  * FloatActionButton (__coming soon__)
+  * _SegmentedButton (planning)_
+* Communication
+  * _Badges (planning)_
+  * _Pregress (planning)_
+  * Snackbar (__coming soon__)
+  * Tooltip (__partially available with IconButton__)
+  * _RichTooltip (planning)_
+* Containment
+  * BottomSheet (__coming soon__)
+  * Card (__coming soon__)
+  * _Carousel (planning)_
+  * Dialog (__coming soon__)
+  * Divider (__coming soon__)
+  * List (__coming soon__)
+  * SideSheet (__coming soon__)
+* Navigation
+  * __Appbar__
+  * __Navbar__
+  * Navdrawer (__coming soon__)
+  * __Navrail__
+  * Tabs (__coming soon__)
+* Selection
+  * Checkbox (__coming soon__)
+  * Chip (__coming soon__)
+  * _DatePicker (planning)_
+  * Menu (__coming soon__)
+  * RadioButton (__coming soon__)
+  * _Slider (planning)_
+  * Switch (__coming soon__)
+  * _TimePicker (planning)_
+* Form
+  * Search (__coming soon__)
+  * SelectField (__coming soon__)
+  * TextField (__coming soon__)
