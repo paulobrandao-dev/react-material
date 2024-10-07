@@ -9,8 +9,8 @@ React Material is a component library that is built based on the principles of t
 ## Components
 
 - Actions
-  - [x] __Button__
-  - [x] __IconButton__
+  - [x] ~~Button~~
+  - [x] ~~IconButton~~
   - [ ] FloatActionButton (__coming soon__)
   - [ ] _SegmentedButton (planning)_
 - Communication
@@ -20,7 +20,7 @@ React Material is a component library that is built based on the principles of t
   - [ ] _Pregress (planning)_
   - [ ] _RichTooltip (planning)_
 - Containment
-  - [x] __Divider__
+  - [x] ~~Divider~~
   - [ ] Card (__coming soon__)
   - [ ] Dialog (__coming soon__)
   - [ ] List (__coming soon__)
@@ -28,10 +28,10 @@ React Material is a component library that is built based on the principles of t
   - [ ] BottomSheet (__coming soon__)
   - [ ] _Carousel (planning)_
 - Navigation
-  - [x] __Appbar__
-  - [x] __Navbar__
-  - [x] __Navdrawer__
-  - [x] __Navrail__
+  - [x] ~~Appbar~~
+  - [x] ~~Navbar~~
+  - [x] ~~Navdrawer~~
+  - [x] ~~Navrail~~
   - [ ] Tabs (__coming soon__)
 - Selection
   - [ ] Checkbox (__coming soon__)
@@ -47,5 +47,5 @@ React Material is a component library that is built based on the principles of t
   - [ ] SelectField (__coming soon__)
   - [ ] TextField (__coming soon__)
 - Layout
-  - [x] __Grid__
-  - [x] __Flexbox__
+  - [x] ~~Grid~~
+  - [x] ~~Flexbox~~
