@@ -51,13 +51,19 @@
     "style": "npm run style:icons && npm run style:main",
     "dev": "vite",
     "build": "tsc -b && vite build && npm run style",
-    "lint": "eslint .",
     "preview": "vite preview",
-    "prettier": "prettier --write src/**/*.{ts,tsx,scss,css} --config .prettierrc.json",
     "test": "vitest",
     "test:ui": "vitest --coverage.enabled=true --ui",
     "coverage": "vitest run --coverage",
-    "make-badges": "coverage-badges --output ./badges.svg"
+    "make-badges": "coverage-badges --output ./badges.svg",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint",
+      "prettier --write --config .prettierrc.json"
+    ],
+    "*.{scss,css}": "prettier --write --config .prettierrc.json"
   },
   "dependencies": {
     "@material/material-color-utilities": "^0.3.0",
@@ -82,6 +88,8 @@
     "eslint-plugin-react-refresh": "^0.4.9",
     "globals": "^15.9.0",
     "happy-dom": "^15.7.4",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
     "prettier": "^3.3.3",
     "rollup-preserve-directives": "^1.1.1",
     "sass": "^1.78.0",
