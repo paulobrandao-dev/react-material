@@ -1,6 +1,9 @@
 import {
   argbFromHex,
   hexFromArgb,
+  redFromArgb,
+  greenFromArgb,
+  blueFromArgb,
   themeFromSourceColor,
 } from '@material/material-color-utilities';
 
@@ -21,9 +24,8 @@ export function applyThemeOnHtmlStyleTag({
   colorScheme,
   font,
 }: ThemeProps) {
-  const theme = themeFromSourceColor(argbFromHex(seedColor)).schemes[
-    colorScheme
-  ];
+  const theme = themeFromSourceColor(argbFromHex(seedColor));
+  const scheme = theme.schemes[colorScheme];
   const fonts =
     font === false
       ? {}
@@ -60,38 +62,79 @@ export function applyThemeOnHtmlStyleTag({
             '0px 4px 4px 0px rgba(0, 0, 0, 0.3), 0px 8px 12px 6px rgba(0, 0, 0, 0.15)',
         } as React.CSSProperties);
 
+  const surfaceContainer =
+    colorScheme === 'dark'
+      ? ({
+          '--color-surface-container-lowest': hexFromArgb(
+            theme.palettes.neutral.tone(4),
+          ),
+          '--color-surface-container-low': hexFromArgb(
+            theme.palettes.neutral.tone(10),
+          ),
+          '--color-surface-container': hexFromArgb(
+            theme.palettes.neutral.tone(12),
+          ),
+          '--color-surface-container-high': hexFromArgb(
+            theme.palettes.neutral.tone(17),
+          ),
+          '--color-surface-container-highest': hexFromArgb(
+            theme.palettes.neutral.tone(22),
+          ),
+        } as React.CSSProperties)
+      : ({
+          '--color-surface-container-lowest': hexFromArgb(
+            theme.palettes.neutral.tone(100),
+          ),
+          '--color-surface-container-low': hexFromArgb(
+            theme.palettes.neutral.tone(96),
+          ),
+          '--color-surface-container': hexFromArgb(
+            theme.palettes.neutral.tone(94),
+          ),
+          '--color-surface-container-high': hexFromArgb(
+            theme.palettes.neutral.tone(92),
+          ),
+          '--color-surface-container-highest': hexFromArgb(
+            theme.palettes.neutral.tone(90),
+          ),
+        } as React.CSSProperties);
+
+  const scrimColor = `rgb(${redFromArgb(theme.palettes.neutralVariant.tone(10))} ${greenFromArgb(theme.palettes.neutralVariant.tone(10))} ${blueFromArgb(theme.palettes.neutralVariant.tone(10))} / 50%)`;
+
   return {
     ...fonts,
     ...elevation,
     '--color-seed': seedColor,
     '--color-scheme': colorScheme,
-    '--color-primary': hexFromArgb(theme.primary),
-    '--color-on-primary': hexFromArgb(theme.onPrimary),
-    '--color-primary-container': hexFromArgb(theme.primaryContainer),
-    '--color-on-primary-container': hexFromArgb(theme.onPrimaryContainer),
-    '--color-secondary': hexFromArgb(theme.secondary),
-    '--color-on-secondary': hexFromArgb(theme.onSecondary),
-    '--color-secondary-container': hexFromArgb(theme.secondaryContainer),
-    '--color-on-secondary-container': hexFromArgb(theme.onSecondaryContainer),
-    '--color-tertiary': hexFromArgb(theme.tertiary),
-    '--color-on-tertiary': hexFromArgb(theme.onTertiary),
-    '--color-tertiary-container': hexFromArgb(theme.tertiaryContainer),
-    '--color-on-tertiary-container': hexFromArgb(theme.onTertiaryContainer),
-    '--color-error': hexFromArgb(theme.error),
-    '--color-on-error': hexFromArgb(theme.onError),
-    '--color-error-container': hexFromArgb(theme.errorContainer),
-    '--color-on-error-container': hexFromArgb(theme.onErrorContainer),
-    '--color-background': hexFromArgb(theme.background),
-    '--color-on-background': hexFromArgb(theme.onBackground),
-    '--color-surface': hexFromArgb(theme.surface),
-    '--color-on-surface': hexFromArgb(theme.onSurface),
-    '--color-surface-variant': hexFromArgb(theme.surfaceVariant),
-    '--color-on-surface-variant': hexFromArgb(theme.onSurfaceVariant),
-    '--color-inverse-surface': hexFromArgb(theme.inverseSurface),
-    '--color-on-inverse-surface': hexFromArgb(theme.inverseOnSurface),
-    '--color-inverse-primary': hexFromArgb(theme.inversePrimary),
-    '--color-outline': hexFromArgb(theme.outline),
-    '--color-outline-variant': hexFromArgb(theme.outlineVariant),
+    '--color-scrim': scrimColor,
+    '--color-primary': hexFromArgb(scheme.primary),
+    '--color-on-primary': hexFromArgb(scheme.onPrimary),
+    '--color-primary-container': hexFromArgb(scheme.primaryContainer),
+    '--color-on-primary-container': hexFromArgb(scheme.onPrimaryContainer),
+    '--color-secondary': hexFromArgb(scheme.secondary),
+    '--color-on-secondary': hexFromArgb(scheme.onSecondary),
+    '--color-secondary-container': hexFromArgb(scheme.secondaryContainer),
+    '--color-on-secondary-container': hexFromArgb(scheme.onSecondaryContainer),
+    '--color-tertiary': hexFromArgb(scheme.tertiary),
+    '--color-on-tertiary': hexFromArgb(scheme.onTertiary),
+    '--color-tertiary-container': hexFromArgb(scheme.tertiaryContainer),
+    '--color-on-tertiary-container': hexFromArgb(scheme.onTertiaryContainer),
+    '--color-error': hexFromArgb(scheme.error),
+    '--color-on-error': hexFromArgb(scheme.onError),
+    '--color-error-container': hexFromArgb(scheme.errorContainer),
+    '--color-on-error-container': hexFromArgb(scheme.onErrorContainer),
+    '--color-background': hexFromArgb(scheme.background),
+    '--color-on-background': hexFromArgb(scheme.onBackground),
+    '--color-surface': hexFromArgb(scheme.surface),
+    '--color-on-surface': hexFromArgb(scheme.onSurface),
+    '--color-surface-variant': hexFromArgb(scheme.surfaceVariant),
+    '--color-on-surface-variant': hexFromArgb(scheme.onSurfaceVariant),
+    '--color-inverse-surface': hexFromArgb(scheme.inverseSurface),
+    '--color-on-inverse-surface': hexFromArgb(scheme.inverseOnSurface),
+    '--color-inverse-primary': hexFromArgb(scheme.inversePrimary),
+    '--color-outline': hexFromArgb(scheme.outline),
+    '--color-outline-variant': hexFromArgb(scheme.outlineVariant),
+    ...surfaceContainer,
   } as React.CSSProperties;
 }
 

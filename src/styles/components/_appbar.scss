@@ -18,7 +18,7 @@
       box-shadow: var(--elevation-2);
 
       &:not([data-color]) {
-        background-color: var(--color-surface-variant);
+        background-color: var(--color-surface-container);
       }
     }
   }

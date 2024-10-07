@@ -2,13 +2,18 @@ import { AnchorHTMLAttributes, useEffect, useState } from 'react';
 import SectionActions from './Actions';
 import {
   Appbar,
+  Divider,
   Flexbox,
+  Font,
   IconButton,
   MaterialSymbols,
   Navbar,
+  Navdrawer,
+  NavdrawerHeadline,
   Navlink,
   Navrail,
   useMediaQuery,
+  useNavdrawerControl,
 } from './lib';
 import { toggleThemeColorScheme } from './lib/utils';
 import SectionStyles from './Styles';
@@ -28,6 +33,7 @@ function App() {
     sessionStorage.getItem('theme') || '',
   );
   const media = useMediaQuery();
+  const { showDrawer } = useNavdrawerControl('navdrawer');
 
   useEffect(() => {
     const handleHashchange = () => {
@@ -53,7 +59,7 @@ function App() {
     <>
       <Navrail
         startNode={
-          <IconButton aria-label="Open menu">
+          <IconButton aria-label="Open menu" onClick={showDrawer}>
             <MaterialSymbols icon="menu" />
           </IconButton>
         }
@@ -73,51 +79,152 @@ function App() {
             />
           </IconButton>
         }
-        // hideOnLarge
+        hideOnLarge
       >
         <Navlink
           as={HashLink}
           hash="home"
           label="Home"
-          icon={<MaterialSymbols icon="home" />}
+          icon={<MaterialSymbols icon="home" filled={hash === '#home'} />}
           active={hash === '#home'}
         />
         <Navlink
           as={HashLink}
           hash="styles"
           label="Styles"
-          icon={<MaterialSymbols icon="palette" />}
+          icon={<MaterialSymbols icon="palette" filled={hash === '#styles'} />}
           active={hash === '#styles'}
         />
         <Navlink
           as={HashLink}
           hash="actions"
           label="Actions"
-          icon={<MaterialSymbols icon="left_click" />}
+          icon={
+            <MaterialSymbols icon="left_click" filled={hash === '#actions'} />
+          }
           active={hash === '#actions'}
         />
         <Navlink
           as={HashLink}
           hash="feedback"
           label="Feedback"
-          icon={<MaterialSymbols icon="feedback" />}
+          icon={
+            <MaterialSymbols icon="feedback" filled={hash === '#feedback'} />
+          }
           active={hash === '#feedback'}
         />
       </Navrail>
+      <Navdrawer
+        id="navdrawer"
+        header={
+          media.isGreaterThanExpanded ? (
+            <Flexbox
+              flexDirection="row"
+              alignItems="center"
+              justifyContent="flex-start"
+              gap="md"
+            >
+              <img
+                src="/react-material.png"
+                alt="Logo React Material"
+                id="logo_appbar"
+              />
+              <Divider vertical />
+              <Font variant="title">React Material</Font>
+            </Flexbox>
+          ) : undefined
+        }
+        standard
+      >
+        <Navlink
+          as={HashLink}
+          hash="home"
+          label="Home"
+          icon={<MaterialSymbols icon="home" filled={hash === '#home'} />}
+          active={hash === '#home'}
+        />
+        <NavdrawerHeadline text="Components" divider />
+        <Navlink
+          as={HashLink}
+          hash="styles"
+          label="Styles"
+          icon={<MaterialSymbols icon="palette" filled={hash === '#styles'} />}
+          active={hash === '#styles'}
+        />
+        <Navlink
+          as={HashLink}
+          hash="actions"
+          label="Actions"
+          icon={
+            <MaterialSymbols icon="left_click" filled={hash === '#actions'} />
+          }
+          active={hash === '#actions'}
+        />
+        <Navlink
+          as={HashLink}
+          hash="feedback"
+          label="Feedback"
+          icon={
+            <MaterialSymbols icon="feedback" filled={hash === '#feedback'} />
+          }
+          active={hash === '#feedback'}
+        />
+        <NavdrawerHeadline text="Hooks" divider />
+        <Navlink
+          as={HashLink}
+          hash="hook-media-query"
+          label="useMediaQuery"
+          icon={
+            <MaterialSymbols
+              icon="responsive_layout"
+              filled={hash === '#hook-media-query'}
+            />
+          }
+          active={hash === '#hook-media-query'}
+        />
+        <Navlink
+          as={HashLink}
+          hash="hook-navdrawer-control"
+          label="useNavdrawerControl"
+          icon={
+            <MaterialSymbols
+              icon="side_navigation"
+              filled={hash === '#hook-navdrawer-control'}
+            />
+          }
+          active={hash === '#hook-navdrawer-control'}
+        />
+        <NavdrawerHeadline text="Utils" divider />
+        <Navlink
+          as={HashLink}
+          hash="utils-theme"
+          label="Theme utils"
+          icon={
+            <MaterialSymbols icon="style" filled={hash === '#utils-theme'} />
+          }
+          active={hash === '#utils-theme'}
+        />
+      </Navdrawer>
       <Flexbox as="main" flexDirection="column" alignItems="stretch">
         <Appbar
           variant="small"
-          headline={media.isGreaterThanCompact ? 'React Material' : undefined}
+          headline={
+            media.isGreaterThanCompact && media.isLessThanLarge
+              ? 'React Material'
+              : undefined
+          }
           startNode={
-            <img
-              src="/react-material.png"
-              alt="Logo React Material"
-              id="logo_appbar"
-            />
+            media.isLessThanLarge ? (
+              <img
+                src="/react-material.png"
+                alt="Logo React Material"
+                id="logo_appbar"
+              />
+            ) : undefined
           }
           sticky={media.isCompact}
           endNode={
-            media.isCompact ? (
+            media.isCompact || media.isGreaterThanExpanded ? (
               <IconButton
                 variant="standard"
                 onClick={() => {
@@ -144,28 +251,32 @@ function App() {
           as={HashLink}
           hash="home"
           label="Home"
-          icon={<MaterialSymbols icon="home" />}
+          icon={<MaterialSymbols icon="home" filled={hash === '#home'} />}
           active={hash === '#home'}
         />
         <Navlink
           as={HashLink}
           hash="styles"
           label="Styles"
-          icon={<MaterialSymbols icon="palette" />}
+          icon={<MaterialSymbols icon="palette" filled={hash === '#styles'} />}
           active={hash === '#styles'}
         />
         <Navlink
           as={HashLink}
           hash="actions"
           label="Actions"
-          icon={<MaterialSymbols icon="left_click" />}
+          icon={
+            <MaterialSymbols icon="left_click" filled={hash === '#actions'} />
+          }
           active={hash === '#actions'}
         />
         <Navlink
           as={HashLink}
           hash="feedback"
           label="Feedback"
-          icon={<MaterialSymbols icon="feedback" />}
+          icon={
+            <MaterialSymbols icon="feedback" filled={hash === '#feedback'} />
+          }
           active={hash === '#feedback'}
         />
       </Navbar>

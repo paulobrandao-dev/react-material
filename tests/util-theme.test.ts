@@ -41,10 +41,21 @@ vi.mock('@material/material-color-utilities', () => {
   return {
     argbFromHex: () => 12345678,
     hexFromArgb: (value: string) => value,
+    redFromArgb: () => 255,
+    greenFromArgb: () => 255,
+    blueFromArgb: () => 255,
     themeFromSourceColor: () => ({
       schemes: {
         dark: mockTheme,
         light: mockTheme,
+      },
+      palettes: {
+        neutral: {
+          tone: vi.fn((n: number) => `neutral-${n}`),
+        },
+        neutralVariant: {
+          tone: vi.fn((n: number) => `neutralVariant-${n}`),
+        },
       },
     }),
   };

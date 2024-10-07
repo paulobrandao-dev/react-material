@@ -1,0 +1,103 @@
+@use '../mixin';
+
+.material-navdrawer {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 360px;
+  max-width: 100%;
+  height: 100dvh;
+  overflow: hidden auto;
+  border-radius: var(--shape-lg-end);
+  border: none;
+  top: 0;
+  left: 0;
+  color: var(--color-on-surface-variant);
+  padding-block: var(--spacing-xl);
+
+  &[popover] {
+    background-color: var(--color-surface-container-low);
+    box-shadow: var(--elevation-1);
+    transition-property: transform, opacity;
+    transition-duration: var(--ease-accelerate-duration);
+    transition-timing-function: var(--ease-emphasized-accelerated);
+    transform: translateX(-64px) scaleX(90%);
+    opacity: 0;
+    pointer-events: none;
+
+    &::backdrop {
+      background-color: var(--color-scrim);
+    }
+
+    &:popover-open {
+      transition-duration: var(--ease-emphasized-decelerate-duration);
+      transition-timing-function: var(--ease-emphasized-decelerated);
+      transform: translateX(0) scaleX(100%);
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  &[data-standard] {
+    background-color: var(--color-surface);
+
+    &:not([popover]) {
+      transition-property: background-color, color;
+      transition-duration: var(--ease-emphasized-duration);
+      transition-timing-function: var(--ease-emphasized);
+    }
+
+    @media screen and (min-width: 1200px) {
+      position: sticky;
+    }
+  }
+
+  > header {
+    padding-inline: var(--spacing-md);
+  }
+
+  > [role='presentation'] {
+    padding-inline: var(--spacing-md);
+
+    > .material-navdrawer-headline {
+      > .headline {
+        padding-block: var(--spacing-lg);
+      }
+    }
+
+    > .material-navlink {
+      flex-direction: row;
+      width: 100%;
+      height: 56px;
+      padding-inline: var(--spacing-lg);
+      position: relative;
+      border-radius: var(--shape-xl);
+      gap: var(--spacing-md);
+      position: relative;
+      @include mixin.state-layer;
+
+      &[aria-current='page'] {
+        background-color: var(--color-secondary-container);
+        color: var(--color-on-secondary-container);
+      }
+
+      &:hover {
+        @include mixin.state-layer-hover;
+      }
+
+      &:focus {
+        @include mixin.state-layer-focus;
+      }
+
+      > .indicator {
+        width: 24px;
+        height: 24px;
+        background-color: transparent !important;
+
+        &::before {
+          content: none !important;
+        }
+      }
+    }
+  }
+}
