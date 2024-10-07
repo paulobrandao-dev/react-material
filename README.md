@@ -6,7 +6,7 @@
 
 React Material is a component library that is built based on the principles of the Material 3 design system.
 
-> This isn't the official release, just beta release to validate the development while the documentation is writing.
+> This isn't the official release yet, just a beta release to validate the development while the documentation is writing.
 
 ## Quick setup
 
@@ -47,7 +47,7 @@ For each necessity, a specific util is applied:
 
 #### With Next.js
 
-In this case, the right way is to set these vars on server side, with the `Rootlayout`:
+In this case, the right way is to set these vars on server side, with the `RootLayout`:
 
 ```jsx
 import { applyThemeOnHtmlStyleTag } from 'react-material/utils';
@@ -103,7 +103,7 @@ This list is organized according to [Material Docs](https://m3.material.io/compo
   - [ ] Snackbar (__coming soon__)
   - [ ] Tooltip (__partially available with IconButton__)
   - [ ] _Badges (planning)_
-  - [ ] _Pregress (planning)_
+  - [ ] _Progress (planning)_
   - [ ] _RichTooltip (planning)_
 - Containment
   - [x] ~~Divider~~
