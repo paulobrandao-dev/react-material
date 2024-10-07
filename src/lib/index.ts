@@ -1,6 +1,6 @@
 // hooks
 export * from './hooks/useMediaQuery';
-export * from './hooks/useNavdrawerControl';
+export * from './hooks/usePopoverControl';
 
 // components
 export * from './components/Button';

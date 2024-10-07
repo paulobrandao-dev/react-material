@@ -6,8 +6,6 @@ import {
   ElementType,
   HTMLAttributes,
   ReactNode,
-  useEffect,
-  useRef,
 } from 'react';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import { Divider } from './Divider';
@@ -34,20 +32,6 @@ export function Navdrawer<T extends ElementType>({
   Omit<ComponentPropsWithoutRef<T>, keyof NavdrawerProps<T>>) {
   const ComponentElement = as || 'nav';
   const media = useMediaQuery();
-  const self = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const drawer = self.current;
-    const handleClick = () => {
-      if (drawer?.hasAttribute('popover')) {
-        drawer?.hidePopover();
-      }
-    };
-    drawer?.addEventListener('click', handleClick);
-    return () => {
-      drawer?.removeEventListener('click', handleClick);
-    };
-  }, []);
 
   return (
     <ComponentElement
@@ -57,7 +41,6 @@ export function Navdrawer<T extends ElementType>({
       popover={
         (standard && media.isLessThanLarge) || !standard ? '' : undefined
       }
-      ref={self}
       {...props}
     >
       {header && <header>{header}</header>}

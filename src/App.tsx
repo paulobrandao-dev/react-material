@@ -13,7 +13,7 @@ import {
   Navlink,
   Navrail,
   useMediaQuery,
-  useNavdrawerControl,
+  usePopoverControl,
 } from './lib';
 import { toggleThemeColorScheme } from './lib/utils';
 import SectionStyles from './Styles';
@@ -33,7 +33,7 @@ function App() {
     sessionStorage.getItem('theme') || '',
   );
   const media = useMediaQuery();
-  const { showDrawer } = useNavdrawerControl('navdrawer');
+  const { showPopover, hidePopover } = usePopoverControl();
 
   useEffect(() => {
     const handleHashchange = () => {
@@ -59,7 +59,10 @@ function App() {
     <>
       <Navrail
         startNode={
-          <IconButton aria-label="Open menu" onClick={showDrawer}>
+          <IconButton
+            aria-label="Open menu"
+            onClick={() => showPopover('navdrawer')}
+          >
             <MaterialSymbols icon="menu" />
           </IconButton>
         }
@@ -142,6 +145,7 @@ function App() {
           label="Home"
           icon={<MaterialSymbols icon="home" filled={hash === '#home'} />}
           active={hash === '#home'}
+          onClick={() => hidePopover('navdrawer')}
         />
         <NavdrawerHeadline text="Components" divider />
         <Navlink
@@ -150,6 +154,7 @@ function App() {
           label="Styles"
           icon={<MaterialSymbols icon="palette" filled={hash === '#styles'} />}
           active={hash === '#styles'}
+          onClick={() => hidePopover('navdrawer')}
         />
         <Navlink
           as={HashLink}
@@ -159,6 +164,7 @@ function App() {
             <MaterialSymbols icon="left_click" filled={hash === '#actions'} />
           }
           active={hash === '#actions'}
+          onClick={() => hidePopover('navdrawer')}
         />
         <Navlink
           as={HashLink}
@@ -168,6 +174,7 @@ function App() {
             <MaterialSymbols icon="feedback" filled={hash === '#feedback'} />
           }
           active={hash === '#feedback'}
+          onClick={() => hidePopover('navdrawer')}
         />
         <NavdrawerHeadline text="Hooks" divider />
         <Navlink
@@ -181,6 +188,7 @@ function App() {
             />
           }
           active={hash === '#hook-media-query'}
+          onClick={() => hidePopover('navdrawer')}
         />
         <Navlink
           as={HashLink}
@@ -193,6 +201,7 @@ function App() {
             />
           }
           active={hash === '#hook-navdrawer-control'}
+          onClick={() => hidePopover('navdrawer')}
         />
         <NavdrawerHeadline text="Utils" divider />
         <Navlink
@@ -203,6 +212,7 @@ function App() {
             <MaterialSymbols icon="style" filled={hash === '#utils-theme'} />
           }
           active={hash === '#utils-theme'}
+          onClick={() => hidePopover('navdrawer')}
         />
       </Navdrawer>
       <Flexbox as="main" flexDirection="column" alignItems="stretch">
