@@ -2,27 +2,17 @@
 
 import { clsx } from 'clsx';
 import { ComponentPropsWithoutRef, ElementType, HTMLAttributes } from 'react';
-import { AttributeQueries, SpacingSizes } from './types';
+import { SpacingProps } from './types';
+import { filterProps, spacingProperties } from './commons';
 
-export interface GridProps<T extends ElementType> extends HTMLAttributes<HTMLElement> {
-  as?: T;
-  gap?: SpacingSizes | AttributeQueries<SpacingSizes>;
-  gapColumn?: SpacingSizes | AttributeQueries<SpacingSizes>;
-  gapRow?: SpacingSizes | AttributeQueries<SpacingSizes>;
-  padding?: SpacingSizes | AttributeQueries<SpacingSizes>;
-  paddingInline?: SpacingSizes | AttributeQueries<SpacingSizes>;
-  paddingBlock?: SpacingSizes | AttributeQueries<SpacingSizes>;
-  fluid?: boolean;
-}
+export type GridProps<T extends ElementType> = HTMLAttributes<HTMLElement> &
+  SpacingProps & {
+    as?: T;
+    fluid?: boolean;
+  };
 
 export function Grid<T extends ElementType>({
   as,
-  gap,
-  gapColumn,
-  gapRow,
-  padding,
-  paddingBlock,
-  paddingInline,
   className,
   fluid,
   ...props
@@ -33,89 +23,8 @@ export function Grid<T extends ElementType>({
     <ComponentElement
       className={clsx('material-grid', className)}
       data-fluid={fluid ? '' : undefined}
-      data-gap-compact={typeof gap === 'string' ? gap : gap?.compact}
-      data-gap-medium={typeof gap !== 'string' ? gap?.medium : undefined}
-      data-gap-expanded={typeof gap !== 'string' ? gap?.expanded : undefined}
-      data-gap-large={typeof gap !== 'string' ? gap?.large : undefined}
-      data-gap-xlarge={typeof gap !== 'string' ? gap?.xlarge : undefined}
-      data-column-gap-compact={
-        typeof gapColumn === 'string' ? gapColumn : gapColumn?.compact
-      }
-      data-column-gap-medium={
-        typeof gapColumn !== 'string' ? gapColumn?.medium : undefined
-      }
-      data-column-gap-expanded={
-        typeof gapColumn !== 'string' ? gapColumn?.expanded : undefined
-      }
-      data-column-gap-large={
-        typeof gapColumn !== 'string' ? gapColumn?.large : undefined
-      }
-      data-column-gap-xlarge={
-        typeof gapColumn !== 'string' ? gapColumn?.xlarge : undefined
-      }
-      data-row-gap-compact={
-        typeof gapRow === 'string' ? gapRow : gapRow?.compact
-      }
-      data-row-gap-medium={
-        typeof gapRow !== 'string' ? gapRow?.medium : undefined
-      }
-      data-row-gap-expanded={
-        typeof gapRow !== 'string' ? gapRow?.expanded : undefined
-      }
-      data-row-gap-large={
-        typeof gapRow !== 'string' ? gapRow?.large : undefined
-      }
-      data-row-gap-xlarge={
-        typeof gapRow !== 'string' ? gapRow?.xlarge : undefined
-      }
-      data-padding-compact={
-        typeof padding === 'string' ? padding : padding?.compact
-      }
-      data-padding-medium={
-        typeof padding !== 'string' ? padding?.medium : undefined
-      }
-      data-padding-expanded={
-        typeof padding !== 'string' ? padding?.expanded : undefined
-      }
-      data-padding-large={
-        typeof padding !== 'string' ? padding?.large : undefined
-      }
-      data-padding-xlarge={
-        typeof padding !== 'string' ? padding?.xlarge : undefined
-      }
-      data-padding-block-compact={
-        typeof paddingBlock === 'string' ? paddingBlock : paddingBlock?.compact
-      }
-      data-padding-block-medium={
-        typeof paddingBlock !== 'string' ? paddingBlock?.medium : undefined
-      }
-      data-padding-block-expanded={
-        typeof paddingBlock !== 'string' ? paddingBlock?.expanded : undefined
-      }
-      data-padding-block-large={
-        typeof paddingBlock !== 'string' ? paddingBlock?.large : undefined
-      }
-      data-padding-block-xlarge={
-        typeof paddingBlock !== 'string' ? paddingBlock?.xlarge : undefined
-      }
-      data-padding-inline-compact={
-        typeof paddingInline === 'string'
-          ? paddingInline
-          : paddingInline?.compact
-      }
-      data-padding-inline-medium={
-        typeof paddingInline !== 'string' ? paddingInline?.medium : undefined
-      }
-      data-padding-inline-expanded={
-        typeof paddingInline !== 'string' ? paddingInline?.expanded : undefined
-      }
-      data-padding-inline-large={
-        typeof paddingInline !== 'string' ? paddingInline?.large : undefined
-      }
-      data-padding-inline-xlarge={
-        typeof paddingInline !== 'string' ? paddingInline?.xlarge : undefined
-      }
-      {...props}
+      {...spacingProperties(props)}
+      {...filterProps(props)}
     />
   );
 }

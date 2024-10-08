@@ -1,0 +1,63 @@
+@use '../mixin';
+
+%card-style {
+  border-radius: var(--shape-md);
+  transition-property: box-shadow;
+  transition-duration: var(--ease-emphasized-duration);
+  transition-timing-function: var(--ease-emphasized);
+}
+
+.material-card {
+  &-elevated {
+    @extend %card-style;
+    background-color: var(--color-surface-container-low);
+    box-shadow: var(--elevation-1);
+
+    @include mixin.unify-parent('button') {
+      &:hover {
+        box-shadow: var(--elevation-2);
+      }
+    }
+
+    @include mixin.unify-parent('[role=' button ']') {
+      &:hover {
+        box-shadow: var(--elevation-2);
+      }
+    }
+  }
+
+  &-filled {
+    @extend %card-style;
+    background-color: var(--color-surface-container-highest);
+
+    @include mixin.unify-parent('button') {
+      &:hover {
+        box-shadow: var(--elevation-1);
+      }
+    }
+
+    @include mixin.unify-parent('[role=' button ']') {
+      &:hover {
+        box-shadow: var(--elevation-1);
+      }
+    }
+  }
+
+  &-outlined {
+    @extend %card-style;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-outline);
+
+    @include mixin.unify-parent('button') {
+      &:hover {
+        box-shadow: var(--elevation-1);
+      }
+    }
+
+    @include mixin.unify-parent('[role=' button ']') {
+      &:hover {
+        box-shadow: var(--elevation-1);
+      }
+    }
+  }
+}

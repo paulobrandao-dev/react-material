@@ -27,6 +27,9 @@
     @include mixin.spacing-rules('compact', 'padding');
     @include mixin.spacing-rules('compact', 'padding-block');
     @include mixin.spacing-rules('compact', 'padding-inline');
+    @include mixin.spacing-rules('compact', 'margin', 1);
+    @include mixin.spacing-rules('compact', 'margin-block', 1);
+    @include mixin.spacing-rules('compact', 'margin-inline', 1);
     @include grid-item-rules(5, 'compact');
   }
 
@@ -39,6 +42,9 @@
     @include mixin.spacing-rules('medium', 'padding');
     @include mixin.spacing-rules('medium', 'padding-block');
     @include mixin.spacing-rules('medium', 'padding-inline');
+    @include mixin.spacing-rules('medium', 'margin', 1);
+    @include mixin.spacing-rules('medium', 'margin-block', 1);
+    @include mixin.spacing-rules('medium', 'margin-inline', 1);
     @include grid-item-rules(9, 'medium');
   }
 
@@ -51,6 +57,9 @@
     @include mixin.spacing-rules('expanded', 'padding');
     @include mixin.spacing-rules('expanded', 'padding-block');
     @include mixin.spacing-rules('expanded', 'padding-inline');
+    @include mixin.spacing-rules('margin', 'margin', 1);
+    @include mixin.spacing-rules('margin', 'margin-block', 1);
+    @include mixin.spacing-rules('margin', 'margin-inline', 1);
     @include grid-item-rules(13, 'expanded');
   }
 
@@ -61,6 +70,9 @@
     @include mixin.spacing-rules('large', 'padding');
     @include mixin.spacing-rules('large', 'padding-block');
     @include mixin.spacing-rules('large', 'padding-inline');
+    @include mixin.spacing-rules('large', 'margin', 1);
+    @include mixin.spacing-rules('large', 'margin-block', 1);
+    @include mixin.spacing-rules('large', 'margin-inline', 1);
     @include grid-item-rules(13, 'large');
   }
 
@@ -71,6 +83,9 @@
     @include mixin.spacing-rules('xlarge', 'padding');
     @include mixin.spacing-rules('xlarge', 'padding-block');
     @include mixin.spacing-rules('xlarge', 'padding-inline');
+    @include mixin.spacing-rules('xlarge', 'margin', 1);
+    @include mixin.spacing-rules('xlarge', 'margin-block', 1);
+    @include mixin.spacing-rules('xlarge', 'margin-inline', 1);
     @include grid-item-rules(13, 'xlarge');
   }
 }

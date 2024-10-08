@@ -1,14 +1,17 @@
-import { Flexbox, Font, Grid, MaterialSymbols } from "./lib";
-import { gridColumnProps } from "./lib/utils";
+import { Card, Flexbox, Font, MaterialSymbols } from './lib';
+import { gridColumnProps } from './lib/utils';
 
 export default function SectionStyles({ hash }: Readonly<{ hash: string }>) {
   return (
     <article hidden={hash !== '#styles'}>
-      <Grid
+      <Card
         as="section"
+        variant="outlined"
+        grid
         gap={{ compact: 'md', medium: 'xl' }}
         paddingInline={{ compact: 'lg', medium: 'xl' }}
         paddingBlock="xl"
+        marginBlock="xl"
         id="typography"
       >
         <Flexbox
@@ -88,12 +91,15 @@ export default function SectionStyles({ hash }: Readonly<{ hash: string }>) {
             Label small
           </Font>
         </Flexbox>
-      </Grid>
-      <Grid
+      </Card>
+      <Card
         as="section"
+        variant="outlined"
+        grid
         gap={{ compact: 'md', medium: 'xl' }}
         paddingInline={{ compact: 'lg', medium: 'xl' }}
         paddingBlock="xl"
+        marginBlock="xl"
         id="icon"
       >
         <Flexbox
@@ -147,7 +153,7 @@ export default function SectionStyles({ hash }: Readonly<{ hash: string }>) {
             <MaterialSymbols icon="favorite" size={48} filled />
           </Flexbox>
         </Flexbox>
-      </Grid>
+      </Card>
     </article>
   );
 }

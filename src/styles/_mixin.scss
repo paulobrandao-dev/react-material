@@ -96,20 +96,28 @@
   }
 }
 
-@mixin spacing-rules($breakpoint, $property) {
-  &[data-#{$property}-#{$breakpoint}="xs"] {
+@mixin spacing-rules($breakpoint, $property, $auto: 0) {
+  &[data-#{$property}-#{$breakpoint}='none'] {
+    #{$property}: 0;
+  }
+  &[data-#{$property}-#{$breakpoint}='xs'] {
     #{$property}: var(--spacing-xs);
   }
-  [data-#{$property}-#{$breakpoint}="sm"] {
+  [data-#{$property}-#{$breakpoint}='sm'] {
     #{$property}: var(--spacing-sm);
   }
-  &[data-#{$property}-#{$breakpoint}="md"] {
+  &[data-#{$property}-#{$breakpoint}='md'] {
     #{$property}: var(--spacing-md);
   }
-  &[data-#{$property}-#{$breakpoint}="lg"] {
+  &[data-#{$property}-#{$breakpoint}='lg'] {
     #{$property}: var(--spacing-lg);
   }
-  &[data-#{$property}-#{$breakpoint}="xl"] {
+  &[data-#{$property}-#{$breakpoint}='xl'] {
     #{$property}: var(--spacing-xl);
+  }
+  @if $auto == 1 {
+    &[data-#{$property}-#{$breakpoint}='auto'] {
+      #{$property}: auto;
+    }
   }
 }

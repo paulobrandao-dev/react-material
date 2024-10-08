@@ -1,58 +1,58 @@
 @use '../mixin';
 
 @mixin flex-direction-rules($breakpoint) {
-  &[data-direction-#{$breakpoint}="row"] {
+  &[data-direction-#{$breakpoint}='row'] {
     flex-direction: row;
   }
-  [data-direction-#{$breakpoint}="row-reverse"] {
+  [data-direction-#{$breakpoint}='row-reverse'] {
     flex-direction: row-reverse;
   }
-  &[data-direction-#{$breakpoint}="column"] {
+  &[data-direction-#{$breakpoint}='column'] {
     flex-direction: column;
   }
-  &[data-direction-#{$breakpoint}="column-reverse"] {
+  &[data-direction-#{$breakpoint}='column-reverse'] {
     flex-direction: column-reverse;
   }
 }
 
 @mixin flex-align-rules($breakpoint) {
-  &[data-align-items-#{$breakpoint}="baseline"] {
+  &[data-align-items-#{$breakpoint}='baseline'] {
     align-items: baseline;
   }
-  &[data-align-items-#{$breakpoint}="center"] {
+  &[data-align-items-#{$breakpoint}='center'] {
     align-items: center;
   }
-  &[data-align-items-#{$breakpoint}="flex-start"] {
+  &[data-align-items-#{$breakpoint}='flex-start'] {
     align-items: flex-start;
   }
-  &[data-align-items-#{$breakpoint}="flex-end"] {
+  &[data-align-items-#{$breakpoint}='flex-end'] {
     align-items: flex-end;
   }
-  &[data-align-items-#{$breakpoint}="stretch"] {
+  &[data-align-items-#{$breakpoint}='stretch'] {
     align-items: stretch;
   }
-  &[data-justify-content-#{$breakpoint}="baseline"] {
+  &[data-justify-content-#{$breakpoint}='baseline'] {
     justify-content: baseline;
   }
-  &[data-justify-content-#{$breakpoint}="center"] {
+  &[data-justify-content-#{$breakpoint}='center'] {
     justify-content: center;
   }
-  &[data-justify-content-#{$breakpoint}="flex-start"] {
+  &[data-justify-content-#{$breakpoint}='flex-start'] {
     justify-content: flex-start;
   }
-  &[data-justify-content-#{$breakpoint}="flex-end"] {
+  &[data-justify-content-#{$breakpoint}='flex-end'] {
     justify-content: flex-end;
   }
-  &[data-justify-content-#{$breakpoint}="space-around"] {
+  &[data-justify-content-#{$breakpoint}='space-around'] {
     justify-content: space-around;
   }
-  &[data-justify-content-#{$breakpoint}="space-between"] {
+  &[data-justify-content-#{$breakpoint}='space-between'] {
     justify-content: space-between;
   }
-  &[data-justify-content-#{$breakpoint}="space-evenly"] {
+  &[data-justify-content-#{$breakpoint}='space-evenly'] {
     justify-content: space-evenly;
   }
-  &[data-justify-content-#{$breakpoint}="stretch"] {
+  &[data-justify-content-#{$breakpoint}='stretch'] {
     justify-content: stretch;
   }
 }
@@ -69,6 +69,9 @@
     @include mixin.spacing-rules('compact', 'padding');
     @include mixin.spacing-rules('compact', 'padding-block');
     @include mixin.spacing-rules('compact', 'padding-inline');
+    @include mixin.spacing-rules('compact', 'margin', 1);
+    @include mixin.spacing-rules('compact', 'margin-block', 1);
+    @include mixin.spacing-rules('compact', 'margin-inline', 1);
   }
 
   @media screen and (min-width: 600px) {
@@ -80,6 +83,9 @@
     @include mixin.spacing-rules('medium', 'padding');
     @include mixin.spacing-rules('medium', 'padding-block');
     @include mixin.spacing-rules('medium', 'padding-inline');
+    @include mixin.spacing-rules('medium', 'margin', 1);
+    @include mixin.spacing-rules('medium', 'margin-block', 1);
+    @include mixin.spacing-rules('medium', 'margin-inline', 1);
   }
 
   @media screen and (min-width: 840px) {
@@ -91,6 +97,9 @@
     @include mixin.spacing-rules('expanded', 'padding');
     @include mixin.spacing-rules('expanded', 'padding-block');
     @include mixin.spacing-rules('expanded', 'padding-inline');
+    @include mixin.spacing-rules('margin', 'margin', 1);
+    @include mixin.spacing-rules('margin', 'margin-block', 1);
+    @include mixin.spacing-rules('margin', 'margin-inline', 1);
   }
 
   @media screen and (min-width: 1200px) {
@@ -102,6 +111,9 @@
     @include mixin.spacing-rules('large', 'padding');
     @include mixin.spacing-rules('large', 'padding-block');
     @include mixin.spacing-rules('large', 'padding-inline');
+    @include mixin.spacing-rules('large', 'margin', 1);
+    @include mixin.spacing-rules('large', 'margin-block', 1);
+    @include mixin.spacing-rules('large', 'margin-inline', 1);
   }
 
   @media screen and (min-width: 1400px) {
@@ -113,5 +125,8 @@
     @include mixin.spacing-rules('xlarge', 'padding');
     @include mixin.spacing-rules('xlarge', 'padding-block');
     @include mixin.spacing-rules('xlarge', 'padding-inline');
+    @include mixin.spacing-rules('xlarge', 'margin', 1);
+    @include mixin.spacing-rules('xlarge', 'margin-block', 1);
+    @include mixin.spacing-rules('xlarge', 'margin-inline', 1);
   }
 }

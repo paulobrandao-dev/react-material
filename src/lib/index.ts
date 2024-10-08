@@ -15,3 +15,4 @@ export * from './components/IconButton';
 export * from './components/Navbar';
 export * from './components/Navdrawer';
 export * from './components/Divider';
+export * from './components/Card';
