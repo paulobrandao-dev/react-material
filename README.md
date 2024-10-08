@@ -107,7 +107,7 @@ This list is organized according to [Material Docs](https://m3.material.io/compo
   - [ ] _RichTooltip (planning)_
 - Containment
   - [x] ~~Divider~~
-  - [ ] Card (__coming soon__)
+  - [x] ~~Card~~
   - [ ] Dialog (__coming soon__)
   - [ ] List (__coming soon__)
   - [ ] SideSheet (__coming soon__)
