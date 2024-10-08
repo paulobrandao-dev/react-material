@@ -6,7 +6,8 @@
   "homepage": "https://paulobrandao.dev/react-material",
   "author": {
     "name": "Paulo Brandão",
-    "url": "https://paulobrandao.dev"
+    "url": "https://paulobrandao.dev",
+    "email": "paulobrandao.dev@outlook.com"
   },
   "repository": {
     "type": "git",
