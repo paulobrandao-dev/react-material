@@ -41,7 +41,7 @@ For correct use of the components and to customize the interface, it is necessar
 
 You just need to pass the main color of your interface, the color scheme (“light” or “dark”) and the font face names and the util will make the job.
 
-> More info about theme utils in the Utils section of this page.
+> More info about theme utils in the [Utils](#utils) section of this page.
 
 For each necessity, a specific util is applied:
 
@@ -108,7 +108,7 @@ This list is organized according to [Material Docs](https://m3.material.io/compo
 - Containment
   - [x] ~~Divider~~
   - [x] ~~Card~~
-  - [ ] Dialog (__coming soon__)
+  - [x] ~~Dialog~~
   - [ ] List (__coming soon__)
   - [ ] SideSheet (__coming soon__)
   - [ ] BottomSheet (__coming soon__)
@@ -135,3 +135,92 @@ This list is organized according to [Material Docs](https://m3.material.io/compo
 - Layout
   - [x] ~~Grid~~
   - [x] ~~Flexbox~~
+
+## Utils
+
+### Theme utils
+
+These functions will help you to create dynamic color schemes by the content-based color of your product/application.
+
+#### `applyThemeOnHtmlStyleTag`
+
+> Solution to server side render
+
+This function returns the CSS variables required to customize the library components as `CSSProperties` and need to be applied in the `style` _prop_ of the `<html>` tag.
+
+```jsx
+import { applyThemeOnHtmlStyleTag } from 'react-material/utils';
+...
+
+return (
+  <html
+    style={applyThemeOnHtmlStyleTag({
+      seedColor: '#4285F4',
+      colorScheme: 'dark',
+      font: {
+        title: '"Roboto"',
+        content: '"Roboto"',
+        code: '"Roboto Mono"',
+      },
+    })}
+  >
+    <body>{children}</body>
+  </html>
+);
+```
+
+##### `applyThemeOnHtmlStyleTag` types
+
+```ts
+type FontSettings = {
+  title?: string;
+  content?: string;
+  code?: string;
+};
+
+type Settings = {
+  seedColor: string; // content-based color of your product/application
+  colorScheme: 'dark' | 'light;
+  font: FontSettings | false;
+}
+
+function applyThemeOnHtmlStyleTag(settings: Settings): CSSProperties
+```
+
+#### `applyTheme`
+
+> Solution to client side render
+
+This function applies the CSS variables required to customize the library components in the document element.
+
+```jsx
+import { applyTheme } from 'react-material/utils';
+// before createRoot
+applyTheme({
+  seedColor: '#4285F4',
+  colorScheme: 'light',
+  font: {
+    title: '"Roboto"',
+    content: '"Roboto"',
+    code: '"Roboto Mono"',
+  },
+});
+```
+
+##### `applyTheme` types
+
+```ts
+type FontSettings = {
+  title?: string;
+  content?: string;
+  code?: string;
+};
+
+type Settings = {
+  seedColor: string; // content-based color of your product/application
+  colorScheme: 'dark' | 'light;
+  font: FontSettings | false;
+}
+
+function applyTheme(settings: Settings): void
+```
