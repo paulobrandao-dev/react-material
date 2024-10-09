@@ -13,7 +13,7 @@ React Material is a component library that is built based on the principles of t
 ### First - Install
 
 ```console
-npm i react-material
+npm i @paulobrandao/react-material
 ```
 
 ### Second - styling
@@ -21,18 +21,18 @@ npm i react-material
 Import the required stylesheet into `RootLayout` or your `(main|index).ts`:
 
 ```js
-import 'react-material/dist/react-material.css';
+import '@paulobrandao/react-material/dist/react-material.css';
 ```
 
 To make use of `MaterialSymbol` component, it is necessary to import the icon font stylesheet too, according to the style chosen:
 
 ```js
 // Outlined
-import 'react-material/dist/react-material-symbols-outlined.css';
+import '@paulobrandao/react-material/dist/react-material-symbols-outlined.css';
 // Rounded
-import 'react-material/dist/react-material-symbols-rounded.css';
+import '@paulobrandao/react-material/dist/react-material-symbols-rounded.css';
 // Sharp
-import 'react-material/dist/react-material-symbols-sharp.css';
+import '@paulobrandao/react-material/dist/react-material-symbols-sharp.css';
 ```
 
 ### Third - Theming
@@ -50,7 +50,7 @@ For each necessity, a specific util is applied:
 In this case, the right way is to set these vars on server side, with the `RootLayout`:
 
 ```jsx
-import { applyThemeOnHtmlStyleTag } from 'react-material/utils';
+import { applyThemeOnHtmlStyleTag } from '@paulobrandao/react-material/utils';
 ...
 
 return (
@@ -75,7 +75,7 @@ return (
 In this case, call the `applyTheme` util into `(main|index).tsx`:
 
 ```jsx
-import { applyTheme } from 'react-material/utils';
+import { applyTheme } from '@paulobrandao/react-material/utils';
 // before createRoot
 applyTheme({
   seedColor: '#4285F4',
@@ -149,7 +149,7 @@ These functions will help you to create dynamic color schemes by the content-bas
 This function returns the CSS variables required to customize the library components as `CSSProperties` and need to be applied in the `style` _prop_ of the `<html>` tag.
 
 ```jsx
-import { applyThemeOnHtmlStyleTag } from 'react-material/utils';
+import { applyThemeOnHtmlStyleTag } from '@paulobrandao/react-material/utils';
 ...
 
 return (
@@ -194,7 +194,7 @@ function applyThemeOnHtmlStyleTag(settings: Settings): CSSProperties
 This function applies the CSS variables required to customize the library components in the document element.
 
 ```jsx
-import { applyTheme } from 'react-material/utils';
+import { applyTheme } from '@paulobrandao/react-material/utils';
 // before createRoot
 applyTheme({
   seedColor: '#4285F4',
