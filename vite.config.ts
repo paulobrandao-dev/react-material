@@ -38,6 +38,7 @@ export default defineConfig({
   },
   test: {
     environment: 'happy-dom',
+    setupFiles: ['tests/setupTest.ts'],
     coverage: {
       provider: 'istanbul',
       include: ['src/lib/**'],

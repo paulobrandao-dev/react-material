@@ -1,7 +1,17 @@
-import { Button, Flexbox, Font, Grid } from "./lib";
-import { gridColumnProps } from "./lib/utils";
+import {
+  Button,
+  Dialog,
+  Flexbox,
+  Font,
+  Grid,
+  MaterialSymbols,
+  useDialogControl,
+} from './lib';
+import { gridColumnProps } from './lib/utils';
 
-export default function SectionActions({hash}:Readonly<{ hash: string }>) {
+export default function SectionActions({ hash }: Readonly<{ hash: string }>) {
+  const { showDialog } = useDialogControl();
+
   return (
     <article hidden={hash !== '#actions'}>
       <Grid
@@ -51,8 +61,15 @@ export default function SectionActions({hash}:Readonly<{ hash: string }>) {
             alignItems={{ compact: 'stretch', medium: 'center' }}
             gap="sm"
           >
-            <Button variant="elevated">Elevated</Button>
-            <Button variant="filled">Filled</Button>
+            <Button variant="elevated" onClick={() => showDialog('test-basic')}>
+              Elevated
+            </Button>
+            <Button
+              variant="filled"
+              onClick={() => showDialog('test-fullscreen')}
+            >
+              Filled
+            </Button>
             <Button variant="tonal">Tonal</Button>
             <Button variant="outlined">Outlined</Button>
             <Button variant="text">Text</Button>
@@ -83,6 +100,39 @@ export default function SectionActions({hash}:Readonly<{ hash: string }>) {
           </Flexbox>
         </Flexbox>
       </Grid>
+      <Dialog
+        id="test-basic"
+        cancelLabel="Nop"
+        onCancel={close => close()}
+        confirmLabel="Confirm"
+        onConfirm={close => {
+          console.log('All right');
+          close();
+        }}
+        headline="The dialog is correct?"
+        icon={<MaterialSymbols icon="verified" size={24} />}
+      >
+        <Font variant="body" scale="medium">
+          The modal was showed successfuly with this text.
+        </Font>
+      </Dialog>
+      <Dialog
+        id="test-fullscreen"
+        cancelLabel="Nop"
+        onCancel={close => close()}
+        confirmLabel="Confirm"
+        onConfirm={close => {
+          console.log('All right');
+          close();
+        }}
+        headline="Dialog is correct"
+        icon={<MaterialSymbols icon="fullscreen" size={24} />}
+        fullscreenOnCompact
+      >
+        <Font variant="body" scale="medium">
+          The modal was showed successfuly with this text.
+        </Font>
+      </Dialog>
     </article>
   );
 }
