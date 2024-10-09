@@ -73,19 +73,23 @@ export function Appbar<T extends ElementType>({
     >
       <div role="toolbar">
         {startNode && <div className="start-node">{startNode}</div>}
-        <Font
-          as={titleBelow ? 'span' : 'h1'}
-          variant="title"
-          scale="large"
-          textAlign={variant === 'center-aligned' ? 'center' : 'left'}
-          className={clsx('headline', { hide: titleBelow && !scrolled })}
-          aria-hidden={titleBelow ? 'true' : undefined}
-        >
-          {headline}
-        </Font>
+        <div role="presentation" className="headline">
+          {headline && (
+            <Font
+              as={titleBelow ? 'span' : 'h1'}
+              variant="title"
+              scale="large"
+              textAlign={variant === 'center-aligned' ? 'center' : 'left'}
+              className={clsx({ hide: titleBelow && !scrolled })}
+              aria-hidden={titleBelow ? 'true' : undefined}
+            >
+              {headline}
+            </Font>
+          )}
+        </div>
         {endNode && <div className="end-node">{endNode}</div>}
       </div>
-      {titleBelow && (
+      {titleBelow && headline && (
         <Font
           as="h1"
           variant="headline"

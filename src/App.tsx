@@ -217,7 +217,7 @@ function App() {
       </Navdrawer>
       <Flexbox as="main" flexDirection="column" alignItems="stretch">
         <Appbar
-          variant="small"
+          variant="medium"
           headline={
             media.isGreaterThanCompact && media.isLessThanLarge
               ? 'React Material'
