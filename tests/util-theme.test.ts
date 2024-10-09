@@ -1,11 +1,9 @@
+import { describe, expect, test, vi } from 'vitest';
 import {
   applyTheme,
-  applyThemeDarkColorScheme,
-  applyThemeLightColorScheme,
   applyThemeOnHtmlStyleTag,
   toggleThemeColorScheme,
 } from '../src/lib/utils';
-import { describe, expect, test, vi } from 'vitest';
 
 vi.mock('@material/material-color-utilities', () => {
   const mockTheme = {
@@ -71,7 +69,10 @@ describe('Theme utils', () => {
       expect(result).toHaveProperty('--color-seed', 'red');
       expect(result).toHaveProperty('--color-scheme', 'dark');
       expect(result).toHaveProperty('--color-primary', 'primary');
-      expect(result).toHaveProperty('--elevation-1', '0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15)');
+      expect(result).toHaveProperty(
+        '--elevation-1',
+        '0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15)',
+      );
       expect(result).toHaveProperty('--font-title', 'sans-serif');
       expect(result).toHaveProperty('--font-content', 'sans-serif');
       expect(result).toHaveProperty('--font-code', 'monospace');
@@ -81,12 +82,15 @@ describe('Theme utils', () => {
       const result = applyThemeOnHtmlStyleTag({
         colorScheme: 'light',
         seedColor: 'green',
-        font: false
+        font: false,
       });
       expect(result).toHaveProperty('--color-seed', 'green');
       expect(result).toHaveProperty('--color-scheme', 'light');
       expect(result).toHaveProperty('--color-primary', 'primary');
-      expect(result).toHaveProperty('--elevation-1', '0px 1px 3px 1px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.3)');
+      expect(result).toHaveProperty(
+        '--elevation-1',
+        '0px 1px 3px 1px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.3)',
+      );
       expect(result).not.toHaveProperty('--font-title');
       expect(result).not.toHaveProperty('--font-content');
       expect(result).not.toHaveProperty('--font-code');
@@ -99,7 +103,7 @@ describe('Theme utils', () => {
         font: {
           title: 'Times New Roman',
           content: 'Arial',
-          code: 'Verdana'
+          code: 'Verdana',
         },
       });
       expect(result).toHaveProperty('--color-seed', 'blue');
@@ -111,10 +115,12 @@ describe('Theme utils', () => {
   });
 
   test('applyTheme', () => {
-    applyTheme({ colorScheme: 'light', seedColor: 'white' });
-    expect(getComputedStyle(document.documentElement).getPropertyValue(
-      '--color-scheme',
-    )).toEqual('light');
+    applyTheme({ colorScheme: 'light', seedColor: 'white', font: false });
+    expect(
+      getComputedStyle(document.documentElement).getPropertyValue(
+        '--color-scheme',
+      ),
+    ).toEqual('light');
     expect(
       getComputedStyle(document.documentElement).getPropertyValue(
         '--color-seed',
@@ -123,7 +129,7 @@ describe('Theme utils', () => {
   });
 
   test('toggleThemeColorScheme', () => {
-    applyTheme({ colorScheme: 'light', seedColor: 'blue' });
+    applyTheme({ colorScheme: 'light', seedColor: 'blue', font: false });
     expect(
       getComputedStyle(document.documentElement).getPropertyValue(
         '--color-scheme',
@@ -136,42 +142,18 @@ describe('Theme utils', () => {
         '--color-scheme',
       ),
     ).toEqual('dark');
+    expect(
+      getComputedStyle(document.documentElement).getPropertyValue(
+        '--font-settings',
+      ),
+    ).toEqual('false');
+    expect(
+      getComputedStyle(document.documentElement).getPropertyValue(
+        '--font-title',
+      ),
+    ).toEqual('');
     expect(current).toEqual('dark');
     toggleThemeColorScheme(newScheme => (current = newScheme));
-    expect(
-      getComputedStyle(document.documentElement).getPropertyValue(
-        '--color-scheme',
-      ),
-    ).toEqual('light');
-    expect(current).toEqual('light');
-  });
-
-  test('applyThemeDarkColorScheme', () => {
-    applyTheme({ colorScheme: 'light', seedColor: 'red' });
-    expect(
-      getComputedStyle(document.documentElement).getPropertyValue(
-        '--color-scheme',
-      ),
-    ).toEqual('light');
-    let current = 'light';
-    applyThemeDarkColorScheme(newScheme => (current = newScheme));
-    expect(
-      getComputedStyle(document.documentElement).getPropertyValue(
-        '--color-scheme',
-      ),
-    ).toEqual('dark');
-    expect(current).toEqual('dark');
-  });
-
-  test('applyThemeLightColorScheme', () => {
-    applyTheme({ colorScheme: 'dark', seedColor: 'yellow' });
-    expect(
-      getComputedStyle(document.documentElement).getPropertyValue(
-        '--color-scheme',
-      ),
-    ).toEqual('dark');
-    let current = 'dark';
-    applyThemeLightColorScheme(newScheme => (current = newScheme));
     expect(
       getComputedStyle(document.documentElement).getPropertyValue(
         '--color-scheme',

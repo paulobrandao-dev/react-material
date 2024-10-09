@@ -28,8 +28,11 @@ export function applyThemeOnHtmlStyleTag({
   const scheme = theme.schemes[colorScheme];
   const fonts =
     font === false
-      ? {}
+      ? ({
+          '--font-settings': 'false',
+        } as React.CSSProperties)
       : ({
+          '--font-settings': 'true',
           '--font-title': font?.title ?? 'sans-serif',
           '--font-content': font?.content ?? 'sans-serif',
           '--font-code': font?.code ?? 'monospace',
@@ -154,27 +157,30 @@ export function toggleThemeColorScheme(
   const seedColor = getComputedStyle(document.documentElement).getPropertyValue(
     '--color-seed',
   );
+  const fontSettings = getComputedStyle(
+    document.documentElement,
+  ).getPropertyValue('--font-settings');
+  const fontTitle = getComputedStyle(document.documentElement).getPropertyValue(
+    '--font-title',
+  );
+  const fontContent = getComputedStyle(
+    document.documentElement,
+  ).getPropertyValue('--font-content');
+  const fontCode = getComputedStyle(document.documentElement).getPropertyValue(
+    '--font-code',
+  );
   const colorScheme = scheme === 'light' ? 'dark' : 'light';
-  applyTheme({ seedColor, colorScheme });
+  applyTheme({
+    seedColor,
+    colorScheme,
+    font:
+      fontSettings === 'true'
+        ? {
+            title: fontTitle,
+            content: fontContent,
+            code: fontCode,
+          }
+        : false,
+  });
   if (onToggle !== undefined) onToggle(colorScheme);
-}
-
-export function applyThemeDarkColorScheme(
-  onApply?: (colorScheme: string) => void,
-) {
-  const seedColor = getComputedStyle(document.documentElement).getPropertyValue(
-    '--color-seed',
-  );
-  applyTheme({ seedColor, colorScheme: 'dark' });
-  if (onApply !== undefined) onApply('dark');
-}
-
-export function applyThemeLightColorScheme(
-  onApply?: (colorScheme: string) => void,
-) {
-  const seedColor = getComputedStyle(document.documentElement).getPropertyValue(
-    '--color-seed',
-  );
-  applyTheme({ seedColor, colorScheme: 'light' });
-  if (onApply !== undefined) onApply('light');
 }
