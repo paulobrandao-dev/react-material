@@ -1,10 +1,8 @@
 # React Material
 
-![Logo](./public/react-material.png)
+React Material is a component library that is built based on the principles of the Material 3 design system.
 
 ![Coverage](./badges.svg)
-
-React Material is a component library that is built based on the principles of the Material 3 design system.
 
 > This isn't the official release yet, just a beta release to validate the development while the documentation is writing.
 
