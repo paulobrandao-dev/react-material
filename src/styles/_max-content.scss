@@ -1,0 +1,17 @@
+%max-content-styles {
+  &[data-max-width='compact'] {
+    max-width: 560px;
+  }
+
+  &[data-max-width='medium'] {
+    max-width: 800px;
+  }
+
+  &[data-max-width='expanded'] {
+    max-width: 1160px;
+  }
+
+  &[data-max-width='large'] {
+    max-width: 1360px;
+  }
+}

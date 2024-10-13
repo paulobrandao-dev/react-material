@@ -2,19 +2,32 @@
 
 import { clsx } from 'clsx';
 import { ComponentPropsWithoutRef, ElementType, HTMLAttributes } from 'react';
-import { SpacingProps } from './types';
-import { filterProps, spacingProperties } from './commons';
+import {
+  filterProps,
+  gapProperties,
+  gridProperties,
+  spacingProperties,
+} from './commons';
+import {
+  AttributeQueries,
+  GapProps,
+  GridColumnSize,
+  SpacingProps,
+} from './types';
 
 export type GridProps<T extends ElementType> = HTMLAttributes<HTMLElement> &
-  SpacingProps & {
+  SpacingProps &
+  GapProps & {
     as?: T;
-    fluid?: boolean;
+    gridColumns?: GridColumnSize | AttributeQueries<GridColumnSize>;
+    maxWidth?: 'compact' | 'medium' | 'expanded' | 'large';
   };
 
 export function Grid<T extends ElementType>({
   as,
   className,
-  fluid,
+  gridColumns,
+  maxWidth,
   ...props
 }: GridProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof GridProps<T>>) {
   const ComponentElement = as || 'div';
@@ -22,8 +35,10 @@ export function Grid<T extends ElementType>({
   return (
     <ComponentElement
       className={clsx('material-grid', className)}
-      data-fluid={fluid ? '' : undefined}
+      data-max-width={maxWidth ?? undefined}
       {...spacingProperties(props)}
+      {...gapProperties(props)}
+      {...(gridColumns ? gridProperties({ query: gridColumns }) : {})}
       {...filterProps(props)}
     />
   );

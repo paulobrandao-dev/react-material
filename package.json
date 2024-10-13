@@ -1,6 +1,6 @@
 {
   "name": "@paulobrandao/react-material",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "type": "module",
   "license": "ISC",
   "homepage": "https://github.com/paulobrandao-dev/react-material",
@@ -17,8 +17,8 @@
     "dist",
     "badges.svg"
   ],
-  "main": "./dist/react-material.main.umd.cjs",
-  "module": "./dist/react-material.main.js",
+  "main": "./dist/react-material.cjs",
+  "module": "./dist/react-material.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {

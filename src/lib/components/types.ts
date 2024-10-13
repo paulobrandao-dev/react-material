@@ -8,10 +8,13 @@ export interface AttributeQueries<T> {
   xlarge?: T;
 }
 
-export type SpacingProps = {
+export type GapProps = {
   gap?: SpacingSizes | AttributeQueries<SpacingSizes>;
   gapColumn?: SpacingSizes | AttributeQueries<SpacingSizes>;
   gapRow?: SpacingSizes | AttributeQueries<SpacingSizes>;
+};
+
+export type SpacingProps = {
   padding?: SpacingSizes | AttributeQueries<SpacingSizes>;
   paddingInline?: SpacingSizes | AttributeQueries<SpacingSizes>;
   paddingBlock?: SpacingSizes | AttributeQueries<SpacingSizes>;
@@ -44,3 +47,5 @@ export type FlexAlignProps = {
   alignItems?: FlexAlignItems | AttributeQueries<FlexAlignItems>;
   justifyContent?: FlexJustifyContent | AttributeQueries<FlexJustifyContent>;
 };
+
+export type GridColumnSize = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;

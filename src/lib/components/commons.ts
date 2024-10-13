@@ -1,12 +1,15 @@
 'use client';
 
 import { ComponentPropsWithoutRef, ElementType } from 'react';
-import { FlexAlignProps, SpacingProps } from './types';
+import {
+  AttributeQueries,
+  FlexAlignProps,
+  GapProps,
+  GridColumnSize,
+  SpacingProps,
+} from './types';
 
 const SPACING_PROPS = [
-  'gap',
-  'gapColumn',
-  'gapRow',
   'padding',
   'paddingBlock',
   'paddingInline',
@@ -15,30 +18,26 @@ const SPACING_PROPS = [
   'marginInline',
 ];
 
+const GAP_PROPS = ['gap', 'gapColumn', 'gapRow'];
+
 const FLEX_PROPS = ['flexDirection', 'alignItems', 'justifyContent'];
 
 export function filterProps<T extends ElementType>(
   props: ComponentPropsWithoutRef<T>,
 ) {
   return Object.keys(props).reduce((result, current) => {
-    if (![...FLEX_PROPS, ...SPACING_PROPS].includes(current)) {
+    if (
+      ![...FLEX_PROPS, ...SPACING_PROPS, ...GAP_PROPS, 'gridColumns'].includes(
+        current,
+      )
+    ) {
       return { ...result, [current]: props[current] };
     }
     return result;
   }, {});
 }
 
-export function spacingProperties({
-  gap,
-  gapColumn,
-  gapRow,
-  padding,
-  paddingBlock,
-  paddingInline,
-  margin,
-  marginBlock,
-  marginInline,
-}: SpacingProps) {
+export function gapProperties({ gap, gapColumn, gapRow }: GapProps) {
   return {
     'data-gap-compact': typeof gap === 'string' ? gap : gap?.compact,
     'data-gap-medium': typeof gap !== 'string' ? gap?.medium : undefined,
@@ -65,6 +64,18 @@ export function spacingProperties({
       typeof gapRow !== 'string' ? gapRow?.large : undefined,
     'data-row-gap-xlarge':
       typeof gapRow !== 'string' ? gapRow?.xlarge : undefined,
+  };
+}
+
+export function spacingProperties({
+  padding,
+  paddingBlock,
+  paddingInline,
+  margin,
+  marginBlock,
+  marginInline,
+}: SpacingProps) {
+  return {
     'data-padding-compact':
       typeof padding === 'string' ? padding : padding?.compact,
     'data-padding-medium':
@@ -169,5 +180,18 @@ export function flexProperties({
       typeof justifyContent !== 'string' ? justifyContent?.large : undefined,
     'data-justify-content-xlarge':
       typeof justifyContent !== 'string' ? justifyContent?.xlarge : undefined,
+  };
+}
+
+export function gridProperties({
+  query,
+}: Readonly<{ query: GridColumnSize | AttributeQueries<GridColumnSize> }>) {
+  return {
+    'data-grid-compact': typeof query === 'number' ? query : query.compact,
+    'data-grid-medium': typeof query !== 'number' ? query.medium : undefined,
+    'data-grid-expanded':
+      typeof query !== 'number' ? query.expanded : undefined,
+    'data-grid-large': typeof query !== 'number' ? query.large : undefined,
+    'data-grid-xlarge': typeof query !== 'number' ? query.xlarge : undefined,
   };
 }

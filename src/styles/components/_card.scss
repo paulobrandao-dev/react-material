@@ -1,4 +1,6 @@
 @use '../mixin';
+@use '../spacing';
+@use '../max-content';
 
 %card-style {
   border-radius: var(--shape-md);
@@ -10,10 +12,18 @@
 .material-card {
   &-elevated {
     @extend %card-style;
+    @extend %spacing-rules;
+    @extend %max-content-styles;
     background-color: var(--color-surface-container-low);
     box-shadow: var(--elevation-1);
 
     @include mixin.unify-parent('button') {
+      &:hover {
+        box-shadow: var(--elevation-2);
+      }
+    }
+
+    @include mixin.unify-parent('a') {
       &:hover {
         box-shadow: var(--elevation-2);
       }
@@ -28,9 +38,17 @@
 
   &-filled {
     @extend %card-style;
+    @extend %spacing-rules;
+    @extend %max-content-styles;
     background-color: var(--color-surface-container-highest);
 
     @include mixin.unify-parent('button') {
+      &:hover {
+        box-shadow: var(--elevation-1);
+      }
+    }
+
+    @include mixin.unify-parent('a') {
       &:hover {
         box-shadow: var(--elevation-1);
       }
@@ -45,10 +63,18 @@
 
   &-outlined {
     @extend %card-style;
+    @extend %spacing-rules;
+    @extend %max-content-styles;
     background-color: var(--color-surface);
     border: 1px solid var(--color-outline);
 
     @include mixin.unify-parent('button') {
+      &:hover {
+        box-shadow: var(--elevation-1);
+      }
+    }
+
+    @include mixin.unify-parent('a') {
       &:hover {
         box-shadow: var(--elevation-1);
       }

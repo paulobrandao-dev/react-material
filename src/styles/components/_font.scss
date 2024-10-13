@@ -1,3 +1,5 @@
+@use '../spacing';
+
 %typography-style {
   &[data-color='primary'] {
     color: var(--color-primary);
@@ -85,20 +87,21 @@
 }
 
 .material-typography {
-  font: var(--text-body-large);
-
   &-display {
     &-large {
       font: var(--text-display-large);
       @extend %typography-style;
+      @extend %spacing-rules;
     }
     &-medium {
       font: var(--text-display-medium);
       @extend %typography-style;
+      @extend %spacing-rules;
     }
     &-small {
       font: var(--text-display-small);
       @extend %typography-style;
+      @extend %spacing-rules;
     }
   }
 
@@ -106,14 +109,17 @@
     &-large {
       font: var(--text-headline-large);
       @extend %typography-style;
+      @extend %spacing-rules;
     }
     &-medium {
       font: var(--text-headline-medium);
       @extend %typography-style;
+      @extend %spacing-rules;
     }
     &-small {
       font: var(--text-headline-small);
       @extend %typography-style;
+      @extend %spacing-rules;
     }
   }
 
@@ -121,14 +127,17 @@
     &-large {
       font: var(--text-title-large);
       @extend %typography-style;
+      @extend %spacing-rules;
     }
     &-medium {
       font: var(--text-title-medium);
       @extend %typography-style;
+      @extend %spacing-rules;
     }
     &-small {
       font: var(--text-title-small);
       @extend %typography-style;
+      @extend %spacing-rules;
     }
   }
 
@@ -136,14 +145,17 @@
     &-large {
       font: var(--text-body-large);
       @extend %typography-style;
+      @extend %spacing-rules;
     }
     &-medium {
       font: var(--text-body-medium);
       @extend %typography-style;
+      @extend %spacing-rules;
     }
     &-small {
       font: var(--text-body-small);
       @extend %typography-style;
+      @extend %spacing-rules;
     }
   }
 
@@ -151,14 +163,17 @@
     &-large {
       font: var(--text-label-large);
       @extend %typography-style;
+      @extend %spacing-rules;
     }
     &-medium {
       font: var(--text-label-medium);
       @extend %typography-style;
+      @extend %spacing-rules;
     }
     &-small {
       font: var(--text-label-small);
       @extend %typography-style;
+      @extend %spacing-rules;
     }
   }
 }

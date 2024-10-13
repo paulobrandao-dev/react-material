@@ -1,10 +1,4 @@
-export interface GridColumnQueries {
-  compact?: 1 | 2 | 3 | 4;
-  medium?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
-  expanded?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
-  large?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
-  xlarge?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
-}
+import { AttributeQueries, GridColumnSize } from '../components/types';
 
 export function gridColumnProps({
   compact,
@@ -12,7 +6,7 @@ export function gridColumnProps({
   expanded,
   large,
   xlarge,
-}: GridColumnQueries) {
+}: AttributeQueries<GridColumnSize>) {
   return {
     'data-grid-compact': compact,
     'data-grid-medium': medium,
