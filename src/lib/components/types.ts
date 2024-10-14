@@ -49,3 +49,16 @@ export type FlexAlignProps = {
 };
 
 export type GridColumnSize = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+
+export type ShapeSize =
+  | 'xs'
+  | 'xs-top'
+  | 'sm'
+  | 'md'
+  | 'lg'
+  | 'lg-start'
+  | 'lg-end'
+  | 'lg-top'
+  | 'xl'
+  | 'xl-top'
+  | 'circle';

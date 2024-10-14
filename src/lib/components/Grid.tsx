@@ -12,6 +12,7 @@ import {
   AttributeQueries,
   GapProps,
   GridColumnSize,
+  ShapeSize,
   SpacingProps,
 } from './types';
 
@@ -21,6 +22,7 @@ export type GridProps<T extends ElementType> = HTMLAttributes<HTMLElement> &
     as?: T;
     gridColumns?: GridColumnSize | AttributeQueries<GridColumnSize>;
     maxWidth?: 'compact' | 'medium' | 'expanded' | 'large';
+    shape?: ShapeSize;
   };
 
 export function Grid<T extends ElementType>({
@@ -28,6 +30,7 @@ export function Grid<T extends ElementType>({
   className,
   gridColumns,
   maxWidth,
+  shape,
   ...props
 }: GridProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof GridProps<T>>) {
   const ComponentElement = as || 'div';
@@ -36,6 +39,7 @@ export function Grid<T extends ElementType>({
     <ComponentElement
       className={clsx('material-grid', className)}
       data-max-width={maxWidth ?? undefined}
+      data-shape={shape ?? undefined}
       {...spacingProperties(props)}
       {...gapProperties(props)}
       {...(gridColumns ? gridProperties({ query: gridColumns }) : {})}

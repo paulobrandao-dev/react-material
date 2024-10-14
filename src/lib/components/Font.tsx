@@ -29,6 +29,7 @@ export type FontProps<T extends ElementType> = HTMLAttributes<HTMLSpanElement> &
       | 'inverse-primary'
       | 'on-inverse-surface';
     textAlign?: 'left' | 'right' | 'center' | 'justify';
+    textTransform?: 'uppercase' | 'lowercase' | 'capitalize';
   };
 
 export function Font<T extends ElementType>({
@@ -37,6 +38,7 @@ export function Font<T extends ElementType>({
   scale = 'large',
   color,
   textAlign,
+  textTransform,
   className,
   ...props
 }: FontProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof FontProps<T>>) {
@@ -46,6 +48,7 @@ export function Font<T extends ElementType>({
       className={clsx(`material-typography-${variant}-${scale}`, className)}
       data-color={color ?? undefined}
       data-align={textAlign ?? undefined}
+      data-transform={textTransform ?? undefined}
       {...spacingProperties(props)}
       {...filterProps(props)}
     />

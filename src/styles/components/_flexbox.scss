@@ -1,6 +1,7 @@
 @use '../mixin';
 @use '../spacing';
 @use '../max-content';
+@use '../shape';
 
 @mixin flex-direction-rules($breakpoint) {
   &[data-direction-#{$breakpoint}='row'] {
@@ -63,6 +64,7 @@
   display: flex;
   @extend %spacing-rules;
   @extend %max-content-styles;
+  @extend %shape-style;
 
   @media screen and (min-width: 0) {
     @include flex-direction-rules('compact');

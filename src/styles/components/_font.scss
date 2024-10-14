@@ -84,6 +84,18 @@
   &[data-align='justify'] {
     text-align: justify;
   }
+
+  &[data-transform='uppercase'] {
+    text-transform: uppercase;
+  }
+
+  &[data-transform='lowercase'] {
+    text-transform: lowercase;
+  }
+
+  &[data-transform='capitalize'] {
+    text-transform: capitalize;
+  }
 }
 
 .material-typography {

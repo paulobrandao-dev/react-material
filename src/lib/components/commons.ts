@@ -27,9 +27,13 @@ export function filterProps<T extends ElementType>(
 ) {
   return Object.keys(props).reduce((result, current) => {
     if (
-      ![...FLEX_PROPS, ...SPACING_PROPS, ...GAP_PROPS, 'gridColumns'].includes(
-        current,
-      )
+      ![
+        ...FLEX_PROPS,
+        ...SPACING_PROPS,
+        ...GAP_PROPS,
+        'gridColumns',
+        'shape',
+      ].includes(current)
     ) {
       return { ...result, [current]: props[current] };
     }

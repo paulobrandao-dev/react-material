@@ -1,6 +1,7 @@
 @use '../mixin';
 @use '../spacing';
 @use '../max-content';
+@use '../shape';
 
 @mixin grid-item-rules($sizeName) {
   @for $i from 1 to 13 {
@@ -18,6 +19,7 @@
   grid-template-columns: repeat(12, 1fr);
   @extend %spacing-rules;
   @extend %max-content-styles;
+  @extend %shape-style;
 
   @media screen and (min-width: 0) {
     @include grid-item-rules('compact');

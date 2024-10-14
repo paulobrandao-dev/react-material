@@ -14,6 +14,7 @@ import {
   FlexAlignProps,
   GapProps,
   GridColumnSize,
+  ShapeSize,
   SpacingProps,
 } from './types';
 
@@ -24,12 +25,14 @@ export type FlexboxProps<T extends ElementType> = HTMLAttributes<HTMLElement> &
     as?: T;
     gridColumns?: GridColumnSize | AttributeQueries<GridColumnSize>;
     maxWidth?: 'compact' | 'medium' | 'expanded' | 'large';
+    shape?: ShapeSize;
   };
 
 export function Flexbox<T extends ElementType>({
   as,
   gridColumns,
   maxWidth,
+  shape,
   className,
   ...props
 }: FlexboxProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof FlexboxProps<T>>) {
@@ -38,6 +41,7 @@ export function Flexbox<T extends ElementType>({
     <ComponentElement
       className={clsx('material-flexbox', className)}
       data-max-width={maxWidth ?? undefined}
+      data-shape={shape ?? undefined}
       {...flexProperties(props)}
       {...spacingProperties(props)}
       {...gapProperties(props)}

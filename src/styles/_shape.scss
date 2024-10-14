@@ -1,0 +1,35 @@
+%shape-style {
+  &[data-shape='xs'] {
+    border-radius: var(--shape-xs);
+  }
+  &[data-shape='xs-top'] {
+    border-radius: var(--shape-xs-top);
+  }
+  &[data-shape='sm'] {
+    border-radius: var(--shape-sm);
+  }
+  &[data-shape='md'] {
+    border-radius: var(--shape-md);
+  }
+  &[data-shape='lg'] {
+    border-radius: var(--shape-lg);
+  }
+  &[data-shape='lg-start'] {
+    border-radius: var(--shape-lg-start);
+  }
+  &[data-shape='lg-end'] {
+    border-radius: var(--shape-lg-end);
+  }
+  &[data-shape='lg-top'] {
+    border-radius: var(--shape-lg-top);
+  }
+  &[data-shape='xl'] {
+    border-radius: var(--shape-xl);
+  }
+  &[data-shape='xl-top'] {
+    border-radius: var(--shape-xl-top);
+  }
+  &[data-shape='circle'] {
+    border-radius: var(--shape-circle);
+  }
+}
