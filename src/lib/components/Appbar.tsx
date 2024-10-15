@@ -10,7 +10,7 @@ import {
   useMemo,
   useState,
 } from 'react';
-import Box from './Box';
+import { Box } from './Box';
 
 export type AppbarProps<T extends ElementType> = Omit<
   HTMLAttributes<HTMLElement>,

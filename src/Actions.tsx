@@ -1,5 +1,4 @@
-import { Button, Dialog, MaterialSymbols, useDialogControl } from './lib';
-import Box from './lib/components/Box';
+import { Box, Button, Dialog, MaterialSymbols, useDialogControl } from './lib';
 
 export default function SectionActions({ hash }: Readonly<{ hash: string }>) {
   const { showDialog } = useDialogControl();

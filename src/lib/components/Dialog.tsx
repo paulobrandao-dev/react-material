@@ -3,7 +3,7 @@
 import { clsx } from 'clsx';
 import { HTMLAttributes, ReactNode, useRef } from 'react';
 import { useMediaQuery } from '../hooks/useMediaQuery';
-import Box from './Box';
+import { Box } from './Box';
 import { Button } from './Button';
 import { MaterialSymbols } from './Icon';
 import { IconButton } from './IconButton';

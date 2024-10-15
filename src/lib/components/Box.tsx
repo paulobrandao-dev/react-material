@@ -43,7 +43,7 @@ export type BoxProps<T extends ElementType> = ComponentPropsWithoutRef<T> &
     stateLayer?: boolean;
   };
 
-export default function Box<T extends ElementType>({
+export function Box<T extends ElementType>({
   as,
   display,
   flexDirection,

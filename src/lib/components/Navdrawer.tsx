@@ -8,7 +8,7 @@ import {
   ReactNode,
 } from 'react';
 import { useMediaQuery } from '../hooks/useMediaQuery';
-import Box from './Box';
+import { Box } from './Box';
 import { Divider } from './Divider';
 
 export type NavdrawerProps<T extends ElementType> = Omit<

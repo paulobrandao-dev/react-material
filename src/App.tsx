@@ -3,6 +3,7 @@ import SectionActions from './Actions';
 import './App.css';
 import {
   Appbar,
+  Box,
   IconButton,
   MaterialSymbols,
   Navbar,
@@ -13,7 +14,6 @@ import {
   useMediaQuery,
   usePopoverControl,
 } from './lib';
-import Box from './lib/components/Box';
 import { toggleThemeColorScheme } from './lib/utils';
 import SectionStyles from './Styles';
 

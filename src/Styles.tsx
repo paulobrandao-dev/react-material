@@ -1,5 +1,4 @@
-import { Card, MaterialSymbols } from './lib';
-import Box from './lib/components/Box';
+import { Box, Card, MaterialSymbols } from './lib';
 
 export default function SectionStyles({ hash }: Readonly<{ hash: string }>) {
   return (

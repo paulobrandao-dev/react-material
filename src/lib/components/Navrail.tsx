@@ -7,7 +7,7 @@ import {
   HTMLAttributes,
   ReactNode,
 } from 'react';
-import Box from './Box';
+import { Box } from './Box';
 
 export type NavrailProps<T extends ElementType> =
   HTMLAttributes<HTMLElement> & {
