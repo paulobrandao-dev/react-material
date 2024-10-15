@@ -3,10 +3,9 @@
 import { clsx } from 'clsx';
 import { ComponentPropsWithoutRef, ElementType, HTMLAttributes } from 'react';
 
-export interface NavbarProps<T extends ElementType>
-  extends HTMLAttributes<HTMLElement> {
+export type NavbarProps<T extends ElementType> = HTMLAttributes<HTMLElement> & {
   as?: T;
-  color?:
+  containerColor?:
     | 'primary'
     | 'primary-container'
     | 'secondary'
@@ -14,20 +13,25 @@ export interface NavbarProps<T extends ElementType>
     | 'tertiary'
     | 'tertiary-container'
     | 'inverse-surface';
-}
+};
 
 export function Navbar<T extends ElementType>({
   as,
-  color,
+  containerColor,
   className,
   ...props
 }: NavbarProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof NavbarProps<T>>) {
-  const ComponentElement = as || 'nav';
+  const Surface = as || 'nav';
 
   return (
-    <ComponentElement
-      className={clsx('material-navbar', className)}
-      data-color={color ?? undefined}
+    <Surface
+      className={clsx(
+        'material-navbar',
+        {
+          [`container-color-${containerColor}`]: containerColor !== undefined,
+        },
+        className,
+      )}
       {...props}
     />
   );

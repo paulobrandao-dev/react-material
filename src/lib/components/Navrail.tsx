@@ -5,56 +5,84 @@ import {
   ComponentPropsWithoutRef,
   ElementType,
   HTMLAttributes,
-  ReactNode
+  ReactNode,
 } from 'react';
+import Box from './Box';
 
-export interface NavrailProps<T extends ElementType>
-  extends HTMLAttributes<HTMLElement> {
-  as?: T;
-  hideOnLarge?: boolean;
-  startNode?: ReactNode;
-  endNode?: ReactNode;
-  color?:
-    | 'primary'
-    | 'primary-container'
-    | 'secondary'
-    | 'secondary-container'
-    | 'tertiary'
-    | 'tertiary-container'
-    | 'inverse-surface';
-}
+export type NavrailProps<T extends ElementType> =
+  HTMLAttributes<HTMLElement> & {
+    as?: T;
+    hideOnLarge?: boolean;
+    startNode?: ReactNode;
+    endNode?: ReactNode;
+    containerColor?:
+      | 'primary'
+      | 'primary-container'
+      | 'secondary'
+      | 'secondary-container'
+      | 'tertiary'
+      | 'tertiary-container'
+      | 'inverse-surface';
+  };
 
 export function Navrail<T extends ElementType>({
   as,
   hideOnLarge,
   startNode,
   endNode,
-  color,
+  containerColor,
   className,
   children,
   ...props
 }: NavrailProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof NavrailProps<T>>) {
-  const ComponentElement = as || 'nav';
+  const Surface = as || 'nav';
+
   return (
-    <ComponentElement
-      className={clsx('material-navrail', className)}
-      data-hide-on-large={hideOnLarge ? '' : undefined}
-      data-color={color ?? undefined}
+    <Surface
+      className={clsx(
+        'material-navrail',
+        {
+          [`container-color-${containerColor}`]: containerColor !== undefined,
+          'hide-on-large': hideOnLarge,
+        },
+        className,
+      )}
       {...props}
     >
       {startNode && (
-        <div role="toolbar" className="start">
+        <Box
+          as="div"
+          role="toolbar"
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          justifyContent="flex-start"
+        >
           {startNode}
-        </div>
+        </Box>
       )}
-      <div className="list" role="presentation">
+      <Box
+        as="div"
+        role="presentation"
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        gap="md"
+      >
         {children}
-      </div>
+      </Box>
       {endNode && (
-        <div role="toolbar" className="end">
+        <Box
+          as="div"
+          role="toolbar"
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          justifyContent="flex-end"
+        >
           {endNode}
-        </div>
+        </Box>
       )}
-    </ComponentElement>
+    </Surface>
   );
 }

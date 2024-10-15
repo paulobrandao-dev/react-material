@@ -1,10 +1,8 @@
 import { AnchorHTMLAttributes, useEffect, useState } from 'react';
 import SectionActions from './Actions';
+import './App.css';
 import {
   Appbar,
-  Divider,
-  Flexbox,
-  Font,
   IconButton,
   MaterialSymbols,
   Navbar,
@@ -15,10 +13,9 @@ import {
   useMediaQuery,
   usePopoverControl,
 } from './lib';
+import Box from './lib/components/Box';
 import { toggleThemeColorScheme } from './lib/utils';
 import SectionStyles from './Styles';
-
-import './App.css';
 
 const HashLink = ({
   hash,
@@ -117,28 +114,7 @@ function App() {
           active={hash === '#feedback'}
         />
       </Navrail>
-      <Navdrawer
-        id="navdrawer"
-        header={
-          media.isGreaterThanExpanded ? (
-            <Flexbox
-              flexDirection="row"
-              alignItems="center"
-              justifyContent="flex-start"
-              gap="md"
-            >
-              <img
-                src="/react-material.png"
-                alt="Logo React Material"
-                id="logo_appbar"
-              />
-              <Divider vertical />
-              <Font variant="title">React Material</Font>
-            </Flexbox>
-          ) : undefined
-        }
-        standard
-      >
+      <Navdrawer id="navdrawer" standard>
         <Navlink
           as={HashLink}
           hash="home"
@@ -215,24 +191,19 @@ function App() {
           onClick={() => hidePopover('navdrawer')}
         />
       </Navdrawer>
-      <Flexbox as="main" flexDirection="column" alignItems="stretch">
+      <Box as="main" display="flex" flexDirection="column" alignItems="stretch">
         <Appbar
-          variant="medium"
-          headline={
-            media.isGreaterThanCompact && media.isLessThanLarge
-              ? 'React Material'
-              : undefined
-          }
+          variant="small"
+          headline="React Material"
+          fluid
           startNode={
-            media.isLessThanLarge ? (
-              <img
-                src="/react-material.png"
-                alt="Logo React Material"
-                id="logo_appbar"
-              />
-            ) : undefined
+            <img
+              src="/react-material.png"
+              alt="Logo React Material"
+              id="logo_appbar"
+            />
           }
-          sticky={media.isCompact}
+          sticky
           endNode={
             media.isCompact || media.isGreaterThanExpanded ? (
               <IconButton
@@ -255,7 +226,7 @@ function App() {
         <article hidden={hash !== '#home'} />
         <SectionStyles hash={hash} />
         <SectionActions hash={hash} />
-      </Flexbox>
+      </Box>
       <Navbar>
         <Navlink
           as={HashLink}

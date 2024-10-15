@@ -7,14 +7,14 @@ import {
   ElementType,
   ReactNode,
 } from 'react';
-import { Font } from './Font';
+import Box from './Box';
 
-export interface ButtonProps<T extends ElementType>
-  extends ButtonHTMLAttributes<HTMLButtonElement> {
-  as?: T;
-  icon?: ReactNode;
-  variant?: 'text' | 'outlined' | 'tonal' | 'filled' | 'elevated';
-}
+export type ButtonProps<T extends ElementType> =
+  ButtonHTMLAttributes<HTMLButtonElement> & {
+    as?: T;
+    icon?: ReactNode;
+    variant?: 'text' | 'outlined' | 'tonal' | 'filled' | 'elevated';
+  };
 
 export function Button<T extends ElementType>({
   as,
@@ -24,16 +24,20 @@ export function Button<T extends ElementType>({
   className,
   ...props
 }: ButtonProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof ButtonProps<T>>) {
-  const ComponentElement = as || 'button';
+  const Surface = as || 'button';
   return (
-    <ComponentElement
-      className={clsx(`material-button-${variant}`, className)}
+    <Surface
+      className={clsx('material-button', `variant-${variant}`, className)}
       {...props}
     >
-      {icon && <span className="icon">{icon}</span>}
-      <Font variant="label" scale="large">
+      {icon && (
+        <Box as="span" role="presentation" className="icon">
+          {icon}
+        </Box>
+      )}
+      <Box as="span" fontScale="label-large">
         {children}
-      </Font>
-    </ComponentElement>
+      </Box>
+    </Surface>
   );
 }

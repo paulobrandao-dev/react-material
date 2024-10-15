@@ -27,8 +27,7 @@ describe('Navdrawer component', () => {
     );
     const drawer = result.getByRole('navigation');
     expect(drawer.hasAttribute('popover')).toBeTruthy();
-    expect(drawer.className).toEqual('material-navdrawer');
+    expect(drawer.className).toEqual('material-navdrawer standard');
     expect(drawer.firstElementChild?.tagName).toEqual('HEADER');
-    expect(drawer.dataset.standard).not.toBeUndefined();
   });
 });

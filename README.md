@@ -93,7 +93,6 @@ Setup done! Just start to make use.
 This list is organized according to [Material Docs](https://m3.material.io/components).
 
 - Style
-  - [x] ~~Font (typography)~~
   - [x] ~~MaterialSymbols~~
 - Actions
   - [x] ~~Button~~
@@ -134,8 +133,7 @@ This list is organized according to [Material Docs](https://m3.material.io/compo
   - [ ] SelectField (__coming soon__)
   - [ ] TextField (__coming soon__)
 - Layout
-  - [x] ~~Grid~~
-  - [x] ~~Flexbox~~
+  - [x] ~~Box~~
 
 ## Utils
 

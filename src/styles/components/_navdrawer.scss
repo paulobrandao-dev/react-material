@@ -59,7 +59,7 @@
     }
   }
 
-  &[data-standard] {
+  &.standard {
     background-color: var(--color-surface);
 
     &:not([popover]) {
@@ -73,19 +73,7 @@
     }
   }
 
-  > header {
-    padding-inline: var(--spacing-md);
-  }
-
   > [role='presentation'] {
-    padding-inline: var(--spacing-md);
-
-    > .material-navdrawer-headline {
-      > .headline {
-        padding-block: var(--spacing-lg);
-      }
-    }
-
     > .material-navlink {
       flex-direction: row;
       width: 100%;

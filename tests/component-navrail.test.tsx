@@ -16,7 +16,7 @@ describe('Navrail component', () => {
   test('variations', () => {
     const result = render(
       <Navrail
-        color="primary"
+        containerColor="primary"
         startNode={<span className="pseudo-button" />}
         endNode={<span className="pseudo-button" />}
       >
@@ -34,7 +34,7 @@ describe('Navrail component', () => {
       </Navrail>,
     );
     const rail = result.getByRole('navigation');
-    expect(rail.dataset.color).toEqual('primary');
+    expect(rail.classList.contains('container-color-primary')).toBeTruthy();
     expect(rail.querySelectorAll('a').length).toEqual(2);
   });
 });

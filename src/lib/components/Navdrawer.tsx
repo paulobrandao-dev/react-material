@@ -8,17 +8,18 @@ import {
   ReactNode,
 } from 'react';
 import { useMediaQuery } from '../hooks/useMediaQuery';
+import Box from './Box';
 import { Divider } from './Divider';
-import { Flexbox } from './Flexbox';
-import { Font } from './Font';
 
-export interface NavdrawerProps<T extends ElementType>
-  extends Omit<HTMLAttributes<HTMLElement>, 'id'> {
+export type NavdrawerProps<T extends ElementType> = Omit<
+  HTMLAttributes<HTMLElement>,
+  'id'
+> & {
   id: string;
   as?: T;
   header?: ReactNode;
   standard?: boolean;
-}
+};
 
 export function Navdrawer<T extends ElementType>({
   id,
@@ -30,22 +31,27 @@ export function Navdrawer<T extends ElementType>({
   ...props
 }: NavdrawerProps<T> &
   Omit<ComponentPropsWithoutRef<T>, keyof NavdrawerProps<T>>) {
-  const ComponentElement = as || 'nav';
+  const Surface = as || 'nav';
   const media = useMediaQuery();
 
   return (
-    <ComponentElement
-      className={clsx('material-navdrawer', className)}
-      data-standard={standard ? '' : undefined}
+    <Surface
+      className={clsx('material-navdrawer', { standard }, className)}
       id={id}
       popover={
         (standard && media.isLessThanLarge) || !standard ? '' : undefined
       }
       {...props}
     >
-      {header && <header>{header}</header>}
-      <div role="presentation">{children}</div>
-    </ComponentElement>
+      {header && (
+        <Box as="header" paddingInline="md">
+          {header}
+        </Box>
+      )}
+      <Box as="div" role="presentation" paddingInline="md">
+        {children}
+      </Box>
+    </Surface>
   );
 }
 
@@ -54,21 +60,23 @@ export function NavdrawerHeadline({
   divider,
 }: Readonly<{ text: string; divider?: boolean }>) {
   return (
-    <Flexbox
+    <Box
+      as="div"
+      display="flex"
       flexDirection="column"
       alignItems="flex-start"
       paddingInline="lg"
       className="material-navdrawer-headline"
     >
       {divider && <Divider />}
-      <Font
-        variant="title"
-        scale="small"
-        color="on-surface-variant"
-        className="headline"
+      <Box
+        as="span"
+        fontScale="title-small"
+        textColor="on-surface-variant"
+        paddingBlock="lg"
       >
         {text}
-      </Font>
-    </Flexbox>
+      </Box>
+    </Box>
   );
 }

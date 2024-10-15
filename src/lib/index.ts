@@ -4,12 +4,10 @@ export * from './hooks/usePopoverControl';
 export * from './hooks/useDialogControl';
 
 // components
+export * from './components/Box';
 export * from './components/Button';
-export * from './components/Font';
 export * from './components/Appbar';
 export * from './components/Icon';
-export * from './components/Grid';
-export * from './components/Flexbox';
 export * from './components/Navrail';
 export * from './components/Navlink';
 export * from './components/IconButton';

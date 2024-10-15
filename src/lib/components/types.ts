@@ -62,3 +62,69 @@ export type ShapeSize =
   | 'xl'
   | 'xl-top'
   | 'circle';
+
+export type ContainerColors =
+  | 'surface'
+  | 'surface-variant'
+  | 'surface-container-lowest'
+  | 'surface-container-low'
+  | 'surface-container'
+  | 'surface-container-high'
+  | 'surface-container-highest'
+  | 'inverse-surface'
+  | 'primary-container'
+  | 'secondary-container'
+  | 'tertiary-container'
+  | 'error-container'
+  | 'primary'
+  | 'secondary'
+  | 'tertiary'
+  | 'error';
+
+export type TextColors =
+  | 'on-surface'
+  | 'on-surface-variant'
+  | 'on-inverse-surface'
+  | 'on-primary-container'
+  | 'on-secondary-container'
+  | 'on-tertiary-container'
+  | 'on-error-container'
+  | 'on-primary'
+  | 'on-secondary'
+  | 'on-tertiary'
+  | 'on-error'
+  | 'primary'
+  | 'secondary'
+  | 'tertiary'
+  | 'error'
+  | 'inverse-primary';
+
+export type TextAlign = 'left' | 'center' | 'right' | 'justify';
+
+export type DisplayValues = 'block' | 'flex' | 'grid' | 'inline' | 'none';
+
+export type TextScales =
+  | 'display-large'
+  | 'display-medium'
+  | 'display-small'
+  | 'headline-large'
+  | 'headline-medium'
+  | 'headline-small'
+  | 'title-large'
+  | 'title-medium'
+  | 'title-small'
+  | 'body-large'
+  | 'body-medium'
+  | 'body-small'
+  | 'label-large'
+  | 'label-medium'
+  | 'label-small';
+
+export type MaxWidthValues =
+  | 'compact'
+  | 'medium'
+  | 'expanded'
+  | 'large'
+  | 'max-content'
+  | 'min-content'
+  | 'fit-content';

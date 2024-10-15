@@ -10,14 +10,16 @@ import {
   useMemo,
   useState,
 } from 'react';
-import { Font } from './Font';
+import Box from './Box';
 
-export interface AppbarProps<T extends ElementType>
-  extends Omit<HTMLAttributes<HTMLElement>, 'children'> {
+export type AppbarProps<T extends ElementType> = Omit<
+  HTMLAttributes<HTMLElement>,
+  'children'
+> & {
   as?: T;
   sticky?: boolean;
   variant?: 'center-aligned' | 'small' | 'medium' | 'large';
-  color?:
+  containerColor?:
     | 'primary'
     | 'primary-container'
     | 'secondary'
@@ -29,7 +31,7 @@ export interface AppbarProps<T extends ElementType>
   headline?: string;
   endNode?: ReactNode;
   fluid?: boolean;
-}
+};
 
 export function Appbar<T extends ElementType>({
   as,
@@ -38,12 +40,12 @@ export function Appbar<T extends ElementType>({
   startNode,
   headline,
   endNode,
-  color,
+  containerColor,
   fluid,
   className,
   ...props
 }: AppbarProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof AppbarProps<T>>) {
-  const ComponentElement = as || 'header';
+  const Surface = as || 'header';
   const [scrolled, setScrolled] = useState<boolean>(false);
 
   const titleBelow = useMemo(() => {
@@ -63,42 +65,84 @@ export function Appbar<T extends ElementType>({
   }, [sticky]);
 
   return (
-    <ComponentElement
-      className={clsx(`material-appbar-${variant}`, className)}
-      data-sticky={sticky ? '' : undefined}
-      data-scrolled={scrolled ? '' : undefined}
-      data-color={color ?? undefined}
-      data-fluid={fluid ? '' : undefined}
+    <Surface
+      className={clsx(
+        'material-appbar',
+        `variant-${variant}`,
+        {
+          sticky,
+          scrolled,
+          [`container-color-${containerColor}`]: containerColor !== undefined,
+        },
+        className,
+      )}
       {...props}
     >
-      <div role="toolbar">
-        {startNode && <div className="start-node">{startNode}</div>}
-        <div role="presentation" className="headline">
-          {headline && (
-            <Font
-              as={titleBelow ? 'span' : 'h1'}
-              variant="title"
-              scale="large"
+      <Box
+        as="div"
+        role="toolbar"
+        display="flex"
+        alignItems="center"
+        fullWidth
+        maxWidth={!fluid ? 'large' : undefined}
+        marginBlock="none"
+        marginInline="auto"
+        paddingInline="sm"
+      >
+        {startNode && (
+          <Box
+            as="div"
+            role="presentation"
+            display="flex"
+            alignItems="center"
+            justifyContent="flex-start"
+          >
+            {startNode}
+          </Box>
+        )}
+        <Box
+          as="div"
+          role="presentation"
+          paddingInline="sm"
+          className="headline"
+        >
+          {((headline && !titleBelow) ||
+            (headline && titleBelow && scrolled)) && (
+            <Box
+              as="h1"
+              fontScale="title-large"
               textAlign={variant === 'center-aligned' ? 'center' : 'left'}
-              className={clsx({ hide: titleBelow && !scrolled })}
-              aria-hidden={titleBelow ? 'true' : undefined}
             >
               {headline}
-            </Font>
+            </Box>
           )}
-        </div>
-        {endNode && <div className="end-node">{endNode}</div>}
-      </div>
-      {titleBelow && headline && (
-        <Font
+        </Box>
+        {endNode && (
+          <Box
+            as="div"
+            role="presentation"
+            display="flex"
+            alignItems="center"
+            justifyContent="flex-end"
+          >
+            {endNode}
+          </Box>
+        )}
+      </Box>
+      {titleBelow && headline && !scrolled && (
+        <Box
           as="h1"
-          variant="headline"
-          scale={variant === 'large' ? 'medium' : 'small'}
-          className={clsx({ hide: scrolled })}
+          fontScale={variant === 'large' ? 'headline-medium' : 'headline-small'}
+          marginBlock="none"
+          marginInline="auto"
+          maxWidth={!fluid ? 'large' : undefined}
+          paddingBlock={variant === 'large' ? 'xl' : 'sm'}
+          paddingInline="lg"
+          fullWidth
         >
           {headline}
-        </Font>
+        </Box>
       )}
-    </ComponentElement>
+    </Surface>
   );
 }

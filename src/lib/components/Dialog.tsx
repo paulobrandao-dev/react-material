@@ -3,8 +3,8 @@
 import { clsx } from 'clsx';
 import { HTMLAttributes, ReactNode, useRef } from 'react';
 import { useMediaQuery } from '../hooks/useMediaQuery';
+import Box from './Box';
 import { Button } from './Button';
-import { Font } from './Font';
 import { MaterialSymbols } from './Icon';
 import { IconButton } from './IconButton';
 
@@ -39,26 +39,54 @@ export function Dialog({
     <dialog
       ref={self}
       id={id}
-      className={clsx('material-dialog', className)}
-      data-fullscreen-on-compact={fullscreenOnCompact ? '' : undefined}
+      className={clsx(
+        'material-dialog',
+        { 'fullscreen-on-compact': fullscreenOnCompact },
+        className,
+      )}
       {...props}
     >
-      <div role="presentation">
+      <Box
+        as="div"
+        role="presentation"
+        display="flex"
+        flexDirection="column"
+        fullWidth
+      >
         {(!fullscreenOnCompact || media.isGreaterThanCompact) && (
-          <header className="material-dialog-headline">
-            {icon && <div aria-hidden="true">{icon}</div>}
-            <Font
+          <Box
+            as="header"
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            gap="lg"
+            fullWidth
+            className="headline"
+          >
+            {icon && (
+              <Box as="div" role="presentation" className="icon">
+                {icon}
+              </Box>
+            )}
+            <Box
               as="h1"
-              variant="headline"
-              scale="small"
+              fontScale="headline-small"
               textAlign={icon ? 'center' : 'left'}
             >
               {headline}
-            </Font>
-          </header>
+            </Box>
+          </Box>
         )}
         {fullscreenOnCompact && media.isCompact && (
-          <header className="material-dialog-header">
+          <Box
+            as="header"
+            display="flex"
+            alignItems="center"
+            paddingInline="sm"
+            gap="sm"
+            fullWidth
+            className="header"
+          >
             <IconButton
               aria-label={cancelLabel}
               onClick={() => {
@@ -69,9 +97,9 @@ export function Dialog({
             >
               <MaterialSymbols icon="close" />
             </IconButton>
-            <Font as="h1" variant="title">
+            <Box as="h1" fontScale="title-large">
               {headline}
-            </Font>
+            </Box>
             <Button
               variant="text"
               onClick={() => {
@@ -82,11 +110,27 @@ export function Dialog({
             >
               {confirmLabel}
             </Button>
-          </header>
+          </Box>
         )}
-        <div className="material-dialog-content">{children}</div>
+        <Box
+          as="div"
+          className="content"
+          paddingInline={
+            fullscreenOnCompact && media.isCompact ? 'xl' : undefined
+          }
+          fullWidth
+        >
+          {children}
+        </Box>
         {(!fullscreenOnCompact || media.isGreaterThanCompact) && (
-          <footer className="material-dialog-actions">
+          <Box
+            as="footer"
+            display="flex"
+            alignItems="center"
+            justifyContent="flex-end"
+            gap="sm"
+            className="actions"
+          >
             <Button
               variant="text"
               onClick={() => {
@@ -107,9 +151,9 @@ export function Dialog({
             >
               {confirmLabel}
             </Button>
-          </footer>
+          </Box>
         )}
-      </div>
+      </Box>
     </dialog>
   );
 }

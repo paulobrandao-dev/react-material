@@ -34,10 +34,18 @@ describe('IconButton component', () => {
     const outlined = result.getByRole('button', { name: 'outlined' });
     const tonal = result.getByRole('button', { name: 'tonal' });
     const anchor = result.getByTestId('text_anchor');
-    expect(allDefault.className).toEqual('material-iconbutton-standard');
-    expect(filled.className).toEqual('material-iconbutton-filled');
-    expect(outlined.className).toEqual('material-iconbutton-outlined');
-    expect(tonal.className).toEqual('material-iconbutton-tonal');
+    expect(allDefault.className).toEqual(
+      'material-iconbutton variant-standard tooltip-at-bottom',
+    );
+    expect(filled.className).toEqual(
+      'material-iconbutton variant-filled tooltip-at-bottom',
+    );
+    expect(outlined.className).toEqual(
+      'material-iconbutton variant-outlined tooltip-at-bottom',
+    );
+    expect(tonal.className).toEqual(
+      'material-iconbutton variant-tonal tooltip-at-bottom',
+    );
     expect(anchor.tagName).toEqual('A');
     expect(anchor.firstElementChild).not.toBeNull();
   });

@@ -7,21 +7,10 @@
   gap: var(--spacing-xs);
 
   > .indicator {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 56px;
     height: 32px;
-    border-radius: var(--shape-lg);
     position: relative;
     @include mixin.state-layer;
-  }
-
-  &[aria-current='page'] {
-    > .indicator {
-      background-color: var(--color-secondary-container);
-      color: var(--color-on-secondary-container);
-    }
   }
 
   &:hover > .indicator {

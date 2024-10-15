@@ -1,6 +1,6 @@
 @use '../mixin';
 
-%iconbutton-style {
+.material-iconbutton {
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -28,73 +28,69 @@
   }
 
   &[aria-label] {
-    &[data-tooltip-top] {
+    &.tooltip-at-top {
       @include mixin.tooltip(0);
     }
 
-    &[data-tooltip-bottom] {
+    &.tooltip-at-bottom {
       @include mixin.tooltip(1);
     }
   }
-}
 
-.material-iconbutton {
-  &-standard {
-    @extend %iconbutton-style;
-    color: var(--color-on-surface-variant);
+  &.variant {
+    &-standard {
+      color: var(--color-on-surface-variant);
 
-    &[aria-pressed='true'] {
-      color: var(--color-primary);
-    }
-  }
-
-  &-outlined {
-    @extend %iconbutton-style;
-    color: var(--color-on-surface-variant);
-    border: 1px solid var(--color-outline);
-
-    &:disabled {
-      border-color: var(--color-outline-disabled);
+      &[aria-pressed='true'] {
+        color: var(--color-primary);
+      }
     }
 
-    &[aria-pressed='true'] {
-      background-color: var(--color-inverse-surface);
-      color: var(--color-on-inverse-surface);
-      border: none;
+    &-outlined {
+      color: var(--color-on-surface-variant);
+      border: 1px solid var(--color-outline);
+
+      &:disabled {
+        border-color: var(--color-outline-disabled);
+      }
+
+      &[aria-pressed='true'] {
+        background-color: var(--color-inverse-surface);
+        color: var(--color-on-inverse-surface);
+        border: none;
+
+        &:disabled {
+          background-color: var(--color-outline-disabled);
+        }
+      }
+    }
+
+    &-filled {
+      background-color: var(--color-primary);
+      color: var(--color-on-primary);
 
       &:disabled {
         background-color: var(--color-outline-disabled);
       }
-    }
-  }
 
-  &-filled {
-    @extend %iconbutton-style;
-    background-color: var(--color-primary);
-    color: var(--color-on-primary);
-
-    &:disabled {
-      background-color: var(--color-outline-disabled);
+      &[aria-pressed='false'] {
+        background-color: var(--color-surface-container-highest);
+        color: var(--color-primary);
+      }
     }
 
-    &[aria-pressed='false'] {
-      background-color: var(--color-surface-container-highest);
-      color: var(--color-primary);
-    }
-  }
+    &-tonal {
+      background-color: var(--color-secondary-container);
+      color: var(--color-on-secondary-container);
 
-  &-tonal {
-    @extend %iconbutton-style;
-    background-color: var(--color-secondary-container);
-    color: var(--color-on-secondary-container);
+      &:disabled {
+        background-color: var(--color-outline-disabled);
+      }
 
-    &:disabled {
-      background-color: var(--color-outline-disabled);
-    }
-
-    &[aria-pressed='false'] {
-      background-color: var(--color-surface-container-highest);
-      color: var(--color-on-surface-variant);
+      &[aria-pressed='false'] {
+        background-color: var(--color-surface-container-highest);
+        color: var(--color-on-surface-variant);
+      }
     }
   }
 }

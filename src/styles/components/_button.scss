@@ -1,6 +1,6 @@
 @use '../mixin';
 
-%button-style {
+.material-button {
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -18,7 +18,7 @@
     pointer-events: none;
   }
 
-  > span.icon {
+  > .icon {
     width: 24px;
     height: 24px;
     font-size: 24px;
@@ -43,58 +43,52 @@
       opacity: 0.38;
     }
   }
-}
-
-.material-button {
-  &-elevated {
-    @extend %button-style;
-    box-shadow: var(--elevation-1);
-    background-color: var(--color-surface-container-low);
-    color: var(--color-primary);
-
-    &:hover {
-      box-shadow: var(--elevation-2);
-    }
-  }
-
-  &-filled {
-    @extend %button-style;
-    background-color: var(--color-primary);
-    color: var(--color-on-primary);
-
-    &:hover {
+  &.variant {
+    &-elevated {
       box-shadow: var(--elevation-1);
+      background-color: var(--color-surface-container-low);
+      color: var(--color-primary);
+
+      &:hover {
+        box-shadow: var(--elevation-2);
+      }
     }
-  }
 
-  &-tonal {
-    @extend %button-style;
-    background-color: var(--color-secondary-container);
-    color: var(--color-on-secondary-container);
+    &-filled {
+      background-color: var(--color-primary);
+      color: var(--color-on-primary);
 
-    &:hover {
-      box-shadow: var(--elevation-1);
+      &:hover {
+        box-shadow: var(--elevation-1);
+      }
     }
-  }
 
-  &-outlined {
-    @extend %button-style;
-    border: 1px solid var(--color-outline);
-    color: var(--color-primary);
+    &-tonal {
+      background-color: var(--color-secondary-container);
+      color: var(--color-on-secondary-container);
 
-    &:disabled {
-      background-color: transparent;
-      border-color: rgba(22, 22, 22, 0.12);
+      &:hover {
+        box-shadow: var(--elevation-1);
+      }
     }
-  }
 
-  &-text {
-    @extend %button-style;
-    color: var(--color-primary);
-    padding-inline: var(--spacing-lg);
+    &-outlined {
+      border: 1px solid var(--color-outline);
+      color: var(--color-primary);
 
-    &:disabled {
-      background-color: transparent;
+      &:disabled {
+        background-color: transparent;
+        border-color: rgba(22, 22, 22, 0.12);
+      }
+    }
+
+    &-text {
+      color: var(--color-primary);
+      padding-inline: var(--spacing-lg);
+
+      &:disabled {
+        background-color: transparent;
+      }
     }
   }
 }

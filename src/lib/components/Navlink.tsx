@@ -7,18 +7,17 @@ import {
   ElementType,
   ReactNode,
 } from 'react';
-import { Font } from './Font';
+import Box from './Box';
 
-export interface NavlinkProps<A extends ElementType>
-  extends Omit<
-    AnchorHTMLAttributes<HTMLAnchorElement>,
-    'aria-current' | 'children'
-  > {
+export type NavlinkProps<A extends ElementType> = Omit<
+  AnchorHTMLAttributes<HTMLAnchorElement>,
+  'children'
+> & {
   label: string;
   icon: ReactNode;
   active?: boolean;
   as?: A;
-}
+};
 
 export function Navlink<T extends ElementType>({
   as,
@@ -28,17 +27,23 @@ export function Navlink<T extends ElementType>({
   className,
   ...props
 }: NavlinkProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof NavlinkProps<T>>) {
-  const ComponentElement = as || 'a';
+  const Surface = as || 'a';
   return (
-    <ComponentElement
-      aria-current={active ? 'page' : undefined}
-      className={clsx('material-navlink', className)}
-      {...props}
-    >
-      <span className="indicator">{icon}</span>
-      <Font as="span" variant="label" scale="medium">
+    <Surface className={clsx('material-navlink', className)} {...props}>
+      <Box
+        as="span"
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        shape="lg"
+        containerColor={active ? 'secondary-container' : undefined}
+        className="indicator"
+      >
+        {icon}
+      </Box>
+      <Box as="span" fontScale="label-medium">
         {label}
-      </Font>
-    </ComponentElement>
+      </Box>
+    </Surface>
   );
 }

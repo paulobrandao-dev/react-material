@@ -76,26 +76,18 @@ dialog.material-dialog {
   }
 
   > div[role='presentation'] {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
     height: 100%;
     max-height: 80dvh;
     overflow: hidden;
 
-    > header.material-dialog-headline {
+    > header.headline {
       flex-shrink: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: var(--shape-lg);
-      width: 100%;
 
       > h1 {
         width: 100%;
       }
 
-      > div[aria-hidden='true'] {
+      > [role='presentation'].icon {
         width: 24px;
         height: 24px;
         overflow: hidden;
@@ -103,24 +95,19 @@ dialog.material-dialog {
       }
     }
 
-    > div.material-dialog-content {
+    > div.content {
       flex: auto;
-      width: 100%;
       overflow: hidden auto;
       padding-block-start: var(--spacing-lg);
       padding-block-end: var(--spacing-xl);
     }
 
-    > footer.material-dialog-actions {
+    > footer.actions {
       flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: var(--spacing-sm);
     }
   }
 
-  &[data-fullscreen-on-compact] {
+  &.fullscreen-on-compact {
     @media screen and (max-width: 599px) {
       padding: 0;
       min-width: unset;
@@ -133,13 +120,8 @@ dialog.material-dialog {
       > div[role='presentation'] {
         max-height: unset;
 
-        > header.material-dialog-header {
-          width: 100%;
+        > header.header {
           height: 56px;
-          display: flex;
-          align-items: center;
-          padding-inline: var(--spacing-sm);
-          gap: var(--spacing-sm);
 
           > h1 {
             flex: auto;
@@ -147,10 +129,6 @@ dialog.material-dialog {
             overflow: hidden;
             text-overflow: ellipsis;
           }
-        }
-
-        > div.material-dialog-content {
-          padding: var(--spacing-xl);
         }
       }
     }

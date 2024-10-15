@@ -11,7 +11,7 @@ describe('Card component', () => {
       <Card
         data-testid="elevated"
         variant="elevated"
-        flexbox
+        display="flex"
         flexDirection="column"
       >
         <h1>Card elevated</h1>
@@ -19,8 +19,9 @@ describe('Card component', () => {
     );
     const card = result.getByTestId('elevated');
     expect(card.tagName).toEqual('DIV');
-    expect(card.className).toEqual('material-card-elevated material-flexbox');
-    expect(card.dataset.directionCompact).toEqual('column');
+    expect(card.className).toEqual(
+      'material-card variant-elevated display-compact-flex flex-direction-compact-column',
+    );
   });
 
   test('filled', () => {
@@ -29,7 +30,7 @@ describe('Card component', () => {
         as="article"
         data-testid="filled"
         variant="filled"
-        grid
+        display="grid"
         padding="lg"
       >
         <h1>Card filled</h1>
@@ -37,8 +38,9 @@ describe('Card component', () => {
     );
     const card = result.getByTestId('filled');
     expect(card.tagName).toEqual('ARTICLE');
-    expect(card.className).toEqual('material-card-filled material-grid');
-    expect(card.dataset.paddingCompact).toEqual('lg');
+    expect(card.className).toEqual(
+      'material-card variant-filled display-compact-grid padding-compact-lg',
+    );
   });
 
   test('outlined', () => {
@@ -54,7 +56,8 @@ describe('Card component', () => {
     );
     const card = result.getByTestId('outlined');
     expect(card.tagName).toEqual('SECTION');
-    expect(card.className).toEqual('material-card-outlined');
-    expect(card.dataset.marginCompact).toEqual('auto');
+    expect(card.className).toEqual(
+      'material-card variant-outlined margin-compact-auto',
+    );
   });
 });

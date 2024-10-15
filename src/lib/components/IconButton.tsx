@@ -10,11 +10,11 @@ import {
   useState,
 } from 'react';
 
-export interface IconButtonProps<T extends ElementType>
-  extends ButtonHTMLAttributes<HTMLButtonElement> {
-  as?: T;
-  variant?: 'standard' | 'outlined' | 'filled' | 'tonal';
-}
+export type IconButtonProps<T extends ElementType> =
+  ButtonHTMLAttributes<HTMLButtonElement> & {
+    as?: T;
+    variant?: 'standard' | 'outlined' | 'filled' | 'tonal';
+  };
 
 export const IconButton = <T extends ElementType>({
   as,
@@ -24,7 +24,7 @@ export const IconButton = <T extends ElementType>({
   ...props
 }: IconButtonProps<T> &
   Omit<ComponentPropsWithoutRef<T>, keyof IconButtonProps<T>>) => {
-  const ComponentElement = as || 'button';
+  const Surface = as || 'button';
   const ref = useRef<HTMLButtonElement>(null);
   const [tooltipPosition, setTooltipPosition] = useState<number>(0);
 
@@ -46,14 +46,20 @@ export const IconButton = <T extends ElementType>({
   }, [props]);
 
   return (
-    <ComponentElement
+    <Surface
       ref={ref}
-      className={clsx(`material-iconbutton-${variant}`, className)}
-      data-tooltip-top={tooltipPosition < 1 ? '' : undefined}
-      data-tooltip-bottom={tooltipPosition === 1 ? '' : undefined}
+      className={clsx(
+        'material-iconbutton',
+        `variant-${variant}`,
+        {
+          'tooltip-at-top': tooltipPosition < 1,
+          'tooltip-at-bottom': tooltipPosition === 1,
+        },
+        className,
+      )}
       {...props}
     >
       {children}
-    </ComponentElement>
+    </Surface>
   );
 };

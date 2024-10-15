@@ -23,59 +23,8 @@
   }
 
   @media screen and (min-width: 1200px) {
-    &[data-hide-on-large] {
+    &.hide-on-large {
       display: none;
-    }
-  }
-
-  &[data-color='primary'] {
-    background-color: var(--color-primary);
-    color: var(--color-on-primary);
-  }
-  &[data-color='primary-container'] {
-    background-color: var(--color-primary-container);
-    color: var(--color-on-primary-container);
-  }
-  &[data-color='secondary'] {
-    background-color: var(--color-secondary);
-    color: var(--color-on-secondary);
-  }
-  &[data-color='secondary-container'] {
-    background-color: var(--color-secondary-container);
-    color: var(--color-on-secondary-container);
-  }
-  &[data-color='tertiary'] {
-    background-color: var(--color-tertiary);
-    color: var(--color-on-tertiary);
-  }
-  &[data-color='tertiary-container'] {
-    background-color: var(--color-tertiary-container);
-    color: var(--color-on-tertiary-container);
-  }
-  &[data-color='inverse-surface'] {
-    background-color: var(--color-inverse-surface);
-    color: var(--color-on-inverse-surface);
-  }
-
-  > .list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--spacing-md);
-  }
-
-  > [role='toolbar'] {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    &.start {
-      justify-content: flex-start;
-    }
-
-    &.end {
-      justify-content: flex-end;
-      flex: auto;
     }
   }
 }

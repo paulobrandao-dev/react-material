@@ -112,7 +112,7 @@ describe('Dialog component', () => {
     );
     const dialog = result.getByTestId('fullscreen');
     expect(dialog.hasAttribute('open')).toBeFalsy();
-    expect(dialog.dataset.fullscreenOnCompact).not.toBeUndefined();
+    expect(dialog.classList.contains('fullscreen-on-compact')).toBeTruthy();
     await user.click(result.getByRole('button', { name: 'Open dialog' }));
     await waitFor(() => {
       expect(dialog.hasAttribute('open')).toBeTruthy();

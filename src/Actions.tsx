@@ -1,62 +1,58 @@
-import {
-  Button,
-  Dialog,
-  Flexbox,
-  Font,
-  Grid,
-  MaterialSymbols,
-  useDialogControl,
-} from './lib';
-import { gridColumnProps } from './lib/utils';
+import { Button, Dialog, MaterialSymbols, useDialogControl } from './lib';
+import Box from './lib/components/Box';
 
 export default function SectionActions({ hash }: Readonly<{ hash: string }>) {
   const { showDialog } = useDialogControl();
 
   return (
-    <article hidden={hash !== '#actions'}>
-      <Grid
+    <Box as="article" hidden={hash !== '#actions'}>
+      <Box
         as="section"
+        display="grid"
         gap={{ compact: 'md', medium: 'xl' }}
         paddingInline={{ compact: 'lg', medium: 'xl' }}
         paddingBlock="xl"
         id="button"
       >
-        <Flexbox
+        <Box
           as="hgroup"
+          display="flex"
           flexDirection="column"
           alignItems="flex-start"
           gap="sm"
-          {...gridColumnProps({ compact: 4, medium: 8, expanded: 6 })}
+          gridColumns={{ compact: 12, expanded: 6 }}
         >
-          <Font as="h2" variant="display" scale="large">
+          <Box as="h2" fontScale="display-large">
             Button
-          </Font>
-          <Font as="p" variant="headline" scale="small">
+          </Box>
+          <Box as="p" fontScale="headline-small">
             Common buttons prompt most actions in a UI
-          </Font>
-          <Font
+          </Box>
+          <Box
             as="a"
             href="https://m3.material.io/components/buttons/overview"
             target="_blank"
             rel="nofollow"
-            variant="label"
-            scale="small"
-            color="primary"
+            fontScale="label-small"
+            textColor="primary"
           >
             Reference
-          </Font>
-        </Flexbox>
-        <Flexbox
+          </Box>
+        </Box>
+        <Box
           as="section"
+          display="flex"
           flexDirection="column"
           gap="lg"
           alignItems="stretch"
-          {...gridColumnProps({ compact: 4, medium: 8, expanded: 6 })}
+          gridColumns={{ compact: 12, expanded: 6 }}
         >
-          <Font as="h3" variant="title" scale="large" color="secondary">
+          <Box as="h3" fontScale="title-large" textColor="secondary">
             Enabled
-          </Font>
-          <Flexbox
+          </Box>
+          <Box
+            as="div"
+            display="flex"
             flexDirection={{ compact: 'column', medium: 'row' }}
             alignItems={{ compact: 'stretch', medium: 'center' }}
             gap="sm"
@@ -73,11 +69,13 @@ export default function SectionActions({ hash }: Readonly<{ hash: string }>) {
             <Button variant="tonal">Tonal</Button>
             <Button variant="outlined">Outlined</Button>
             <Button variant="text">Text</Button>
-          </Flexbox>
-          <Font as="h3" variant="title" scale="large" color="secondary">
+          </Box>
+          <Box as="h3" fontScale="title-large" textColor="secondary">
             Disabled
-          </Font>
-          <Flexbox
+          </Box>
+          <Box
+            as="div"
+            display="flex"
             flexDirection={{ compact: 'column', medium: 'row' }}
             alignItems={{ compact: 'stretch', medium: 'center' }}
             gap="sm"
@@ -97,9 +95,9 @@ export default function SectionActions({ hash }: Readonly<{ hash: string }>) {
             <Button variant="text" disabled>
               Text
             </Button>
-          </Flexbox>
-        </Flexbox>
-      </Grid>
+          </Box>
+        </Box>
+      </Box>
       <Dialog
         id="test-basic"
         cancelLabel="Nop"
@@ -112,9 +110,9 @@ export default function SectionActions({ hash }: Readonly<{ hash: string }>) {
         headline="The dialog is correct?"
         icon={<MaterialSymbols icon="verified" size={24} />}
       >
-        <Font variant="body" scale="medium">
+        <Box as="p" fontScale="body-medium">
           The modal was showed successfuly with this text.
-        </Font>
+        </Box>
       </Dialog>
       <Dialog
         id="test-fullscreen"
@@ -129,10 +127,10 @@ export default function SectionActions({ hash }: Readonly<{ hash: string }>) {
         icon={<MaterialSymbols icon="fullscreen" size={24} />}
         fullscreenOnCompact
       >
-        <Font variant="body" scale="medium">
+        <Box as="p" fontScale="body-medium">
           The modal was showed successfuly with this text.
-        </Font>
+        </Box>
       </Dialog>
-    </article>
+    </Box>
   );
 }

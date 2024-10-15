@@ -9,7 +9,7 @@ describe('Appbar component', () => {
   test('render', () => {
     const result = render(<Appbar />);
     const bar = result.getByRole('banner');
-    expect(bar.className).toEqual('material-appbar-small');
+    expect(bar.className).toEqual('material-appbar variant-small');
   });
 
   describe('variants', () => {
@@ -22,14 +22,15 @@ describe('Appbar component', () => {
           headline="Center"
           startNode={<span className="pseudo-icon" />}
           endNode={<span className="pseudo-avatar" />}
-          color="primary"
+          containerColor="primary"
         />,
       );
       const bar = result.getByRole('banner');
       const title = result.getByRole('heading', { level: 1 });
-      expect(bar.className).toEqual('material-appbar-center-aligned');
-      expect(bar.dataset.color).toEqual('primary');
-      expect(title.dataset.align).toEqual('center');
+      expect(bar.className).toEqual(
+        'material-appbar variant-center-aligned container-color-primary',
+      );
+      expect(title.classList.contains('text-align-center')).toBeTruthy();
     });
 
     test('small', () => {
@@ -40,15 +41,15 @@ describe('Appbar component', () => {
           sticky
           startNode={<span className="pseudo-icon" />}
           endNode={<span className="pseudo-avatar" />}
-          color="secondary"
+          containerColor="secondary"
         />,
       );
       const bar = result.getByRole('banner');
       const title = result.getByRole('heading', { level: 1 });
-      expect(bar.className).toEqual('material-appbar-small');
-      expect(bar.dataset.sticky).not.toBeUndefined();
-      expect(bar.dataset.color).toEqual('secondary');
-      expect(title.dataset.align).toEqual('left');
+      expect(bar.className).toEqual(
+        'material-appbar variant-small sticky container-color-secondary',
+      );
+      expect(title.classList.contains('text-align-left')).toBeTruthy();
     });
 
     test('medium', () => {
@@ -58,31 +59,37 @@ describe('Appbar component', () => {
           headline="Medium"
           startNode={<span className="pseudo-icon" />}
           endNode={<span className="pseudo-avatar" />}
-          color="tertiary"
+          containerColor="tertiary"
         />,
       );
       const bar = result.getByRole('banner');
       const title = result.getByRole('heading', { level: 1 });
-      expect(bar.className).toEqual('material-appbar-medium');
-      expect(bar.dataset.color).toEqual('tertiary');
-      expect(title.className).toEqual('material-typography-headline-small');
+      expect(bar.className).toEqual(
+        'material-appbar variant-medium container-color-tertiary',
+      );
+      expect(
+        title.classList.contains('text-compact-headline-small'),
+      ).toBeTruthy();
     });
 
-    test('medium', () => {
+    test('large', () => {
       const result = render(
         <Appbar
           variant="large"
           headline="Large"
           startNode={<span className="pseudo-icon" />}
           endNode={<span className="pseudo-avatar" />}
-          color="inverse-surface"
+          containerColor="inverse-surface"
         />,
       );
       const bar = result.getByRole('banner');
       const title = result.getByRole('heading', { level: 1 });
-      expect(bar.className).toEqual('material-appbar-large');
-      expect(bar.dataset.color).toEqual('inverse-surface');
-      expect(title.className).toEqual('material-typography-headline-medium');
+      expect(bar.className).toEqual(
+        'material-appbar variant-large container-color-inverse-surface',
+      );
+      expect(
+        title.classList.contains('text-compact-headline-medium'),
+      ).toBeTruthy();
     });
   });
 });

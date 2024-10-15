@@ -3,17 +3,19 @@
 import { clsx } from 'clsx';
 import { ComponentPropsWithoutRef, ElementType, HTMLAttributes } from 'react';
 import {
-  filterProps,
-  flexProperties,
-  gapProperties,
-  gridProperties,
-  spacingProperties,
+  displayClassNames,
+  flexClassNames,
+  gapClassNames,
+  gridColumnsClassNames,
+  spacingClassNames,
 } from './commons';
 import {
   AttributeQueries,
+  DisplayValues,
   FlexAlignProps,
   GapProps,
   GridColumnSize,
+  MaxWidthValues,
   SpacingProps,
 } from './types';
 
@@ -23,39 +25,56 @@ export type CardProps<T extends ElementType> = HTMLAttributes<HTMLElement> &
   SpacingProps & {
     as?: T;
     variant?: 'elevated' | 'filled' | 'outlined';
-    flexbox?: boolean;
-    grid?: boolean;
+    display?: DisplayValues | AttributeQueries<DisplayValues>;
     gridColumns?: GridColumnSize | AttributeQueries<GridColumnSize>;
-    maxWidth?: 'compact' | 'medium' | 'expanded' | 'large';
+    maxWidth?: MaxWidthValues;
   };
 
 export function Card<T extends ElementType>({
   as,
   variant = 'elevated',
-  flexbox,
-  grid,
+  display,
+  flexDirection,
+  alignItems,
+  justifyContent,
+  margin,
+  marginBlock,
+  marginInline,
+  padding,
+  paddingBlock,
+  paddingInline,
+  gap,
+  gapColumn,
+  gapRow,
   gridColumns,
   maxWidth,
   className,
   ...props
 }: CardProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof CardProps<T>>) {
-  const ComponentElement = as || 'div';
+  const Surface = as || 'div';
   return (
-    <ComponentElement
+    <Surface
       className={clsx(
-        `material-card-${variant}`,
+        'material-card',
+        `variant-${variant}`,
         {
-          'material-flexbox': !grid && flexbox,
-          'material-grid': !flexbox && grid,
+          [`max-width-${maxWidth}`]: maxWidth !== undefined,
         },
+        displayClassNames(display),
+        flexClassNames({ alignItems, flexDirection, justifyContent }),
+        spacingClassNames({
+          margin,
+          marginBlock,
+          marginInline,
+          padding,
+          paddingBlock,
+          paddingInline,
+        }),
+        gapClassNames({ gap, gapColumn, gapRow }),
+        gridColumnsClassNames(gridColumns),
         className,
       )}
-      data-max-width={maxWidth ?? undefined}
-      {...flexProperties(props)}
-      {...spacingProperties(props)}
-      {...gapProperties(props)}
-      {...(gridColumns ? gridProperties({ query: gridColumns }) : {})}
-      {...filterProps(props)}
+      {...props}
     />
   );
 }

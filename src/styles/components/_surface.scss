@@ -1,0 +1,492 @@
+@mixin grid-item-rules($sizeName) {
+  @for $i from 1 to 13 {
+    .grid-#{$sizeName}-#{$i} {
+      grid-column: auto / span #{$i};
+    }
+  }
+}
+
+@mixin typography-rules($sizeName) {
+  .text-#{$sizeName} {
+    &-display {
+      &-large {
+        font: var(--text-display-large);
+      }
+      &-medium {
+        font: var(--text-display-medium);
+      }
+      &-small {
+        font: var(--text-display-small);
+      }
+    }
+
+    &-headline {
+      &-large {
+        font: var(--text-headline-large);
+      }
+      &-medium {
+        font: var(--text-headline-medium);
+      }
+      &-small {
+        font: var(--text-headline-small);
+      }
+    }
+
+    &-title {
+      &-large {
+        font: var(--text-title-large);
+      }
+      &-medium {
+        font: var(--text-title-medium);
+      }
+      &-small {
+        font: var(--text-title-small);
+      }
+    }
+
+    &-body {
+      &-large {
+        font: var(--text-body-large);
+      }
+      &-medium {
+        font: var(--text-body-medium);
+      }
+      &-small {
+        font: var(--text-body-small);
+      }
+    }
+
+    &-label {
+      &-large {
+        font: var(--text-label-large);
+      }
+      &-medium {
+        font: var(--text-label-medium);
+      }
+      &-small {
+        font: var(--text-label-small);
+      }
+    }
+  }
+}
+
+@mixin display-rules($sizeName) {
+  .display-#{$sizeName} {
+    &-block {
+      display: block;
+    }
+    &-flex {
+      display: flex;
+    }
+    &-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+    }
+    &-inline {
+      display: inline;
+    }
+    &-none {
+      display: none;
+    }
+  }
+}
+
+@mixin spacing-rules($breakpoint, $property, $auto: 0) {
+  .#{$property}-#{$breakpoint}-none {
+    #{$property}: 0;
+  }
+  .#{$property}-#{$breakpoint}-xs {
+    #{$property}: var(--spacing-xs);
+  }
+  .#{$property}-#{$breakpoint}-sm {
+    #{$property}: var(--spacing-sm);
+  }
+  .#{$property}-#{$breakpoint}-md {
+    #{$property}: var(--spacing-md);
+  }
+  .#{$property}-#{$breakpoint}-lg {
+    #{$property}: var(--spacing-lg);
+  }
+  .#{$property}-#{$breakpoint}-xl {
+    #{$property}: var(--spacing-xl);
+  }
+  @if $auto == 1 {
+    .#{$property}-#{$breakpoint}-auto {
+      #{$property}: auto;
+    }
+  }
+}
+
+@mixin flex-direction-rules($breakpoint) {
+  .flex-direction-#{$breakpoint}-row {
+    flex-direction: row;
+  }
+  .flex-direction-#{$breakpoint}-row-reverse {
+    flex-direction: row-reverse;
+  }
+  .flex-direction-#{$breakpoint}-column {
+    flex-direction: column;
+  }
+  .flex-direction-#{$breakpoint}-column-reverse {
+    flex-direction: column-reverse;
+  }
+}
+
+@mixin flex-align-rules($breakpoint) {
+  .flex-align-items-#{$breakpoint}-baseline {
+    align-items: baseline;
+  }
+  .flex-align-items-#{$breakpoint}-center {
+    align-items: center;
+  }
+  .flex-align-items-#{$breakpoint}-flex-start {
+    align-items: flex-start;
+  }
+  .flex-align-items-#{$breakpoint}-flex-end {
+    align-items: flex-end;
+  }
+  .flex-align-items-#{$breakpoint}-stretch {
+    align-items: stretch;
+  }
+  .flex-justify-content-#{$breakpoint}-baseline {
+    justify-content: baseline;
+  }
+  .flex-justify-content-#{$breakpoint}-center {
+    justify-content: center;
+  }
+  .flex-justify-content-#{$breakpoint}-flex-start {
+    justify-content: flex-start;
+  }
+  .flex-justify-content-#{$breakpoint}-flex-end {
+    justify-content: flex-end;
+  }
+  .flex-justify-content-#{$breakpoint}-space-around {
+    justify-content: space-around;
+  }
+  .flex-justify-content-#{$breakpoint}-space-between {
+    justify-content: space-between;
+  }
+  .flex-justify-content-#{$breakpoint}-space-evenly {
+    justify-content: space-evenly;
+  }
+  .flex-justify-content-#{$breakpoint}-stretch {
+    justify-content: stretch;
+  }
+}
+
+@for $i from 1 to 6 {
+  .elevation-#{$i} {
+    box-shadow: var(--elevation-#{$i});
+  }
+}
+
+.full-width {
+  width: 100%;
+}
+
+.max-width {
+  &-compact {
+    max-width: 560px;
+  }
+  &-medium {
+    max-width: 800px;
+  }
+  &-expanded {
+    max-width: 1160px;
+  }
+  &-large {
+    max-width: 1360px;
+  }
+  &-max-content {
+    max-width: max-content;
+  }
+  &-min-content {
+    max-width: min-content;
+  }
+  &-fit-content {
+    max-width: fit-content;
+  }
+}
+
+.state-layer {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    z-index: 0;
+    background-color: currentColor;
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: var(--ease-standard-duration);
+    transition-timing-function: var(--ease-standard);
+    pointer-events: none;
+  }
+
+  &::before {
+    opacity: var(--opacity-hover);
+  }
+
+  &::before {
+    opacity: var(--opacity-focus);
+  }
+}
+
+.shape {
+  &-xs {
+    border-radius: var(--shape-xs);
+  }
+  &-xs-top {
+    border-radius: var(--shape-xs-top);
+  }
+  &-sm {
+    border-radius: var(--shape-sm);
+  }
+  &-md {
+    border-radius: var(--shape-md);
+  }
+  &-lg {
+    border-radius: var(--shape-lg);
+  }
+  &-lg-start {
+    border-radius: var(--shape-lg-start);
+  }
+  &-lg-end {
+    border-radius: var(--shape-lg-end);
+  }
+  &-lg-top {
+    border-radius: var(--shape-lg-top);
+  }
+  &-xl {
+    border-radius: var(--shape-xl);
+  }
+  &-xl-top {
+    border-radius: var(--shape-xl-top);
+  }
+  &-circle {
+    border-radius: var(--shape-circle);
+  }
+}
+
+.container-color {
+  &-surface {
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+  }
+  &-surface-variant {
+    background-color: var(--color-surface-variant);
+    color: var(--color-on-surface-variant);
+  }
+  &-surface-container-lowest {
+    background-color: var(--color-surface-container-lowest);
+    color: var(--color-on-surface-variant);
+  }
+  &-surface-container-low {
+    background-color: var(--color-surface-container-low);
+    color: var(--color-on-surface-variant);
+  }
+  &-surface-container {
+    background-color: var(--color-surface-container);
+    color: var(--color-on-surface-variant);
+  }
+  &-surface-container-high {
+    background-color: var(--color-surface-container-high);
+    color: var(--color-on-surface-variant);
+  }
+  &-surface-container-highest {
+    background-color: var(--color-surface-container-highest);
+    color: var(--color-on-surface-variant);
+  }
+  &-inverse-surface {
+    background-color: var(--color-inverse-surface);
+    color: var(--color-on-inverse-surface);
+  }
+  &-primary-container {
+    background-color: var(--color-primary-container);
+    color: var(--color-on-primary-container);
+  }
+  &-secondary-container {
+    background-color: var(--color-secondary-container);
+    color: var(--color-on-secondary-container);
+  }
+  &-tertiary-container {
+    background-color: var(--color-tertiary-container);
+    color: var(--color-on-tertiary-container);
+  }
+  &-error-container {
+    background-color: var(--color-error-container);
+    color: var(--color-on-error-container);
+  }
+  &-primary {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+  }
+  &-secondary {
+    background-color: var(--color-secondary);
+    color: var(--color-on-secondary);
+  }
+  &-tertiary {
+    background-color: var(--color-tertiary);
+    color: var(--color-on-tertiary);
+  }
+  &-error {
+    background-color: var(--color-error);
+    color: var(--color-on-error);
+  }
+}
+
+.text-color {
+  &-on-surface {
+    color: var(--color-on-surface);
+  }
+  &-on-surface-variant {
+    color: var(--color-on-surface-variant);
+  }
+  &-on-inverse-surface {
+    color: var(--color-on-inverse-surface);
+  }
+  &-on-primary-container {
+    color: var(--color-on-primary-container);
+  }
+  &-on-secondary-container {
+    color: var(--color-on-secondary-container);
+  }
+  &-on-tertiary-container {
+    color: var(--color-on-tertiary-container);
+  }
+  &-on-error-container {
+    color: var(--color-on-error-container);
+  }
+  &-on-primary {
+    color: var(--color-on-primary);
+  }
+  &-on-secondary {
+    color: var(--color-on-secondary);
+  }
+  &-on-tertiary {
+    color: var(--color-on-tertiary);
+  }
+  &-on-error {
+    color: var(--color-on-error);
+  }
+  &-primary {
+    color: var(--color-primary);
+  }
+  &-secondary {
+    color: var(--color-secondary);
+  }
+  &-tertiary {
+    color: var(--color-tertiary);
+  }
+  &-error {
+    color: var(--color-error);
+  }
+  &-inverse-primary {
+    color: var(--color-inverse-primary);
+  }
+}
+
+.text-align {
+  &-left {
+    text-align: left;
+  }
+  &-center {
+    text-align: center;
+  }
+  &-right {
+    text-align: right;
+  }
+  &-justify {
+    text-align: justify;
+  }
+}
+
+@media screen and (min-width: 0) {
+  @include display-rules('compact');
+  @include grid-item-rules('compact');
+  @include spacing-rules('compact', 'gap');
+  @include spacing-rules('compact', 'column-gap');
+  @include spacing-rules('compact', 'row-gap');
+  @include spacing-rules('compact', 'padding');
+  @include spacing-rules('compact', 'padding-block');
+  @include spacing-rules('compact', 'padding-inline');
+  @include spacing-rules('compact', 'margin', 1);
+  @include spacing-rules('compact', 'margin-block', 1);
+  @include spacing-rules('compact', 'margin-inline', 1);
+  @include flex-direction-rules('compact');
+  @include flex-align-rules('compact');
+  @include typography-rules('compact');
+}
+
+@media screen and (min-width: 600px) {
+  @include display-rules('medium');
+  @include grid-item-rules('medium');
+  @include spacing-rules('medium', 'gap');
+  @include spacing-rules('medium', 'column-gap');
+  @include spacing-rules('medium', 'row-gap');
+  @include spacing-rules('medium', 'padding');
+  @include spacing-rules('medium', 'padding-block');
+  @include spacing-rules('medium', 'padding-inline');
+  @include spacing-rules('medium', 'margin', 1);
+  @include spacing-rules('medium', 'margin-block', 1);
+  @include spacing-rules('medium', 'margin-inline', 1);
+  @include flex-direction-rules('medium');
+  @include flex-align-rules('medium');
+  @include typography-rules('medium');
+}
+
+@media screen and (min-width: 840px) {
+  @include display-rules('expanded');
+  @include grid-item-rules('expanded');
+  @include spacing-rules('expanded', 'gap');
+  @include spacing-rules('expanded', 'column-gap');
+  @include spacing-rules('expanded', 'row-gap');
+  @include spacing-rules('expanded', 'padding');
+  @include spacing-rules('expanded', 'padding-block');
+  @include spacing-rules('expanded', 'padding-inline');
+  @include spacing-rules('expanded', 'margin', 1);
+  @include spacing-rules('expanded', 'margin-block', 1);
+  @include spacing-rules('expanded', 'margin-inline', 1);
+  @include flex-direction-rules('expanded');
+  @include flex-align-rules('expanded');
+  @include typography-rules('expanded');
+}
+
+@media screen and (min-width: 1200px) {
+  @include display-rules('large');
+  @include grid-item-rules('large');
+  @include spacing-rules('large', 'gap');
+  @include spacing-rules('large', 'column-gap');
+  @include spacing-rules('large', 'row-gap');
+  @include spacing-rules('large', 'padding');
+  @include spacing-rules('large', 'padding-block');
+  @include spacing-rules('large', 'padding-inline');
+  @include spacing-rules('large', 'margin', 1);
+  @include spacing-rules('large', 'margin-block', 1);
+  @include spacing-rules('large', 'margin-inline', 1);
+  @include flex-direction-rules('large');
+  @include flex-align-rules('large');
+  @include typography-rules('large');
+}
+
+@media screen and (min-width: 1400px) {
+  @include display-rules('xlarge');
+  @include grid-item-rules('xlarge');
+  @include spacing-rules('xlarge', 'gap');
+  @include spacing-rules('xlarge', 'column-gap');
+  @include spacing-rules('xlarge', 'row-gap');
+  @include spacing-rules('xlarge', 'padding');
+  @include spacing-rules('xlarge', 'padding-block');
+  @include spacing-rules('xlarge', 'padding-inline');
+  @include spacing-rules('xlarge', 'margin', 1);
+  @include spacing-rules('xlarge', 'margin-block', 1);
+  @include spacing-rules('xlarge', 'margin-inline', 1);
+  @include flex-direction-rules('xlarge');
+  @include flex-align-rules('xlarge');
+  @include typography-rules('xlarge');
+}
