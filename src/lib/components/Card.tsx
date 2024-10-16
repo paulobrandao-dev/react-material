@@ -28,6 +28,7 @@ export type CardProps<T extends ElementType> = HTMLAttributes<HTMLElement> &
     display?: DisplayValues | AttributeQueries<DisplayValues>;
     gridColumns?: GridColumnSize | AttributeQueries<GridColumnSize>;
     maxWidth?: MaxWidthValues;
+    stateLayer?: boolean;
   };
 
 export function Card<T extends ElementType>({
@@ -48,6 +49,7 @@ export function Card<T extends ElementType>({
   gapRow,
   gridColumns,
   maxWidth,
+  stateLayer,
   className,
   ...props
 }: CardProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof CardProps<T>>) {
@@ -59,6 +61,7 @@ export function Card<T extends ElementType>({
         `variant-${variant}`,
         {
           [`max-width-${maxWidth}`]: maxWidth !== undefined,
+          'state-layer': stateLayer,
         },
         displayClassNames(display),
         flexClassNames({ alignItems, flexDirection, justifyContent }),

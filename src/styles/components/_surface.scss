@@ -177,6 +177,7 @@
 @for $i from 1 to 6 {
   .elevation-#{$i} {
     box-shadow: var(--elevation-#{$i});
+    z-index: $i;
   }
 }
 
@@ -228,11 +229,11 @@
     pointer-events: none;
   }
 
-  &::before {
+  &:hover::before {
     opacity: var(--opacity-hover);
   }
 
-  &::before {
+  &:focus::before {
     opacity: var(--opacity-focus);
   }
 }

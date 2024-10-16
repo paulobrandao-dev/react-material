@@ -11,7 +11,7 @@ import { Box } from './Box';
 
 export type NavlinkProps<A extends ElementType> = Omit<
   AnchorHTMLAttributes<HTMLAnchorElement>,
-  'children'
+  'children' | 'aria-current'
 > & {
   label: string;
   icon: ReactNode;
@@ -29,7 +29,11 @@ export function Navlink<T extends ElementType>({
 }: NavlinkProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof NavlinkProps<T>>) {
   const Surface = as || 'a';
   return (
-    <Surface className={clsx('material-navlink', className)} {...props}>
+    <Surface
+      className={clsx('material-navlink', className)}
+      aria-current={active ? 'page' : undefined}
+      {...props}
+    >
       <Box
         as="span"
         display="flex"
