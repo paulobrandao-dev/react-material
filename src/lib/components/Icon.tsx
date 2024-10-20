@@ -9,7 +9,7 @@ export interface MaterialSymbolsProps
   weight?: 100 | 200 | 300 | 400 | 500 | 600 | 700;
   size?: number;
   filled?: boolean;
-  emphasis?: -25 | 0 | 200;
+  emphasis?: 'low' | 'normal' | 'high';
 }
 
 export function MaterialSymbols({
@@ -17,7 +17,7 @@ export function MaterialSymbols({
   weight = 400,
   size = 24,
   filled,
-  emphasis = 0,
+  emphasis = 'normal',
   className,
   style,
   ...props
@@ -35,6 +35,17 @@ export function MaterialSymbols({
       return 48;
     }
   }, [size]);
+
+  const grade = useMemo(() => {
+    switch (emphasis) {
+      case 'low':
+        return -25;
+      case 'high':
+        return 200;
+      default:
+        return 0;
+    }
+  }, [emphasis]);
 
   useEffect(() => {
     const setting = getComputedStyle(document.documentElement).getPropertyValue(
@@ -57,7 +68,7 @@ export function MaterialSymbols({
       style={{
         ...style,
         fontSize: size,
-        fontVariationSettings: `'FILL' ${filled ? 1 : 0}, 'wght' ${weight}, 'GRAD' ${emphasis}, 'opsz' ${opsz}`,
+        fontVariationSettings: `'FILL' ${filled ? 1 : 0}, 'wght' ${weight}, 'GRAD' ${grade}, 'opsz' ${opsz}`,
       }}
       {...props}
     >

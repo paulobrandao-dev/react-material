@@ -44,7 +44,7 @@ describe('MaterialSymbols component', () => {
         />
         <MaterialSymbols
           icon="settings"
-          emphasis={200}
+          emphasis="high"
           size={40}
           data-testid="icon_40"
         />

@@ -27,7 +27,8 @@ export default function SectionStyles({ hash }: Readonly<{ hash: string }>) {
             Font
           </Box>
           <Box as="p" fontScale="headline-small">
-            Typography helps make writing <strong>legible</strong> and <em>beautiful</em>
+            Typography helps make writing <strong>legible</strong> and{' '}
+            <em>beautiful</em>
           </Box>
           <Box
             as="a"
@@ -144,8 +145,8 @@ export default function SectionStyles({ hash }: Readonly<{ hash: string }>) {
           </Box>
           <Box as="div" display="flex" gap="sm" alignItems="center">
             <MaterialSymbols icon="search" size={20} />
-            <MaterialSymbols icon="home" size={24} />
-            <MaterialSymbols icon="settings" size={40} />
+            <MaterialSymbols icon="home" emphasis="high" size={24} />
+            <MaterialSymbols icon="settings" emphasis="low" size={40} />
             <MaterialSymbols icon="favorite" size={48} />
           </Box>
           <Box as="h3" fontScale="title-large" textColor="secondary">
