@@ -15,7 +15,7 @@
   color: var(--color-on-surface-variant);
   padding-block: var(--spacing-xl);
 
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1400px) {
     &::-webkit-scrollbar {
       max-width: var(--spacing-sm);
       max-height: var(--spacing-sm);
@@ -68,7 +68,7 @@
       transition-timing-function: var(--ease-emphasized);
     }
 
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: 1400px) {
       position: sticky;
     }
   }

@@ -13,14 +13,14 @@
   }
 }
 
-@media screen and (min-width: 600px) and (max-width: 1199px) {
+@media screen and (min-width: 600px) and (max-width: 1399px) {
   #root {
     display: grid;
     grid-template-columns: minmax(80px, 96px) auto;
   }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1400px) {
   #root {
     display: grid;
     grid-template-columns: 360px auto;

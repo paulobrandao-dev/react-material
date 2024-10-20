@@ -39,7 +39,7 @@ export function Navdrawer<T extends ElementType>({
       className={clsx('material-navdrawer', { standard }, className)}
       id={id}
       popover={
-        (standard && media.isLessThanLarge) || !standard ? '' : undefined
+        (standard && media.isLessThanExtraLarge) || !standard ? '' : undefined
       }
       {...props}
     >

@@ -79,7 +79,7 @@ function App() {
             />
           </IconButton>
         }
-        hideOnLarge
+        hideOnExtraLarge
       >
         <Navlink
           as={HashLink}
@@ -205,7 +205,7 @@ function App() {
           }
           sticky
           endNode={
-            media.isCompact || media.isGreaterThanExpanded ? (
+            media.isCompact || media.isGreaterThanLarge ? (
               <IconButton
                 variant="standard"
                 onClick={() => {

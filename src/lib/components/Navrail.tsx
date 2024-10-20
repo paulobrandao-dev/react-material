@@ -12,7 +12,7 @@ import { Box } from './Box';
 export type NavrailProps<T extends ElementType> =
   HTMLAttributes<HTMLElement> & {
     as?: T;
-    hideOnLarge?: boolean;
+    hideOnExtraLarge?: boolean;
     startNode?: ReactNode;
     endNode?: ReactNode;
     containerColor?:
@@ -27,7 +27,7 @@ export type NavrailProps<T extends ElementType> =
 
 export function Navrail<T extends ElementType>({
   as,
-  hideOnLarge,
+  hideOnExtraLarge,
   startNode,
   endNode,
   containerColor,
@@ -43,7 +43,7 @@ export function Navrail<T extends ElementType>({
         'material-navrail',
         {
           [`container-color-${containerColor}`]: containerColor !== undefined,
-          'hide-on-large': hideOnLarge,
+          'hide-on-xlarge': hideOnExtraLarge,
         },
         className,
       )}

@@ -18,12 +18,16 @@
   transition-duration: var(--ease-emphasized-duration);
   transition-timing-function: var(--ease-emphasized);
 
+  > [role='presentation'] {
+    flex: auto;
+  }
+
   @media screen and (max-width: 599px) {
     display: none;
   }
 
-  @media screen and (min-width: 1200px) {
-    &.hide-on-large {
+  @media screen and (min-width: 1400px) {
+    &.hide-on-xlarge {
       display: none;
     }
   }
