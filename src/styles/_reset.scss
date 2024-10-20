@@ -5,6 +5,7 @@
   padding: 0;
   box-sizing: border-box;
   outline: none;
+  font: inherit;
 }
 
 html,
@@ -35,6 +36,16 @@ button {
 pre,
 code {
   font: var(--text-code);
+}
+
+strong,
+b {
+  font-weight: 500;
+}
+
+em,
+i {
+  font-style: italic;
 }
 
 input::-ms-reveal,

@@ -27,7 +27,7 @@ export default function SectionStyles({ hash }: Readonly<{ hash: string }>) {
             Font
           </Box>
           <Box as="p" fontScale="headline-small">
-            Typography helps make writing legible and beautiful
+            Typography helps make writing <strong>legible</strong> and <em>beautiful</em>
           </Box>
           <Box
             as="a"
