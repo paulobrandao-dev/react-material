@@ -15,23 +15,31 @@
   color: var(--color-on-surface-variant);
   padding-block: var(--spacing-xl);
 
-  @media screen and (min-width: 1400px) {
+  @media screen and (min-width: 1200px) {
     &::-webkit-scrollbar {
-      max-width: var(--spacing-sm);
-      max-height: var(--spacing-sm);
+      max-width: var(--spacing-xs);
+      max-height: var(--spacing-xs);
     }
 
     &::-webkit-scrollbar-track {
-      border-radius: var(--shape-sm);
-      background-color: var(--color-surface-container-lowest);
+      background-color: transparent;
     }
 
     &::-webkit-scrollbar-thumb {
-      background: var(--color-on-surface-variant);
-      border-radius: var(--shape-sm);
+      opacity: 0;
+      background: var(--color-surface-variant);
+      transition-property: opacity, background-color;
+      transition-duration: var(--ease-emphasized-duration);
+      transition-timing-function: var(--ease-emphasized);
 
       &:hover {
         background: var(--color-secondary-container);
+      }
+    }
+
+    &:hover {
+      &::-webkit-scrollbar-thumb {
+        opacity: 1;
       }
     }
   }
