@@ -2,7 +2,11 @@ import { Box, Card, MaterialSymbols } from './lib';
 
 export default function SectionStyles({ hash }: Readonly<{ hash: string }>) {
   return (
-    <Box as="article" hidden={hash !== '#styles'}>
+    <Box
+      as="article"
+      paddingInline={{ compact: 'lg', medium: 'xl' }}
+      hidden={hash !== '#styles'}
+    >
       <Card
         as="section"
         variant="outlined"

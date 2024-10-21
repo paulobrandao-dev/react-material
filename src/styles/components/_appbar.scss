@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  transition-property: background-color, box-shadow, height;
+  transition-property: background-color, height;
   transition-duration: var(--ease-emphasized-duration);
   transition-timing-function: var(--ease-emphasized);
 
@@ -15,14 +15,10 @@
   &.sticky {
     position: sticky;
     top: 0;
-    z-index: 3;
+    z-index: 2;
 
-    &.scrolled {
-      box-shadow: var(--elevation-2);
-
-      &:not([class*='container-color']) {
-        background-color: var(--color-surface-container);
-      }
+    &.scrolled:not([class*='container-color']) {
+      background-color: var(--color-surface-container);
     }
   }
 

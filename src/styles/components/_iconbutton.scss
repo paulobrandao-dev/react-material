@@ -39,7 +39,7 @@
 
   &.variant {
     &-standard {
-      color: var(--color-on-surface-variant);
+      color: inherit;
 
       &[aria-pressed='true'] {
         color: var(--color-primary);
@@ -47,7 +47,7 @@
     }
 
     &-outlined {
-      color: var(--color-on-surface-variant);
+      color: inherit;
       border: 1px solid var(--color-outline);
 
       &:disabled {

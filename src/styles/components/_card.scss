@@ -2,7 +2,7 @@
 
 .material-card {
   border-radius: var(--shape-md);
-  transition-property: box-shadow;
+  transition-property: box-shadow, background-color, border-color;
   transition-duration: var(--ease-emphasized-duration);
   transition-timing-function: var(--ease-emphasized);
 
