@@ -203,7 +203,7 @@ function App() {
               id="logo_appbar"
             />
           }
-          sticky
+          // sticky
           endNode={
             media.isCompact || media.isGreaterThanLarge ? (
               <IconButton

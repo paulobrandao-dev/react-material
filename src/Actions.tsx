@@ -1,16 +1,31 @@
-import { Box, Button, Dialog, MaterialSymbols, useDialogControl } from './lib';
+import {
+  Box,
+  Button,
+  Card,
+  Dialog,
+  MaterialSymbols,
+  useDialogControl,
+} from './lib';
 
 export default function SectionActions({ hash }: Readonly<{ hash: string }>) {
   const { showDialog } = useDialogControl();
 
   return (
-    <Box as="article" hidden={hash !== '#actions'}>
-      <Box
+    <Box
+      as="article"
+      paddingInline={{ compact: 'lg', medium: 'xl' }}
+      hidden={hash !== '#actions'}
+    >
+      <Card
         as="section"
+        variant="outlined"
         display="grid"
         gap={{ compact: 'md', medium: 'xl' }}
         paddingInline={{ compact: 'lg', medium: 'xl' }}
         paddingBlock="xl"
+        marginBlock="xl"
+        marginInline="auto"
+        maxWidth="large"
         id="button"
       >
         <Box
@@ -96,7 +111,7 @@ export default function SectionActions({ hash }: Readonly<{ hash: string }>) {
             </Button>
           </Box>
         </Box>
-      </Box>
+      </Card>
       <Dialog
         id="test-basic"
         cancelLabel="Nop"

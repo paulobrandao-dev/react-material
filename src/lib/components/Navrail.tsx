@@ -16,6 +16,12 @@ export type NavrailProps<T extends ElementType> =
     startNode?: ReactNode;
     endNode?: ReactNode;
     containerColor?:
+      | 'surface-variant'
+      | 'surface-container-lowest'
+      | 'surface-container-low'
+      | 'surface-container'
+      | 'surface-container-high'
+      | 'surface-container-highest'
       | 'primary'
       | 'primary-container'
       | 'secondary'
